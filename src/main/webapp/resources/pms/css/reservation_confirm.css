@@ -1,0 +1,222 @@
+.showcss{ 
+	display:block;
+	}
+.hidecss{ 
+	display:none;
+	}
+.canStatus{
+    background-color: #6B9B66;
+    color: white;
+    text-align: left;
+    border-radius: 4px;
+	float: left;
+	font-weight: bold;
+	height: 32px;
+	padding: 7px 0px;
+	width: 135px;
+}
+html body .resv-txt {
+    /* font-size: 16px; */
+    padding-top: 2px;
+    font-weight: bold;
+    color: #696969;
+}
+.canStatus2{
+   background-color: #FF0;
+	color: #444;
+    text-align: left;
+    border-radius: 4px;
+	float: left;
+	font-weight: bold;
+	height: 32px;
+	padding: 7px 0px;
+	width: 135px;
+}
+
+.resv-lbl {
+    font-size: 12px;
+    padding-left: 4px;
+    color: #9E9E9E;
+}
+.resv-txt {
+    padding: 4px;
+    margin-bottom: 5px;
+}
+
+.separator{
+	margin-left:10px;
+}
+.leftside_of_confirm{
+	width:50%;
+}
+.pms_text.long_text {
+    width: 500px;
+    margin-bottom: -12px;
+}
+.validation_confirm{
+	margin-left:27px;
+}
+.change_reservation_confirm{
+	width: 35%;
+}
+.confStatus{
+    background-color: #D5D564;
+    color: black;
+    text-align: left;
+    
+    border-radius: 3px;
+}
+.parentTable{
+	width:35%;
+	margin-left: 20px;
+}
+
+.message_confirm{
+  width: 430px;
+  margin-left: 20px;
+  margin-top: 14px;
+  margin-bottom: 14px;
+}
+
+.msg_txt_confirm{
+	margin-left: -420px;
+}
+
+.label_details1{
+	font-size:14px;
+	font-weight:300;
+}
+.test3{
+	margin-bottom:1px;
+}
+
+.dtld_label{
+	    width: auto;
+    float: left;
+    padding-right: 10px;
+    color: black;
+    /* color: #525252; */
+    font-size: 14px;
+    font-weight: bold;
+    padding-top: 4px;
+}
+
+
+
+/* .confirm_panel_heading {
+    padding: 2px 15px;
+    border-bottom: 1px solid transparent;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    color: #fff;
+    font-weight: bold;
+    background-color: #40A6CC;;
+    border-color:#40A6CC;;
+    font-size: 14px;
+}
+.confirm_panel {
+    margin-bottom: 10px;
+    background-color: #fff;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+    margin-top: 10px;
+    border-color: #6195C1;
+    clear: both;
+    overflow: auto;
+}
+
+.s_label {
+	color: #000;
+font-weight: bold;
+width: 120px;
+display: inline-block;
+}
+
+.s_data {
+	color: #048ABB;
+    font-weight: bold;
+     width: auto;
+    display: inline-block;
+}
+
+.s_section {
+	padding: 5px 0px;
+	margin-left: 25px;
+}
+
+.colon_style{
+	float: right;
+	padding-right: 10px;
+}
+
+.s_imp_field{
+   font-size: 14px;
+   font-style: normal;
+}
+
+.confirmed_style{	
+background-color: #189A05;
+color: white;
+padding: 1px;
+border-radius: 4px;
+}
+
+.reservation_prev_btn{
+	   margin-left: 750px;
+  margin-top: 18px;
+	  background-color:#0066FF;
+	color: #FFFFFF;
+	border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+	height: 30px;
+    width: 127px;
+    border:0px;
+}
+
+.reservation_next_btn{
+	background-color:#0066FF;
+	color: #FFFFFF;
+	border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+	height: 30px;
+    width: 127px;
+    border:0px;
+}
+
+.btn_section {
+    text-align: right;
+}
+.status{
+	text-align: center;
+
+}
+#show_deposit {
+    margin-left: 62px;
+}
+
+.message_confirm{
+    width:430px;
+    margin-left: 20px;
+}
+.checkbox_confirm{
+    float:left;
+}
+.s_appearence{
+    font-weight: bold;
+    width: 135px;
+    border: 1px solid #39393C;
+    text-align: center;
+    border-radius: 4px;
+    padding: 3px 0px;
+}
+.reservationStatusUnConfirmed {
+    background-color: #FF0;
+    color: #444;
+}
+} */	

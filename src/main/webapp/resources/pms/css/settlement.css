@@ -1,0 +1,101 @@
+.btn_dtl {
+	width: 29px;
+	text-align: center;
+	background-color: #e6e6e6;
+	padding-top: 7px;
+}
+
+.pymt_dt_div {
+	height: 100px;
+	padding-top: 45px;
+}
+
+.pymt_dt_lbl {
+	margin-top: 6px;
+	float: left;
+}
+
+#dateWidth {
+	width: 233px;
+}
+
+#custName {
+	font-weight: bold;
+}
+
+#borderLine {
+	background-color: whitesmoke;
+	border-right-color: whitesmoke;
+	border-left-color: whitesmoke;
+	color: #074c96;
+	font-weight: bold;
+}
+
+.md-button.md-icon-button {
+	margin-top: 0px;
+	margin-right: 6px;
+	margin-bottom: 0px;
+	height: 40px;
+	min-width: 0;
+	line-height: 24px;
+	padding-right: 8px;
+	padding-bottom: 8px;
+	padding-left: 8px;
+	width: 40px;
+	border-radius: 50%;
+	margin-left: -13px;
+	padding-top: 0px;
+}
+
+.alignRight {
+	text-align: right;
+}
+
+.align_chk {
+	text-align: center;
+}
+
+html body div table.table tr td {
+	padding-top: 5px;
+	padding-right: 5px;
+	padding-bottom: 5px;
+	padding-left: 5px;
+}
+
+.tbody_scroll{
+	height: 135px;
+    overflow: auto;
+    margin-top: -7px;
+    margin-bottom: 0px;
+}
+
+.chk_center{
+	margin-bottom: 3px;
+    margin-top: 5px;
+    margin-left: 8px;
+}
+
+.input_div{
+	margin-bottom: 10px;
+	/* margin-left: 80px; */
+}
+
+#modalbody{
+	height: 430px;
+}
+
+#modalbodyInvoiceAllocation{
+	height: 340px;
+}
+
+.corp_div{
+	margin-left: 6px;
+}
+
+.rmrks_div{
+	margin-left: 27px;
+}
+
+.page_limit{
+	width: 85px;	
+}

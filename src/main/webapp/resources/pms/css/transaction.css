@@ -1,0 +1,58 @@
+.trnsfrSearchBtn {
+	font-size: 18px;
+}
+
+#entry-grid_wrapper input[type="checkbox"] {
+	display: block;
+}
+
+#searchDiv {
+	margin-bottom: 40px;
+}
+
+#entry-grid_filter {
+	display: none;
+}
+
+#entry-grid_length {
+	display: none;
+}
+
+#entry-grid_info {
+	display: none;
+}
+
+#entry-grid_paginate {
+	display: none;
+}
+
+#destinationDiv {
+	margin-top: 21px;
+	border-top: 1px solid #9e9e9e;
+	padding: 11px 0 0 0;
+}
+.dataTable thead tr{
+	height: 40px;
+}
+.newbox{
+	margin-left:6px !important;
+
+	}
+.select_div{
+	margin-left: -75px;
+
+	}
+.label_div{	
+	    padding-top: 7px;
+}
+	
+div#destinationDiv.transaction_btm_buttn_div {
+    float: left;
+    padding-top: 3px;
+    width: 100%;
+    border-top: 0 navajowhite;
+    margin: 5px 0 0;
+}
+.dataTables_wrapper.no-footer .dataTables_scrollBody {
+    border-bottom: 0 none;
+}

@@ -1,0 +1,10 @@
+/* new css style */
+.active_style {
+	color: #0D7F05 !important;
+	font-weight: bold;
+}
+
+.inActive_style {
+	color: #ff0000 !important;
+	font-weight: bold;
+}

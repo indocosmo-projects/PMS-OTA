@@ -1,0 +1,237 @@
+@charset "ISO-8859-1";
+#star{
+ 	color:#ff6c5a !important;
+ }
+.recRoomNo{
+ color:blue;
+ font-weight: bold;
+ }
+.recRoomNored{
+color:red;  
+  font-weight: bold;	
+}
+.recRoomYello{
+	color:orange;  
+  font-weight: bold;	
+}
+.tabResv{
+	width: 20%;
+	max-width: 270px;
+}
+#tabMaxWid{
+	max-width: 270px;
+}
+.buttonstyle {
+    /* background-color: #2f8687; */
+    color: #000;
+}
+.icon_th{
+	width:60px;
+}
+.room_sub_hdr.row {
+    width: 100%;
+    /* float: left; */
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.room_sub_hdr {
+    width: 100%;
+    float: left;
+}
+.modal-tp-view {
+    float: left;
+    width: 100%;
+}
+
+.roomType.col-md-3 {
+    text-align: right;
+}
+
+.grid_div.grid_table_con {
+    float: left;
+    width: 100%;
+}
+.hk_status_label.col-md-3.col-sm-3.col-xs-3 {
+    text-align: right;
+}
+.modal-body.modal_content_div {
+    float: left;
+}
+.icon_td{
+	width:80px;
+	text-align: center;
+}
+md-input-container.md-datepicker-floating-label{
+    margin-top: 0;
+    margin-bottom: 0;
+}
+#chkoutwid{
+	width: 0px;
+}
+.icon_button{
+	size :20px;
+	background-color: Transparent;
+	background-repeat:no-repeat;
+    border: none;
+	text-align: center;
+	cursor: pointer;
+}
+.icon_button[disabled] {
+	opacity: 0.4;
+	cursor: not-allowed;
+}
+.recp-btn-posting {
+	/* background-image: url("../images/posting.svg"); */
+	background-image: url("..components/reception_reservation_card/images/edit.svg");
+}
+.txt-status {
+	font-weight: 600;
+	font-size: 12px;
+}
+
+.resv-txt {
+	padding: 4px;
+	padding-left: 10px;
+	margin-bottom: 5px;
+	font-size: 13px;
+	word-wrap:break-word;
+}
+
+thead{
+	background-color: #6ccac9;
+}
+
+.main_content_div{
+	margin-bottom: 0;
+}
+
+.panel-body.footer_div {
+    padding: 0 15px;
+}
+
+.panel-body.footer_div .pagination_div .pagination {
+    padding: 0 10px 10px;
+}
+
+.panel-body.footer_div .limit_drop.col-md-3 {
+    padding: 0 10px;
+}
+
+html body .input-group.date.form_datetime-adv.form-control.search_box_div {
+    height: 31px;
+    padding: 1px;
+    min-height: 25px;
+    display: table;
+    width: 100%;
+}
+
+html body div#simpleSearchTxt {
+    height: 32px;
+}
+
+html body .input-group-btn.tools.clear_btn {
+    height: 19px;
+    padding: 0;
+    margin: 0;
+}
+
+html body .search_claear_btn_main_div {
+    height: 32px;
+}
+
+html body button.search_claear_btn {
+    height: 32px;
+}
+
+html body .input-group-btn.tools.clear_btn .fa.fa-times {
+    padding: 5px 0;
+}
+
+html body button.search_button.btn {
+    padding: 5px 28px;
+}
+
+html body input#commnSearchTxt {
+    width: 100%;
+}
+.nameBar{
+	max-width:180px;
+	width: 325px;
+}
+.arrbar{
+	width: 125px;
+}
+.roomBar{
+	width: 70px;
+}
+html body div.btn.date-reset.drop_dwn_btn#search_form_down {
+    padding: 5px 8px;
+}
+html body button.md-raised.md-warn.md-button.md-ink-ripple {
+    min-height: 29px;
+    line-height: 33px;
+    padding: 0 14px;
+    margin: 0;
+}
+.main_com_headding {
+    float: left;
+}
+.search_div_con_list {
+    float: left;
+    width: 100%;
+}
+
+.search_div_con_list label {
+    float: left;
+    width: 145px;
+    padding-top: 7px;
+}
+.search_div_con_list md-input-container.md-block {
+    margin-top: 0;
+}
+
+.search_div_con_list md-input-container.md-block input {
+    width: 191px !important;
+}
+.condition_check_five
+{
+	background: white;
+}
+.condition_check_seven
+{
+    
+	background: lightgrey;
+}
+.check_status{
+	background: lightgrey;
+}
+.check_status_longStay{
+	background: #ffff006e;
+}
+html body div table.table tr td.resvno {
+    font-weight: bold;
+    font-size: 18px;
+    color: #074c96;
+}
+
+html body div table.table tr td.resvno {}
+
+html body div table.table tr td.resvno .resv-txt {
+    font-size: 15px;
+    font-weight: bold;
+    color: #074c96;
+}
+html body div table.table tr td.resvno .resv-txt a {
+    font-size: 15px;
+    font-weight: bold;
+    color: #074c96;
+}
+
+md-toolbar.md-default-theme:not(.md-menu-toolbar), md-toolbar:not(.md-menu-toolbar) {
+        background-color: rgb(255, 255, 255) !important;
+    color: rgba(4, 4, 4, 0.87);
+}
+.coloradd.check_status {
+    color: green;
+}

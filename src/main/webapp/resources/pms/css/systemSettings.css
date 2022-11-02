@@ -1,0 +1,31 @@
+#divSystemSettingsBody {
+	padding: 0 10px;
+}
+
+.pms-row {
+	padding: 10px;
+}
+
+.pms-tbl-head, .pms-tbl-row {
+	padding: 10px;
+}
+
+.pms-tbl-head {
+	font-weight: bolder;
+}
+#redMargin{
+	float: right;
+}
+#dialogMargin{
+	        margin-top: 6px;
+    float: left;
+    margin-left: -15px;
+} 
+
+.width-auto{
+	width: auto;
+}
+
+.notification div {
+    padding: 0;
+}

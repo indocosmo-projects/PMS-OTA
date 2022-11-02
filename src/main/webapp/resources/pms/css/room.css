@@ -1,0 +1,22 @@
+.feature-link {
+	cursor: pointer;
+	text-decoration: none;
+}
+
+.feature-link:hover {
+	text-decoration: underline;
+}
+
+#featureExist_modal .modal-footer {
+	border-top:none !important;
+	padding:5px 10x !important;
+}
+
+#featureExist_modal .modal-body{
+	padding:15px 15px 0px 15px !important;
+}
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}

@@ -1,0 +1,525 @@
+.room-info-bar {
+	float: left;
+	width: 100%;
+	margin-top: 12px;
+	text-align: center;
+	font-family: Roboto, sans-serif;
+	text-transform: uppercase;
+	font-size: 16px;
+	background: rgb(55, 108, 153);
+}
+.children_class{
+	margin-left: -175px;
+    float: left;
+    width: 267px;
+}
+.errorType {
+        border-color: #F00 !important;
+    }
+.adults_class{
+	    float: left;
+}
+.infant_class{
+	      float: left;
+    margin-left: -161px;
+}
+.room-info-bar-caption {
+	background: #333;
+	color: #fff;
+	line-height: 35px;
+}
+
+.room-info-bar-msg {
+	line-height: 35px;
+	color: #fff;
+}
+
+.previousInfo .room-info-bar {
+	background: rgb(25, 85, 138);
+}
+
+.card_list_div {
+	display: block;
+	max-width: 25%;
+	max-height: 50%;
+	width: 25%;
+	float: left;
+}
+
+.prInfDtl {
+	font-size: 15px;
+}
+
+#slides_control>div {
+	height: 200px;
+}
+
+img {
+	margin: auto;
+	width: 400px;
+}
+
+#slides_control {
+	position: absolute;
+	width: 400px;
+	left: 50%;
+	top: 20px;
+	margin-left: -200px;
+}
+
+.md-media-lg.card-media.roomTypeCard {
+	height: 180px;
+	width: 240px;
+}
+
+.occupDiv label {
+	padding-right: 10px;
+	color: #216e69;
+}
+
+.selctBtn {
+	padding-top: 18px;
+}
+
+.selectedRoomsStatus {
+	position: fixed;
+	bottom: 3%;
+	left: 20px;
+	width: 200px;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+	z-index: 1;
+}
+
+.floatingButton {
+	background: #ff6c5a;
+	color: #fff;
+	border: none;
+	font-size: 14px;
+	padding: 10px 10px;
+	width: 200px;
+}
+
+.floatingWidgetDtls {
+	background-color: rgb(30, 64, 88);
+	padding: 2px;
+	display: none;
+	max-height: 260px;
+	overflow-y: auto;
+}
+
+.asdDiv {
+	padding: 0px;
+	color: green;
+}
+
+.bottom_div {
+	width: 100%;
+	text-align: right;
+	float: right;
+	padding: 22px 2px 0px 0px;
+}
+
+.modal-header {
+	background: #3A6A81;
+}
+
+.availRatePlans {
+	background-color: #00A8B3;
+	color: #fff;
+	font-weight: 600;
+}
+
+.mainTabContent {
+	background-color: #fff !important;
+}
+
+#childMargin {
+	margin-left: -80px;
+}
+
+#infantMar {
+	margin-left: -253px;
+}
+
+#genderMar {
+	float: left;
+	margin-left: 18px;
+}
+
+#remarkMar {
+	margin-right: -33px;
+}
+
+#margst {
+	/* margin-left: 10px; */
+	
+}
+
+#gstLabel {
+	margin-left: -3px;
+}
+
+#gendLabel {
+	margin-left: 20px;
+}
+
+#childMar {
+	margin-left: -50px;
+}
+
+
+#marChild {
+	margin-left: -43px;
+}
+
+#expMargin {
+	margin-left: 20px;
+}
+
+.roomTypeListDiv {
+	max-height: 192px;
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+
+.roomtypeNameHdr .panel-heading {
+	background-color: #eeeeee !important;
+	padding: 4px 10px;
+}
+
+.roomtypeNameHdr .panel-heading span {
+	color: #00549c !important;
+	font-weight: 600;
+}
+
+.roomtypeNameHdr a.accordion-toggle {
+	width: 100%;
+	padding: 7px 13px;
+	display: block;
+}
+
+.rateOccupancy input {
+	width: 90%;
+}
+
+.rate_label {
+	float: left;
+}
+
+.rate {
+	padding-left: 60px;
+}
+
+.searchFormDiv {
+	background-color: #fff;
+}
+
+md-tabs.roomRateTab.ng-isolate-scope {
+	min-height: 361px;
+}
+
+.guest_box {
+	margin: 10px 10px 15px;
+	box-shadow: 0 0 6px 0px #737373;
+}
+
+.trvl_radio {
+	padding: 10px;
+}
+
+canvas#snapshot {
+	width: 120 !important;
+}
+
+.disp_capt {
+	display: none;
+}
+
+.roomTypeListDiv {
+	max-height: 192px;
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+
+.reservSummary md-toolbar {
+	min-height: 36px;
+}
+
+.reservSummary md-toolbar .md-toolbar-tools {
+	height: 36px;
+	max-height: 35px;
+	padding: 0 13px;
+}
+
+.rateByRoomList span.md-subhead {
+	font-size: 13px;
+	padding-left: 10px;
+}
+
+.rateByRoomList {
+	width: 100%;
+}
+
+.discBtn {
+	float: right;
+}
+
+.discountsList .openDiscDiv {
+	height: 50px;
+	margin-top: -2px;
+}
+
+.rateByRoomList .discPlanCheckBox {
+	margin: 0px;
+}
+
+.sumDateDiv {
+	padding: 10px;
+	margin-top: 10px;
+}
+
+.guestDetailAssign {
+	margin-top: 10px;
+}
+
+.room_assigned {
+	font-weight: 600;
+	padding: 0px 12px;
+}
+
+.tcorp {
+	padding: 0px;
+}
+
+.md-datepicker-calendar-pane {
+	z-index: 999999 !important;
+	/* top:245px !important; */
+}
+
+#clearRoomRateBtn {
+	margin-top: -31px !important;
+	margin-right: -26px !important;
+}
+
+#myButton {
+	margin-top: -63px !important;
+	margin-right: -22px !important;
+}
+
+.search_button.btn.reception {
+	background-color: #3f51b5;
+	/*     background-image: url(../images/search_icon.png);
+ */
+	background-position: center center;
+	background-repeat: no-repeat;
+	border-bottom-left-radius: 0;
+	border-top-left-radius: 0;
+	display: inline-block;
+	padding: 6px 28px;
+	text-indent: -9999px;
+	/* height: 27px; */
+	width: 20px;
+	margin-top: 23px;
+	padding-right: 0px;
+	margin-right: 4px;
+}
+
+.phonerecpNum {
+	color: #3f51b5;
+}
+
+.heightDsgn {
+	height: 100% !important;
+}
+
+.md-datepicker-calendar-pane {
+	position: fixed !important;
+}
+
+md-input-container.containerwidth.md-input-has-value {
+	padding-top: 0;
+	margin-top: -31px !important;
+	width: 59px !important;
+}
+
+label.dayWidth {
+	height: 42px;
+}
+
+.salute {
+	border: transparent;
+}
+
+.table-responsive {
+	max-height: 350px;
+}
+
+.table-responsive tbody td {
+	margin-bottom: 0;
+	padding-bottom: 0;
+	line-height: 15px;
+	background-color: white;
+}
+
+body md-card md-card-title {
+	padding: 10px;
+}
+
+body md-card md-card-title {
+	padding: 10px;
+}
+
+body md-card-title md-card-title-text {
+	height: 165px;
+}
+
+body md-card md-card-title md-card-title-text span.md-headline {
+	height: 35px;
+	float: left;
+	width: 100%;
+}
+
+body md-card md-card-title md-card-title-text span.md-subhead.ng-binding
+	{
+	height: 25px;
+	float: left;
+	width: 100%;
+}
+
+body md-card md-card-title md-card-title-text .occupDiv {
+	float: left;
+	width: 100%;
+	height: 30px;
+}
+
+body md-card md-card-title md-card-title-text .asdDiv {
+	width: 100%;
+	height: 25px;
+	float: left;
+}
+
+body md-card md-card-title md-card-title-text .asdDiv label {
+	margin-bottom: 0;
+}
+
+.contentBorder {
+	border-style: solid;
+	border-color: #bfbfbf;
+	margin-top: -1px;
+	border-width: 1px;
+}
+
+.date_div {
+	height: 66px;
+}
+
+.tableLabel {
+	padding-left: 18px;
+	font-weight: 700;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 14px;
+	line-height: 1.42857143;
+}
+
+.calenderControls {
+	width: 188px;
+	/* margin-left: -17px;
+	margin-bottom: -10px; */
+}
+
+.div_room_dtls {
+	padding-bottom: 10px;
+}
+
+.daterange_picker .date-picker-wrapper {
+	padding: 0px !important;
+}
+
+.daterange_picker .default-top, .drp_top-bar, .footer {
+	display: none !important;
+}
+/* html body .md-datepicker-calendar-pane {
+    top: 350px !important;
+} */
+.salutation {
+	height: 37px;
+}
+
+.reception_page_frst_name_search {
+	margin-top: 0px !important;
+	height: 37px !important;
+	margin-left: -3px;
+}
+
+.reception_page_phone_search {
+	margin-top: -37px !important;
+	height: 37px !important;
+	margin-left: 214px;
+}
+
+.psprt {
+	float: left;
+	width: 315px;
+	margin-left: -19%;
+}
+
+.psprt_expry {
+	float: left;
+	width: 191px;
+	margin-left: -10px;
+}
+
+.chkn_remarks_div {
+	float: left;
+	width: 578px;
+}
+
+.email_search_div {
+	float: right;
+	margin-top: -62px;
+	margin-right: 17px;
+}
+
+.email_search_btn {
+	height: 36px !important;
+}
+
+.country {
+	float: left;
+	width: 324px;
+	margin-right: 9px;
+}
+
+.children {
+	width: 165px;
+	float: left;
+	margin-left: -5px;
+}
+
+.stat_chng_btn {
+	font-size: 12;
+	color: rgba(255, 255, 255, 0.87);
+	background-color: rgb(63, 81, 181);
+	border: box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .26);
+	text-align: center;
+	display: inline-block;
+	position: relative;
+	cursor: pointer;
+	user-select: none;
+	outline: none;
+	border: 0;
+	border-radius: 2px;
+}
+
+/* table {
+	margin-top: 8px;
+	margin-left: 8px;
+    width: 100%;
+   }
+td{
+	    margin-left: 8px;
+} */

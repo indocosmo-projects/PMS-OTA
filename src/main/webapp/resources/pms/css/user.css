@@ -1,0 +1,100 @@
+.userGroupDiv table thead tr {
+	background-color: #00A8B3;
+}
+
+.usersDiv table thead tr {
+	background-color: #00A8B3;
+}
+#entry-grid_filter {
+	float: left;
+}
+
+
+/* SLIDE THREE */
+.statusClass input[type=checkbox] {
+	visibility: hidden;
+}
+.statusClass .slideThree {
+	width: 128px;
+	height: 26px;
+	background: #d3d3d3;
+	-webkit-border-radius: 50px;
+	-moz-border-radius: 50px;
+	border-radius: 50px;
+	position: relative;
+
+	-webkit-box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,0.2);
+	-moz-box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,0.2);
+	box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,0.2);
+}
+
+.statusClass .slideThree:after {
+	content: 'Inactive';
+	font: 12px/26px Arial, sans-serif;
+	color: #ee675d;
+	position: absolute;
+	right: 10px;
+	z-index: 0;
+	font-weight: bold;
+	text-shadow: 1px 1px 0px rgba(255,255,255,.15);
+}
+
+.statusClass .slideThree:before {
+	content: 'Active';
+	font: 12px/26px Arial, sans-serif;
+	color: #00bf00;
+	position: absolute;
+	left: 10px;
+	z-index: 0;
+	font-weight: bold;
+}
+
+.statusClass .slideThree label {
+	display: block;
+	width: 64px;
+	height: 20px;
+
+	-webkit-border-radius: 50px;
+	-moz-border-radius: 50px;
+	border-radius: 50px;
+
+	-webkit-transition: all .4s ease;
+	-moz-transition: all .4s ease;
+	-o-transition: all .4s ease;
+	-ms-transition: all .4s ease;
+	transition: all .4s ease;
+	cursor: pointer;
+	position: absolute;
+	top: 3px;
+	left: 3px;
+	z-index: 1;
+
+	-webkit-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.3);
+	-moz-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.3);
+	box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.3);
+	background: #fcfff4;
+
+	background: -webkit-linear-gradient(top, #607d8b 0%, #585858 40%, #434343 100%);
+	background: -moz-linear-gradient(top, #607d8b 0%, #585858 40%, #434343 100%);
+	background: -o-linear-gradient(top, #607d8b 0%, #585858 40%, #434343 100%);
+	background: -ms-linear-gradient(top, #607d8b 0%, #585858 40%, #434343 100%);
+	background: linear-gradient(top, #607d8b 0%, #585858 40%, #434343 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fcfff4', endColorstr='#b3bead',GradientType=0 );
+}
+.statusClass .slideThree input[type=checkbox]:checked+label {
+	left: 62px;
+	-webkit-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.3);
+	-moz-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.3);
+	box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.3);
+	background: #fcfff4;
+
+	background: -webkit-linear-gradient(top, #607d8b 0%, #585858 40%, #434343 100%);
+	background: -moz-linear-gradient(top, #607d8b 0%, #585858 40%, #434343 100%);
+	background: -o-linear-gradient(top, #607d8b 0%, #585858 40%, #434343 100%);
+	background: -ms-linear-gradient(top, #607d8b 0%, #585858 40%, #434343 100%);
+	background: linear-gradient(top, #607d8b 0%, #585858 40%, #434343 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fcfff4', endColorstr='#b3bead',GradientType=0 );
+}
+md-checkbox.md-default-theme.md-checked .md-icon, md-checkbox.md-checked .md-icon {
+    background-color: #de5233 !important;
+}

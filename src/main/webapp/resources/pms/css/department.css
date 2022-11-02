@@ -1,0 +1,8 @@
+.inner_content .content_wrapper.inner_content_wrapper {
+    background: none repeat scroll 0 0 #FBFBFB;
+    margin-top: 2px;
+    min-height: 250px;
+}
+#description{
+	max-width:100% !important;
+}

@@ -1,0 +1,101 @@
+.topAddButtonDiv
+{
+	width: 132px;
+    float: right;
+    position: relative;
+    top: 67px;
+    margin-top: -50px;
+    z-index: 1;
+}
+table thead tr{
+	background-color: #00A8B3;
+}
+#entry-grid_filter{
+	float:left;
+}
+.tick_grn{
+	color:#0ed10e
+}
+.cros_red{
+	color:#ff0000
+}
+.fa-red{
+	color: #dc0e0e
+}
+.occu-section{
+	align-content:center;
+	align-items:center;
+	height:60px;
+}
+.occu-margin{
+	margin:auto auto;
+}
+	.file-upload {
+    position: relative;
+    overflow: hidden;
+    margin: 10px;
+}
+.btn-primary {
+    background-color: #337ab7;
+    border-color: #2e6da4;
+    color: #fff;
+}
+.file-upload input.upload {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    cursor: pointer;
+    opacity: 0;
+    filter: alpha(opacity=0);
+}
+#entry-grid tbody td {
+    cursor: pointer;
+}
+.raw_div{   
+	margin-top: 10px;
+}
+.label_padding{
+	padding-top:8px
+}
+.input_margin{
+	    margin-left: -20px;
+}
+.occup{
+	    padding-top: 11px
+}
+.label_margin{
+	margin-left: 35px;
+}
+
+
+html body div table.table tr td:nth-child(4) {
+    text-align: center;
+}
+
+html body div table.table tr th:nth-child(4) {
+    text-align: center;
+}
+html body div table.table tr td:nth-child(5) {
+    text-align: center;
+}
+
+html body div table.table tr th:nth-child(5) {
+    text-align: center;
+}
+html body div table.table tr td:nth-child(6) {
+    text-align: center;
+}
+
+html body div table.table tr th:nth-child(6) {
+    text-align: center;
+}
+html body div table.table tr td:nth-child(7) {
+    text-align: center;
+}
+
+html body div table.table tr th:nth-child(7) {
+    text-align: center;
+}

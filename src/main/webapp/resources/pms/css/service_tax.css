@@ -1,0 +1,20 @@
+.dtls .md-theme-light {
+	min-height: 30px;
+	background-color: rgb(43, 104, 156);
+	color:#fff;
+}
+.dtls .md-theme-light .md-toolbar-tools {
+	max-height: 30px;
+}
+.divRow {
+	padding: 10px 0px;
+}
+.divRow .row {
+	padding: 5px 0;
+}
+i.fa.fa-trash {
+    color: #ff2c2c;
+    float: right;
+    padding-right: 70px;
+    padding-top: 8px;
+}

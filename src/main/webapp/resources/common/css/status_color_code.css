@@ -1,0 +1,66 @@
+.stat-confirmed, .stat-unconfirmed, .stat-partcheckin, .stat-checkin, 
+	.stat-partcheckout, .stat-checkout, .stat-cancelled, .stat-noshow, .stat-inhouse
+	{
+	color: #fff;
+}
+.stat-confirmed {
+	background-color: #8bc34a;
+}
+.stat-unconfirmed {
+	background-color: #26a69a;
+}
+.stat-partcheckin {
+	background-color: #7986cb;
+}
+.stat-checkin {
+	background-color: #2196f3;
+	float: right;
+	margin-right: -50px;
+	width: 480px;
+}
+.stat-partcheckout {
+	background-color: #ec407a;
+}
+.stat-checkout {
+	background-color: #ff7043;
+	float: right;
+	margin-right: -50px;
+	width: 480px;
+}
+.stat-cancelled {
+	background-color: #a1887f;
+}
+.stat-noshow {
+	background-color: #a1887f;
+}
+
+.stat-block {
+	text-align: center;
+	border-radius: 2px;
+	padding: 6px 12px;
+}
+
+.res_stat-confirmed {
+	color: #8bc34a;
+}
+.res_stat-unconfirmed {
+	color: #26a69a;
+}
+.res_stat-partcheckin {
+	color: #7986cb;
+}
+.res_stat-checkin {
+	color: #2196f3;
+}
+.res_stat-partcheckout {
+	color: #ec407a;
+}
+.res_stat-checkout {
+	color: #ff7043;
+}
+.res_stat-cancelled {
+	color: #a1887f;
+}
+.res_stat-noshow {
+	color: #a1887f;
+}

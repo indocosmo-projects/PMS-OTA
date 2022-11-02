@@ -1,0 +1,47 @@
+#staticDiv {
+    position: fixed;
+    z-index: 999;
+    display: block !important;
+    width: 1210px;
+    height: 60px;
+    top: 120px;
+    background: rgb(43, 104, 156);
+    color: #ffffff;
+}
+#bodyDiv{
+	position: relative;
+	.req_nav_tab {
+    padding: 40px 2px 0px 2px;
+}
+}
+section.panel.pannel_btm_class {
+    margin-bottom: 0;
+}
+
+.body_div_class {
+    position: relative;
+    top: 50px;
+    height: 347px;
+    padding-bottom: 30px;
+    width: 1220px;
+    overflow-x: hidden;
+    margin-bottom: 9px;
+}
+body section.wrapper {
+    padding-bottom: 0;
+}
+
+body section#main-content {
+    margin-bottom: 0;
+}
+div.list-group-item {
+    padding: 5px;
+    min-height: 30px;
+}
+.list-group-item.list_group_strip_div {
+    background: #00A8B3;
+}
+
+.list-group-item.list_group_strip_div strong {
+    color: #fff;
+}
