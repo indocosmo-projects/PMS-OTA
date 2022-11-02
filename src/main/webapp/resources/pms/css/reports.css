@@ -1,0 +1,45 @@
+.md-theme-light {
+	min-height: 30px;
+}
+
+.md-theme-light .md-toolbar-tools {
+	max-height: 30px;
+}
+.md-datepicker-calendar-pane {
+	z-index: 1041;
+	position:fixed;
+}
+
+#bgColour{
+	background-color: #00A8B3;
+}
+
+.newsachier{
+	margin-top:10px !important;
+body {
+    position: inherit !important;
+    top: 0 !important;
+}
+
+.modal-footer.border_design {
+    float: left;
+    width: 100%;
+}
+.calenderdiv {
+    width: 100%;
+    float: left;
+    border-bottom: 1px solid #ccc;
+}
+
+.calenderdiv .md-button.md-icon-button {padding: 0;width: 25px;height: 25px;margin: 0 6px 0 0;}
+
+.calenderdiv .md-icon-button+.md-datepicker-input-container {
+    margin-left: 0;
+    border-bottom: 0 none;
+}
+
+md-toolbar.md-default-theme:not(.md-menu-toolbar), md-toolbar:not(.md-menu-toolbar) {
+    background-color: #00A8B3;
+    color: rgba(255,255,255,0.87);
+}
+

@@ -1,0 +1,946 @@
+.searchFormInput {
+	padding-right: 50px;
+	width: 100%;
+}
+
+.searchFormDiv {
+	background-color: #fff;
+}
+
+.red-text {
+	color: red;
+}
+.delete_room_btn {
+    position: absolute;
+    right: 27px;
+    z-index: 999;
+    top: 11px;
+    cursor: pointer;
+    color: #e11506;
+}
+.md-list-item-text.rateByRoomList .col-md-4.openDiscDiv.ng-scope md-input-container.md-block.md-input-has-value
+	{
+	margin: 10px 0;
+	padding: 0 2px;
+	float: left;
+	width: 100%;
+}
+
+.md-list-item-text.rateByRoomList .col-md-4.openDiscDiv.ng-scope md-input-container.md-block.md-input-has-value label.ng-binding
+	{
+	padding-bottom: 0;
+	top: -21px;
+	bottom: 0;
+}
+
+.modal-content .md-list-item-text.rateByRoomList .col-md-4.ng-binding.ng-scope
+	{
+	margin-top: 15px;
+}
+
+label.title.provider_label {
+	padding-top: 15px;
+}
+
+#phone_new_div_reserv {
+	max-width: 100%;
+	padding-left: 39px;
+}
+
+.search-div {
+	padding-top: 20px;
+}
+
+.heightDsgn {
+	height: 100% !important;
+}
+
+.email_div_new_reserv {
+	display: inline-flex;
+	width: 330px;
+}
+
+.room-info-bar {
+	float: left;
+	width: 100%;
+	margin-top: 12px;
+	text-align: center;
+	font-family: Roboto, sans-serif;
+	text-transform: uppercase;
+	font-size: 16px;
+	background: #ede9e8;
+}
+
+.room-info-bar-caption {
+	background: #333;
+	color: #fff;
+	line-height: 35px;
+}
+
+.room-info-bar-msg {
+	line-height: 35px;
+	color: #797877;
+}
+
+#assignRoomsmyModal md-content {
+	background-color: #ffffff;
+}
+
+#slides_control>div {
+	height: 200px;
+}
+
+img {
+	margin: auto;
+	width: 400px;
+}
+
+#slides_control {
+	position: absolute;
+	width: 400px;
+	left: 50%;
+	top: 20px;
+	margin-left: -200px;
+}
+
+.md-media-lg.card-media.roomTypeCard {
+	height: 180px;
+	width: 240px;
+}
+
+.search-calendar-div .btn-default {
+	color: #333;
+	background-color: #fff;
+	border-color: #ccc;
+}
+
+.search-calendar-div .btn-info.active, .btn-info:active, .open>.dropdown-toggle.btn-info
+	{
+	color: #fff;
+	background-color: #31b0d5;
+	border-color: #269abc;
+}
+
+.rateOccupancy input {
+	width: 90%;
+}
+
+md-tabs.roomRateTab.ng-isolate-scope {
+	min-height: 361px;
+}
+
+.modal-header {
+	background: #3A6A81;
+}
+
+.availRatePlans {
+	background-color: #00A8B3;
+	color: #fff;
+	font-weight: 600;
+}
+
+.fontType {
+	font-size: 16px;
+	color: white;
+}
+
+.mainTabContent {
+	background-color: #fff !important;
+}
+
+.form-group.col-lg-6.col-md-6.col-sm-6.new_two {
+	padding: 0px;
+}
+/* .new_two{
+	padding:0px !important;
+}
+.pad_left{
+	padding-left:0px;
+} */
+._md-datepicker-has-triangle-icon {
+	padding-right: 18px;
+	margin-right: -22px !important;
+}
+
+.checkAvailability.row {
+	margin-top: 0;
+	float: right;
+	padding-right: 19px;
+}
+
+button.md-raised.md-warn.md-button.md-ink-ripple {
+	padding: 0 18px;
+}
+
+.rate_label {
+	float: left;
+}
+
+.rate {
+	padding-left: 60px;
+}
+
+.roomTypeHdr {
+	font-size: 18px;
+	color: #ffffff;
+}
+
+.roomtypeNameHdr .panel-heading {
+	background-color: #eeeeee !important;
+	padding: 4px 10px;
+}
+
+.roomtypeNameHdr .panel-heading span {
+	color: #00549c !important;
+	font-weight: 600;
+}
+
+.bottom_div {
+	width: 100%;
+	text-align: right;
+	float: right;
+	padding: 22px 2px 0px 0px;
+}
+
+.guest_history_btn {
+	padding-left: 70%;
+}
+
+.new {
+	width: 100%;
+	float: left;
+}
+
+.trvlDiv {
+	background-color: #fff;
+	padding: 10px;
+	-webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.09);
+	-moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.09);
+	box-shadow: none;
+}
+
+md-radio-button#radio_46 {
+	margin-right: 40px;
+}
+
+md-radio-button#radio_34 {
+	margin-right: 40px;
+}
+
+.room-info-bar {
+	background: #00A8B3;
+}
+
+.previousInfo .room-info-bar {
+	background: #00A8B3;
+}
+
+#bgColour {
+	background: #00A8B3;
+}
+
+.room-info-bar-msg {
+	color: #fff;
+}
+
+.previousInfo .room-info-bar {
+	font-size: 13px;
+}
+
+.previousInfo .room-info-bar-msg {
+	line-height: 25px;
+	padding-top: 4px;
+}
+
+.prInfDtl {
+	font-size: 15px;
+}
+
+.occupDiv label {
+	padding-right: 10px;
+	color: #216e69;
+}
+
+.selctBtn {
+	padding-top: 18px;
+}
+
+.card_list_div {
+	display: block;
+	max-width: 20%; /* 50 */
+	max-height: 50%; /* 100 */
+	width: 25%; /* 33 */
+	float: left;
+}
+
+.selectedRoomsStatus {
+	position: fixed;
+	bottom: 3%;
+	left: 20px;
+	width: 200px;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+	z-index: 1;
+}
+
+.floatingButton {
+	background: #ff6c5a;
+	color: #fff;
+	border: none;
+	font-size: 14px;
+	padding: 10px 10px;
+	width: 200px;
+}
+
+.floatingWidgetDtls {
+	background-color: rgb(30, 64, 88);
+	padding: 2px;
+	display: none;
+	max-height: 260px;
+	overflow-y: auto;
+}
+
+.roomtypeNameHdr a.accordion-toggle {
+	width: 100%;
+	padding: 7px 13px;
+	display: block;
+}
+
+.sumRateByRoomTypeDiv {
+	padding: 10px 0px;
+}
+
+.roomTypeListDiv {
+	max-height: 192px;
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+
+.reservSummary md-toolbar {
+	min-height: 36px;
+}
+
+.reservSummary md-toolbar .md-toolbar-tools {
+	font-size: 16px;
+	height: 36px;
+	max-height: 35px;
+	padding: 0 13px;
+}
+
+.rateByRoomList span.md-subhead {
+	font-size: 13px;
+	padding-left: 10px;
+}
+
+.rateByRoomList {
+	width: 100%;
+}
+
+.discBtn {
+	float: right;
+}
+
+.discountsList .openDiscDiv {
+	height: 50px;
+	margin-top: -2px;
+}
+
+.rateByRoomList .discPlanCheckBox {
+	margin: 0px;
+}
+
+.two-calendars {
+	font-size: 14px;
+}
+
+#calender_section {
+	width: 110%;
+	margin-left: -12px;
+}
+
+.asdDiv {
+	padding: 0px;
+	/* color:#f00000; */
+	color: green;
+}
+/* .availabilityCalenderDiv {
+    padding: 0px;
+} */
+.daterange_picker .date-picker-wrapper {
+	padding: 0px !important;
+}
+
+.daterange_picker .default-top, .drp_top-bar, .footer {
+	display: none !important;
+}
+
+.month-name {
+	font-size: 14px;
+}
+
+.week-name {
+	font-size: 12px;
+}
+
+.date-picker-wrapper .month-wrapper table.month2 {
+	float: right !important;
+}
+/* .md-datepicker-calendar-pane {
+    top: 270px !important;
+} */
+.divWidth {
+	width: 46% !important;
+}
+
+.search_button.btn.reception {
+	background-color: #3f51b5;
+	/* background-image: url(../images/search_icon.png); */
+	background-position: center center;
+	background-repeat: no-repeat;
+	border-bottom-left-radius: 0;
+	border-top-left-radius: 0;
+	display: inline-block;
+	/* padding: 6px 28px; */
+	text-indent: -9999px;
+	height: 32px;
+	width: 20px;
+	/* margin-top: 23px; */
+	padding-right: 0px;
+	/* margin-right: 4px; */
+}
+/* .phonerecpNum {
+    margin-left: 45px;
+} */
+md-input-container.containerwidth.md-input-has-value {
+	padding-top: 0;
+	margin-top: -3px !important;
+	width: 59px !important;
+}
+
+label.dayWidth {
+	height: 42px;
+}
+
+md-autocomplete.country_text_box {
+	border: 0;
+	background: transparent;
+	box-shadow: 0 0 0 transparent;
+	!
+	important
+}
+
+md-autocomplete.country_text_box md-autocomplete-wrap.md-whiteframe-z1.md-show-clear-button
+	{
+	box-shadow: 0 0 0 transparent;
+	!
+	important
+}
+
+.autoCom {
+	padding: 10px;
+	padding-left: 0px;
+}
+
+button#custHistBtn {
+	/*  float: right;
+    margin-top: -35px; */
+	
+}
+
+#tableHead td {
+	text-align: center;
+}
+
+.date_div {
+	height: 66px;
+}
+/* .rowStyle{
+	padding-top: 15px;
+} */
+.tableLabel {
+	padding-left: 18px;
+	font-weight: 700;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 14px;
+	line-height: 1.42857143;
+}
+
+/* .corporate{
+	margin-left: -29px;
+} */
+
+/* .travelAgent{
+	margin-left: -25px;
+} */
+.calenderControls {
+	width: 188px;
+	/* margin-left: -17px;
+	margin-bottom: -10px; */
+}
+
+.contentBorder {
+	border-style: solid;
+	border-color: #bfbfbf;
+	margin-top: -1px;
+	border-width: 1px;
+}
+
+.availabilityCalBtn {
+	margin-left: 40px;
+}
+/* #chkAvailabilityBtn{
+	 margin-right: 25px; 
+} */
+.details_div {
+	margin-top: -20px;
+}
+
+#availCal {
+	margin-left: 35px;
+}
+
+.div_room_dtls {
+	padding-bottom: 10px;
+}
+
+.date-picker-wrapper .month-wrapper {
+	border: 1px solid #bfbfbf;
+	border-radius: 3px;
+	background-color: #fff;
+	padding: 5px;
+	cursor: default;
+	position: relative;
+	_overflow: hidden;
+	height: 262px;
+}
+
+.cutoffDateStyle {
+	margin-bottom: 8px;
+}
+/* .cutoffLabel{
+	margin-bottom: -10px;
+} */
+.div_payment_source {
+	margin-left: -14px;
+}
+
+.reservation_summary_head {
+	font-weight: 700;
+	font-size: 14px;
+	font-style: inherit;
+	font-variant: inherit;
+	font-family: inherit;
+}
+
+.resvType {
+	border-color: red;
+}
+
+.div_assgn {
+	padding-top: 13px;
+}
+
+#tbl_rate_plan {
+	background-color: #6ccac9;
+}
+
+.rate_tbl_div {
+	padding-top: 5px;
+}
+
+.textGroup {
+	display: inline-flex;
+}
+
+.pageHeader {
+	padding-bottom: 9px;
+	border-bottom: 1px solid #eee;
+}
+
+#phone_new_div {
+	margin-left: 20px;
+	max-width: 100%;
+	padding-left: 39px;
+}
+
+}
+.title {
+	padding-left: 0px;
+}
+
+.first_name_div {
+	display: inline-flex;
+	width: 269px;
+}
+
+.email_div_new {
+	display: inline-flex;
+	width: 285px;
+}
+
+.last_name_div {
+	margin-left: -7px;
+	width: 215px;
+}
+
+}
+.address_div {
+	width: 104%;
+}
+
+.email_div {
+	display: grid;
+}
+
+.email_label {
+	padding-left: 0px;
+}
+/* .address_input{
+	height: 93px;
+    border-radius: 5px;
+    border: 1px solid #c1c1c3;
+    box-shadow: none;
+} */
+.md-inline-form md-checkbox {
+	margin: 0px;
+}
+/* .pkup_div{
+	display: grid;
+} */
+.pkup_div_group {
+	display: contents;
+}
+
+.time_picker_div {
+	display: inline-flex;
+}
+
+.rate_edit_btn {
+	border-radius: 3px;
+	border-color: #C1C1C3;
+	padding: 9px;
+	width: 45px;
+}
+
+.editRateTblCtrls {
+	height: 35px;
+}
+
+.editRateInput {
+	border: none;
+	margin-left: 7px;
+}
+
+.modal-footer {
+	/* padding: 15px; */
+	text-align: right;
+	border-top: 1px solid #e5e5e5;
+}
+
+.plus_btn_div {
+	text-align: center;
+}
+/* #tbl_rate_plan .th_style{
+	style="width: 170px;"
+} */
+.table-responsive {
+	max-height: 300px;
+}
+
+.table-responsive tbody td {
+	margin-bottom: 0;
+	padding-bottom: 0;
+	line-height: 15px;
+	background-color: white;
+}
+
+.new_rsv_edit_div .input-group.date.form_datetime-component input {
+	background: #fff;
+}
+
+.chk_pkpup {
+	margin-top: 3px;
+}
+
+.md-inline-form md-datepicker {
+	margin-top: 0px;
+}
+
+.md-button.md-icon-button {
+	/* margin: 0 6px; */
+	height: 40px;
+	min-width: 0;
+	line-height: 24px;
+	padding: 8px;
+	width: 40px;
+	border-radius: 50%;
+	margin-top: -2px;
+	margin-right: 6px;
+	margin-bottom: 0px;
+	margin-left: 0px;
+}
+
+body md-card md-card-title {
+	padding: 10px;
+}
+
+body md-card md-card-title {
+	padding: 10px;
+}
+
+body md-card-title md-card-title-text {
+	height: 165px;
+}
+
+body md-card md-card-title md-card-title-text span.md-headline {
+	height: 35px;
+	float: left;
+	width: 100%;
+}
+
+body md-card md-card-title md-card-title-text span.md-subhead.ng-binding
+	{
+	height: 25px;
+	float: left;
+	padding-top: 0;
+	width: 100%;
+}
+
+body md-card md-card-title md-card-title-text .occupDiv {
+	float: left;
+	width: 100%;
+	height: 30px;
+}
+
+body md-card md-card-title md-card-title-text .asdDiv {
+	width: 100%;
+	height: 25px;
+	float: left;
+}
+
+body md-card md-card-title md-card-title-text .asdDiv label {
+	margin-bottom: 0;
+}
+
+body .lft_mrg_zrw {
+	padding-left: 0;
+}
+
+.new_rsvrn_srch_form {
+	padding-bottom: 15px;
+	float: left;
+	width: 100%;
+}
+
+.new_rsvrn_srch_form.date_div.new_rsrvtion_tble_div tbody td {
+	padding-bottom: 15px;
+}
+
+#divShowRoomMsg {
+	color: red;
+	margin-top: 265px;
+}
+
+.discountsList .openDiscDiv {
+	height: 50px;
+	margin-top: 5px;
+}
+
+.modal-content .md-list-item-text.rateByRoomList {
+	height: 55px;
+}
+
+.modal-content .md-list-item-text.rateByRoomList md-radio-button {
+	margin-top: 11px;
+}
+
+md-content.layout-padding {
+	overflow: inherit;
+}
+
+.dob_div {
+	width: 153px;
+}
+
+div#addressDiv {
+	margin-left: -26px;
+	width: 408px;
+}
+
+.form-group.col-md-3.company_div {
+	/* margin-left: -7px; */
+	
+}
+
+.company_div_new_reserv {
+	margin-left: -13px;
+	width: 337px;
+	display: inline-grid;
+	/* top: 2px; */
+	margin-top: -20px;
+}
+
+div#company_reserv {
+	margin-left: 10px;
+	width: 247px;
+}
+
+div#phone_new_div_reserv {
+	max-width: 312px;
+	margin-left: -34px;
+}
+div#arrivingDiv {
+    margin-left: -16px;
+}
+div#state_reserv {
+    margin-left: 11px;
+    display: inline-grid;
+    margin-top: -21px;
+    width: 252px;
+}
+.reserved_div {
+    margin-left: -13px;
+    width: 565px;
+}
+div#remarks {
+    margin-left: -12px;
+    width: 564px;
+}
+label.control-label.col-sm-4.title.address {
+    margin-left: -31px;
+}
+
+label.control-label.col-md-3.company {
+    margin-left: -27px;
+}
+
+label.control-label.col-md-2.label_designation {
+    margin-left: 10px;
+}
+label.control-label.col-md-6.title.arriving_from {
+    margin-left: -20px;
+}
+label.control-label.col-md-8.proceeding {
+    margin-left: -7px;
+}
+label.control-label.col-sm-4.title.reserved_by {
+    margin-left: -20px;
+}
+.col-sm-6.div_payment_source.remarks {
+    width: 51%;
+}
+label.control-label.col-sm-4.title.remarks {
+    margin-left: -9px;
+}
+md-checkbox#pickNeeded {
+    margin-left: -16px;
+}
+label.control-label.col-md-3.label_designation {
+    margin-left: 10px;
+}
+.col-lg-12.reser_form {
+    background-color: rgb(250, 250, 250);
+}
+.form-group.col-md-4.available_room {
+    width: 84px;
+}
+
+.form-group.col-md-4.rate_room {
+    width: 87px;
+    padding-left: 1px;
+}
+
+.form-group.col-md-2.available_room {
+    width: 76px;
+    padding-left: 0px;
+}
+
+label.rate_label.col-md-3.rate {
+    margin-left: -13px;
+    font-weight: bold;
+}
+label#triple_room {
+    margin-left: 13px;
+    font-weight: bold;
+}
+label.rate_label.col-md-3 {
+    font-weight: bold;
+}
+label.rate_label.rate {
+    font-weight: bold;
+}
+.gender.col-sm-6 {
+    margin-left: 1%;
+    padding-left: 0px;
+}
+
+div#genderMar {
+    margin-left: -19px;
+}
+label.control-label.col-md-3.title.pickup_label {
+    margin-left: -85px;
+}
+.col-sm-12.pickupBox {
+    margin-left: -69px;
+    margin-top: 18px;
+}
+span#gender_red {
+    margin-left: -113px;
+}
+.error{
+    color: red;
+  }
+ /*  label,
+  input{
+    border: 0;
+    margin-bottom: 3px;
+    display: block;
+    width: 100%;
+  } */
+ .common_box_body {
+    padding: 15px;
+    border: 12px solid #28BAA2;
+    border-color: #28BAA2;
+    border-radius: 15px;
+    margin-top: 10px;
+    background: #d4edda;
+}
+
+md-input-container.guest_name.flex-gt-sm {
+    width: 301px;
+}
+
+/* div#addressDiv {
+    width: 109%;
+    padding-left: 24px;
+} 
+.company_div_new_reserv {
+    width: 354px;
+    padding-left: 22px;
+}
+div#company_reserv {
+    position: absolute;
+    top: -58px;
+    left: 310%;
+    width: 232px;
+}
+label.control-label.col-sm-10.label_designation {
+    position: absolute;
+    top: -83px;
+    left: 311%;
+}
+div#arrivingDiv {
+    margin-left: -15px;
+}
+label.control-label.col-md-6.title {
+    margin-left: -23px;
+}
+.col-sm-6.div_reserved {
+    position: absolute;
+    top: 0px;
+    width: 591px;
+    left: 574px;
+} */

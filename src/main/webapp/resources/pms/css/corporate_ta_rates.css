@@ -1,0 +1,56 @@
+#tblTariff thead, #tblRevenue thead {
+	background-color: #eee;
+}
+
+#tblTariff input[type="text"], #tblRevenue input[type="text"] {
+	/* border: none; */
+	width: 100%;
+	text-align: right;
+}
+
+#tblTariff input[type="text"]:disabled, #tblRevenue input[type="text"]:disabled {
+	border: none;
+}
+
+.status-red {
+	color: #f00 !important;
+}
+
+.status-green {
+	color: #008000 !important;
+}
+
+
+.status-font {
+	font-weight: bold;
+}
+
+.disabled {
+	background-color: #eee;
+}
+
+#revenSharingValidator {
+	color: #f00;
+}
+
+#tariffHeading1, #tariffHeading2 {
+	float: right;
+}
+
+.error-txt {
+	color: #f00 !important;
+}
+
+.search-rslts {
+	height: 252px;
+	overflow-y: auto; 
+}
+
+.revn-sharing-div {
+	overflow-y: auto;
+    height: 382px;
+}
+
+.first-col {
+	width: 15%;
+}

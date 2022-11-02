@@ -1,0 +1,22 @@
+body{
+	background-color : black;
+}
+
+.verticalnav{
+    padding : 10px;
+    background-color: grey;
+    color : black;
+    height: 87vh;
+    width : 100%;
+    border : 2px solid black;
+}
+
+.datatable{
+	padding : 10px;
+	background-color : white;
+	padding-right : 10px;
+}
+
+.tdwidth{
+	width : 200px;
+}

@@ -1,0 +1,120 @@
+.grid_div {
+
+    padding: 5px 0px;
+}
+.color_span{
+	padding: 0px 7px;'
+}
+.occupied{
+	background-color: rgb(255, 138, 128);
+}
+.vacant{
+	background-color: rgb(62, 103, 123);
+}
+.outOfInv{
+	background-color:  rgb(179, 157, 219);
+}
+
+.reserved{
+	background-color: rgb(255, 102, 204);
+}
+
+.tile_details {
+  font-size: 30px;
+  font-weight: 600;
+  color: #FFF;
+}
+.room_grid_footer_label {
+  font-size: 11px;
+}
+md-grid-tile-footer figcaption{
+	width: 100%;
+	  text-align: center;
+}
+.room_grid_footer_desc{
+	display: block;
+}
+
+.room_grid_header_right {
+    float: right;
+    width: 43px;
+    height: 30px;
+    padding: 5px 0;
+    color: #F2F2F2;
+    TEXT-ALIGN: CENTER;
+    BORDER-RADIUS: 5PX;
+}
+.room_grid_header_right .fa{
+	font-size: 18px;
+}
+.dirty{
+  /* background-color: #2D2D2D; */
+  background-color:#FF0000;
+}
+.cleaned{
+	background-color: #176b02;
+}
+.cleaning{
+	background-color: #ff9000;
+}
+.room_grid_header_left{
+	float: left;
+}
+md-grid-tile-header figcaption{
+	width: 100%;
+	padding: 6px;
+}
+.room_info {
+    width: 100%;
+    padding: 10px 2px;
+}
+
+.room_sub_hdr {
+    padding: 5px 20px;
+}
+.rm_st {
+    padding: 7px;
+    width: 100%;
+}
+.dtl_span {
+    width: 88px;
+    float: left;
+}
+md-grid-tile{
+	    cursor: pointer;
+}
+.room_edit_rtype {
+  float: left;
+  padding: 0 13px;
+}
+.room_name_div{
+	width: 100%;
+}
+.modal-header {
+  background: #3A6A81;
+}
+.room_edit_number {
+  font-weight: 600;
+}
+
+.roomOption{
+	    float: left;
+}
+.floor_rgt_div.col-md-6 {
+    text-align: right;
+    float: right;
+    margin-right: -15px;
+    padding-right: 0;
+}
+
+.floorOption.col-md-9 {
+    padding-right: 0;
+}
+.hs_filter.col-md-3 {
+    padding-top: 5px;
+}
+.hkedit_label {
+
+    text-align: right;
+    margin-top: 5px;
+}

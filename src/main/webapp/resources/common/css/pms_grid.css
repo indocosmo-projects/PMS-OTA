@@ -1,0 +1,68 @@
+.d_grid_hidden_col {
+	display: none;
+}
+
+.d_grid_sortable_col_none {
+	cursor: pointer;
+	background-image: url("../images/sort.svg");
+	background-repeat: no-repeat;
+	background-position: left;
+}
+
+.d_grid_sortable_col_asc {
+	cursor: pointer;
+	background-image: url("../images/sort-ascending.svg");
+	background-repeat: no-repeat;
+	background-position: left;
+}
+
+.d_grid_sortable_col_desc {
+	cursor: pointer;
+	background-image: url("../images/sort-descending.svg");
+	background-repeat: no-repeat;
+	background-position: left;
+}
+
+.d_grid_div {
+	border-top: 1px solid #DEDBDB;
+	/* box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3); */
+  	animation: float 5s infinite;
+}
+
+.gd_table, .gd_table th, .gd_table td {
+	border: 1px solid #DEDBDB;
+	border-top: none;
+	border-collapse: collapse;
+}
+
+.gd_table th, .gd_table td {
+	padding: 10px;
+}
+
+.gd_table a {
+	text-decoration: none;
+}
+
+.gd_table th {
+	text-align: center;
+	color: #fff;
+	background-color: #00A8B3;
+	text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+.gd_table tr:HOVER {
+	background: #f9f9f9;
+}
+/* .gd_table tr:nth-child(odd) td {
+  background: #f9f9f9;
+} */
+
+/* .d_grid_div::-webkit-scrollbar {
+    width: 5px;
+}
+.d_grid_div::-webkit-scrollbar-thumb {
+    background: rgba(255, 0, 0, 0.6); 
+}
+.d_grid_div::-webkit-scrollbar-thumb:window-inactive {
+	background: rgba(255, 0, 0, 0.4); 
+} */

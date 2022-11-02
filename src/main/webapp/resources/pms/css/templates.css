@@ -1,0 +1,109 @@
+.dtls .md-theme-light {
+	min-height: 30px;
+	background-color: rgb(43, 104, 156);
+}
+
+.dtls .md-theme-light .md-toolbar-tools {
+	max-height: 30px;
+}
+
+.divRow {
+	padding: 10px 0px;
+}
+
+.divRow .row {
+	padding: 5px 0;
+}
+
+.includeDiv {
+	padding: 4px 20px;
+}
+
+.itemDiv md-content md-list md-list-item.md-3-line {
+	min-height: 40px;
+}
+
+.headerBox{
+	box-sizing: border-box;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    position: relative;
+    z-index: 2;
+    font-size: 20px;
+    height: 30px;
+    width: 100%;
+    background-color: #00A8B3;
+    color: rgba(255,255,255,0.87);
+}
+
+.headerStyle{
+	font-size: 20px;
+    letter-spacing: .005em;
+    box-sizing: border-box;
+    font-weight: 400;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    width: 100%;
+    height: 64px;
+    max-height: 64px;
+    padding: 0 16px;
+    margin: 0;
+}
+
+.textEditorDiv {
+	padding: 0 10px;
+	padding-top: 15px;
+}
+
+.templateText button {
+	font-size: 13px;
+	padding: 6px 8px;
+}
+
+.templateText .btn[disabled] {
+	background-color: #84929c;
+}
+
+.subj {
+	padding-top: 14px;
+}
+
+.templateText .ta-scroll-window {
+	max-height: 300px;
+}
+
+.newEmailBtnDiv {
+	padding: 0 0 5px 15px;
+}
+
+.saveInvBtn {
+	float: right;
+}
+
+#txtContent {
+	width: 272px;
+	height: 140px;
+	max-width: 272px;
+	max-height: 140px;
+}
+
+md-toolbar.md-default-theme:not(.md-menu-toolbar), md-toolbar:not(.md-menu-toolbar) {
+    background-color: #00A8B3;
+    color: rgba(255,255,255,0.87);
+}
+.col-md-12.divRow .col-sm-4 label {
+    padding-top: 5px;
+}

@@ -1,0 +1,226 @@
+.ratePlanSubHdr {
+	background: #00A8B3;
+	color: #fff;
+	font-weight: 600;
+	margin-top: 5px;
+}
+.ps_rltv {
+	position: relative;
+}
+
+.delete_room_btn {
+	position: absolute;
+	right: 27px;
+	z-index: 999;
+	top: 11px;
+	cursor: pointer;
+	color: #e11506;
+}
+
+#applyall{
+	    margin-right: 15px;
+    float: right;
+}
+.adult_class label{
+	width:100%;
+	float:left;
+}
+
+.delete_room_btn i.fa.fa-trash {
+	font-size: 21px;
+}
+.room_deleted{
+	background-color: #bcbcbc;
+}
+.roomAssign {
+    padding: 10px;
+    margin-top: 10px;
+    border: .3px solid #afafaf;
+    box-shadow: 1px 1px 5px #9e9e9e;
+    margin-left: 59px;
+}
+.room_assign_btn{
+  float: right;
+}
+.edit_tag{
+	cursor: pointer;
+	margin-top: -6px !important;
+}
+.md-datepicker-calendar-pane{
+	position: fixed !important;
+}
+.roomDeleted {
+  width: 100%;
+  text-align: center;
+  font-size: 15px;
+  padding: 10px;
+  font-weight: 600;
+  color: #E32E21;
+}
+#autoCom2{
+	padding: 10px;
+	padding-left: 0px;
+}
+.changeBtn{
+   background-color:#ffffff !important;
+   color:#000000 !important;
+   border-color:#ffffff !important;
+}
+.md-whiteframe-1dp, .md-whiteframe-z1{
+	border-bottom:1px solid #e0e0e0 !important;
+	box-shadow:none !important;
+}
+.lft_mrg_zrw {
+    padding-left: 0;
+}
+.card_list_div {
+	display: block;
+	max-width: 20%;		/* 50 */
+	max-height: 50%;	/* 100 */
+	width: 25%; 		/* 33 */
+	float: left;
+}
+.chInp {
+    margin-top: 0px;
+}
+.title {
+    width: 70px;
+}
+.first_name {
+    width: 292px;
+}
+.last_name {
+    width: 250px;
+}
+.address {
+    width: 313px;
+}
+.nationality {
+    width: 374px;
+    margin-top: -19px;
+}
+.state {
+    margin-top: -19px;
+    width: 250px;
+}
+.count {
+    width: 118px;
+    margin-right: 52px;
+}
+.infant {
+    width: 98px;
+}
+md-input-container#marInfant {
+    width: 100%;
+    float: left;
+}
+.lbl_children {
+    margin-left: -41px;
+}
+.lbl_infants {
+    margin-left: -35px;
+}
+.input_div.layout-gt-sm-row {
+    margin-top: 20px;
+}
+md-input-container.md-block.chInp.md-input-has-value.flex-gt-sm {
+    width: 100%;
+}
+.expiry {
+    padding-left: 35px;
+    margin-left: -70px;
+}
+.lbl_expiry {
+       float: left;
+}
+
+.remarks {
+    width: 721px;
+    padding-left: 20px;
+}
+.div_nationality{
+	margin-bottom: -23px;
+}
+.email_div {
+    width: 374px;
+}
+#salutation_error{
+	color: red;
+	margin-left: -4px;
+}
+#state_error{
+	color: red;
+    margin-bottom: 12px;
+    margin-top: -20px;
+    float: left;
+    display:none;
+}
+
+#country_error{
+	    color: red;
+    margin-top: -40px;
+    float: left;
+    display:none;
+}
+#gender_error{
+	color: red;
+   margin-right: 15px;
+    float: right;
+    display:none;
+}
+.buttonForm{
+	 border: none;
+	overflow: hidden;
+	 background-color: Transparent;
+	 background-repeat:no-repeat;
+	    width: 87%;
+    margin-right: 15px;
+}
+#ta_width{
+	width: 50%;
+}
+.stat_chng_btn {
+	font-size: 12;
+	color: rgba(255, 255, 255, 0.87);
+	background-color: rgb(63, 81, 181);
+	border: box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .26);
+	text-align: center;
+	display: inline-block;
+	position: relative;
+	cursor: pointer;
+	user-select: none;
+	outline: none;
+	border: 0;
+	border-radius: 2px;
+}
+#adults_position{
+	margin-left: 20px;
+}
+#children_position{
+	margin-left: -22px;
+}
+#infant_id{
+	margin-left: -45px;
+}
+#infant_position{
+	margin-left: 15px;
+}
+#expiry_position{
+	 margin-left: -25px;
+    float: left;
+    margin-top: 22px;
+}
+}
+.room_no_span {
+    font-size: 12;
+    color: #0071ff;
+    padding-left: 30px;
+}
+.occupancy_div .md-subheader {
+    color: rgb(255, 255, 255);
+    background: #2e7e9d;
+    max-height: 45px;
+}
+.occupancy_div .md-subheader .md-subheader-inner {
+    padding: 10px;
+}

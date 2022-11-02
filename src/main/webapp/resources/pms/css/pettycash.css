@@ -1,0 +1,90 @@
+.adv-table.editable-table {margin-top: 29px;}
+#show_form{
+	display:none;
+}
+
+i.fa.fa-warning {
+    color: red;
+}
+
+.petty_cash_div table thead tr {
+	background-color: #00A8B3;
+}
+
+.petty_table table thead tr {
+	background-color: #00A8B3;
+}
+#entry-grid_filter {
+	float: left;
+}
+.pagination_div.col-md-5 {
+    /* padding-right: 4px; */
+    float: right;
+    margin-right: -273px;
+}
+
+select#sel_pag_id {
+    width: 64px;
+}
+.panel-body.footer_div {
+    padding: 0px 2px;
+    margin-top: 47px;
+}
+/* button#addPettyHead {float: right;margin-right: -611px;} */
+md-datepicker#datepicker_id {
+    float: left;
+}
+.md-datepicker-expand-triangle.ng-scope {
+    display: none;
+}
+.cmn_tbl {
+    margin-top: 5pc;
+}
+td#debit_tot_td {
+    text-align: right;
+}
+td#credit_tot_td {
+    text-align: right;
+}
+td#label_tot{
+    text-align: right;
+}
+button#btnSave {
+    background-color:#62c318;
+}
+
+button#btnDelete {
+    background-color: darkred;
+}
+
+#petty_table {
+  height:150px;
+  overflow:auto;  
+  margin-top:20px;
+}
+.error_msg {
+    text-align: center;
+    font-size: 19px;
+    font-weight: bold;
+    background-color: #f3c9c9;
+    color: darkred;
+}
+
+.input-group.date.form_datetime-adv.form-control.search_box_div {
+    width: 50%;
+}
+
+input.form-control.cat_serach_div {
+    border-color: white;
+}
+/* .panel-body.footer_div {
+    padding: 0 15px;
+}
+
+.panel-body.footer_div .limit_drop.col-md-3 {
+    padding: 0 10px;
+}
+.panel-body.footer_div .pagination_div .pagination {
+    padding: 0 10px 10px;
+}
+ */

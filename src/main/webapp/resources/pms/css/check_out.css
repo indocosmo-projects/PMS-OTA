@@ -1,0 +1,316 @@
+label {
+	font-weight: normal;
+}
+
+.check-out-cart {
+	border: 1px solid #c0c0c1;
+	border-radius: 3px;
+	padding-left: 0;
+	margin-bottom: 14px;
+	height: auto;
+	padding-right: 0;
+	margin-left: 0;
+	margin-right: 0;
+}
+
+.check-out-cart:HOVER {
+	box-shadow: 0px 0px 1px #39b7ac;
+}
+
+#boxMargin{
+	right: 40px;
+    bottom: 2px;
+}
+
+#marginAlign{
+	right: 40px;
+}
+
+.check-out-cart-left-part {
+	/* margin: 10px 0; */
+	padding: 0px;
+	border-right: 1px solid #c0c0c1;
+}
+
+.check-out-cart-right-btns{
+padding: 0 0;	
+}
+.check-out-cart-left-part-row1 {
+	background-color: #fff;
+	height: 113px;
+	margin-bottom: 8px;
+}
+
+.check-out-cart-left-part-row2 {
+	background-color: #fff;
+	height: 44px;
+	font-size: 18px;
+	line-height: 52px;
+	text-align: center;
+}
+
+.check-out-cart-right-part {
+	padding-right: 0;
+}
+
+.check-out-cart-right-part-dtls {
+	height: 115px;
+}
+
+.check-out-cart-right-part-dtls div {
+	/* margin-top: 4px; */
+    word-wrap: break-word;
+}
+
+.check-name {
+    font-size: 17px;
+    color: #1d9089;
+    font-weight: bold;
+}
+.status-section {
+	margin: 0;
+	color: #fff;
+	text-align: center;
+	height: 30px;
+	line-height: 25px;
+}
+
+.status-checkOut {
+	background-color: #ff7043;
+}
+
+.status-checkIn {
+	background-color: #7986cb;
+}
+
+.num-section {
+	margin: 0;
+	height: 170px;
+	text-align: center;
+	line-height: 106px;
+	font-size: 36px;
+	font-weight: bold;
+}
+.col-xs-12.check-name {
+    height: 45px;
+}
+.check-section {
+	margin-right: 0px;
+	text-align: center;
+}
+
+ .check-section toggle .toggle.btn {
+	min-height: 30px;
+	padding: 0px 100px;
+}
+ .check-section toggle lable{
+ font-size: 12px;
+ }
+.check-section span {
+	color: #fff;
+}
+
+.tick-style {
+	background-color: #39b7ac;
+	color: #fff;
+	width: 24px;
+	height: 24px;
+	text-align: center;
+	line-height: 24px;
+	border-radius: 13px;
+	margin-top: -12px;
+	margin-right: 9px;
+}
+
+.check-head {
+	text-align: right;
+	padding: 0;
+	display: none;
+}
+
+.modal-footer .btn-default {
+	float: none;
+}
+.rightBtns {
+    font-size: 18px;
+    margin: 0;
+    padding: 5px 0;
+    text-align: center;
+}
+.row.rightBtns > button {
+    display: block;
+    padding: 7px;
+    position: relative;
+}
+.row.rightBtns button i {
+    float: right;
+}
+
+.row.rightBtns button {
+    float: left;
+    margin-right: 5px;
+}
+.tool_tip_con {
+    /* background: #2a3542 none repeat scroll 0 0; */
+    /* bottom: -22px; */
+    /* display: none; */
+    /* left: -13px; */
+    /* max-width: 100px; */
+    /* min-width: 80px; */
+    /* position: absolute; */
+    z-index: 1;
+    float: left;
+    padding-right: 5px;
+    text-align: start;
+    width: 65px;
+    text-align: right;
+    padding-top: 4px;
+}
+.tool_tip_con > label {
+    color: #000;
+    font-size: 14px;
+    font-weight: bold;
+    margin: 0;
+    padding: 1px;
+}
+.row.rightBtns > button:hover .tool_tip_con {
+    display: block;
+}
+.check-section span {
+    color: rgb(255, 0, 0);
+    font-weight: 600;
+    WIDTH: 100%;
+    DISPLAY: BLOCK;
+    FONT-SIZE: 16PX;
+    TEXT-ALIGN: LEFT;
+}
+.printbtn{
+	padding-top: 110px;
+}
+.check-out-cart-right-part-dtls div.col-xs-12.lft_div_con {
+    padding: 8px 0;
+    height: 40px;
+}
+.checkout_cb{
+	margin-left: -32px;
+}
+
+/* billing address */
+
+.salutation{
+	height: 37px;
+}
+.reception_page_frst_name_search{
+	margin-top: 0px !important;
+    height: 37px !important;
+    margin-left: -3px;
+}
+.reception_page_phone_search{
+	margin-top: -37px !important;
+    height: 37px !important;
+    margin-left: 279px;
+    width: 0px !important;
+}
+.email_search_div {
+    float: right;
+    margin-top: -39px;
+}
+.email_search_btn{
+	height: 36px !important;
+}
+.country {
+    float: left;
+    width: 395px;
+    margin-right: 9px;
+}
+
+html body div.last_btn_input.rcption_new_custo_first_input_div .rcption_new_custo_first_input {
+    width: 66% !important;
+}
+html body .new_chk_in_lft_div_tbl md-input-container {
+    margin: 0;
+}
+html body label.new_chk_in_label {
+    color: #9e9e9e;
+    font-size: 14px;
+    font-weight: normal;
+}
+
+html body div.rcption_new_custo_email_input_div .rcption_new_custo_email_input {
+    width: 82% !important;
+}
+
+
+html body .new_chk_in_lft_div_tbl {
+    width: 100%;
+    float: left;
+}
+
+html body .new_chk_in_lft_div_tbl .new_chk_in_lft_div_tbl_full_width_row {
+    float: left;
+    width: 100%;
+    padding-bottom: 15px;
+}
+
+html body .new_chk_in_lft_div_tbl .salutation_div {
+    width: 75px;
+    float: left;
+    margin-right: 15px;
+}
+
+html body .new_chk_in_lft_div_tbl .first_name {
+    float: left;
+    width: 350px;
+}
+
+html body .new_chk_in_lft_div_tbl .last_name {
+    float: left;
+    width: 350px;
+    margin-left: -45px;
+}
+
+html body .new_chk_in_lft_div_tbl .gust_name {
+    float: left;
+    width: 350px;
+    margin-left: 5px;
+}
+
+html body .new_chk_in_lft_div_tbl .email_div {
+    float: left;
+    width: 380px;
+}
+
+html body .new_chk_in_lft_div_tbl .phone_div {
+    float: left;
+    width: 351px;
+    margin-left: 15px;
+}
+
+html body .new_chk_in_lft_div_tbl .addree_div {
+    float: left;
+    width: 350px;
+    margin-left: 5px;
+}
+
+html body .new_chk_in_lft_div_tbl md-input-container.reception_page_email input {
+    float: left;
+    width: 337px !important;
+}
+
+html body .new_chk_in_lft_div_tbl .state_div {
+    float: left;
+    width: 351px;
+    margin-left: -5px;
+}
+
+html body .gst_num_div {
+    float: left;
+    width: 345px;
+    margin-left: 5px;
+}
+.reception_page_email_search{
+	margin-top: -37px !important;
+    height: 37px !important;
+    margin-left: 315px;
+    width: 0px !important;
+}

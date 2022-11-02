@@ -1,0 +1,20 @@
+
+.container{
+	padding : 140px;	
+}
+
+.text{
+	color: white;
+}
+
+#btlogin{
+	width: 100%;
+	margin-top : 10px;
+}
+
+.form{
+	padding : 50px;
+	margin : auto;
+	background : linear-gradient(to right,darkblue 20%, indigo 60%) ;
+}
+

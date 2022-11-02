@@ -1,0 +1,38 @@
+.tblHdr{
+	text-align: center;
+}
+.tblData{
+	text-align: center;
+}
+.tableHdrArrow {
+    position: absolute;
+    width: 97%;
+}
+.arrowLeft {
+    position: absolute;
+    left: 0;
+    top: 10px;
+}
+.tableHdrArrow .cal-arrow {
+    font-size: 40px;
+    color: rgb(255,87,34);
+	margin-right: 4px;
+}
+.arrowRight {
+    position: absolute;
+    right: 0;
+    top: 10px;
+}
+#calendermyModal .modal-body{
+	height: 51%;
+} 
+.dateHdr{
+	color: #1d596d;
+}
+tr.cal_tr {
+    text-align: center;
+}
+td.cal_tbldata {
+  color: #197BAE;
+  font-weight: 600;
+}

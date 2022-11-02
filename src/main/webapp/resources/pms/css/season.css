@@ -1,0 +1,121 @@
+
+.cellWithoutBackground
+{
+    display:block;
+    background-image:none;
+    margin-right:-2px;
+    margin-left:-2px;
+    height:14px;
+    padding:4px;
+    width:100px;
+    text-indent: -9999px;   /* sends the text off screen */
+}
+.hideText {
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.pms_color_dropdown {
+  font-size: 14px;
+  padding: 5px;
+  vertical-align: top;
+  width: 100px;
+  text-indent: -9999px;
+}
+.pms_dropdown {
+  font-size: 14px;
+  padding: 5px;
+  vertical-align: top;
+  width: 103px;
+}
+
+.season_error
+{
+  color: #ff0000;
+  font-weight: bold;
+}
+.inner_content .content_wrapper.inner_content_wrapper {
+  margin-top: 2px;
+  min-height: 400px;
+}
+.pms_text{
+  font-size: 14px;
+  padding: 5px;
+  vertical-align: top;
+  width: 172px;
+  float:left; 
+  margin-right:15px;
+}
+
+.err_div_month {
+    position: absolute;
+    display: none;
+    background: #C03737;
+    border: 1px solid #830303;
+    width: auto;
+    height: 31px;
+    border-radius: 5px;
+    color: #fff;
+    padding: 3px;
+    float: left;
+    font-size: 12px;
+    margin-left: 323px;
+}
+.err_div_month::after {
+    right: -5px;
+    margin-top: -5px;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-right: 16px solid #C03737;
+}
+.err_div_month::after, .err_div_month::before {
+    position: absolute;
+    content: "";
+    width: 0;
+    height: 0;
+    top: 45%;
+    left: -16px;
+}
+.err_div_Day {
+    position: absolute;
+    display: none;
+    background: #C03737;
+    border: 1px solid #830303;
+    width: auto;
+    height: 31px;
+    border-radius: 5px;
+    color: #fff;
+    padding: 3px;
+    float: left;
+    font-size: 12px;
+    margin-left: 495px;
+}
+.err_div_Day::after {
+    right: -5px;
+    margin-top: -5px;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-right: 16px solid #C03737;
+}
+.err_div_Day::after, .err_div_Day::before {
+    position: absolute;
+    content: "";
+    width: 0;
+    height: 0;
+    top: 45%;
+    left: -16px;
+}
+a.btn.pull-left.clndr_btn_top {
+    font-size: 18px;
+    border: 1px solid #4b626d;
+    color: #4b626d;
+    border-radius: 6px;
+}
+#seasonRange_modal .modal-footer {
+	border-top:none !important;
+	padding:5px 10x !important;
+}
+
+#seasonRange_modal .modal-body{
+	padding:15px 15px 0px 15px !important;
+}

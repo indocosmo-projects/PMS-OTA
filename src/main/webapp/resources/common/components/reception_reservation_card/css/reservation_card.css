@@ -1,0 +1,497 @@
+.resv-card {
+	border-radius: 2px;
+	box-shadow: 1px 1px 5px #9E9E9E;
+	margin-bottom: 10px;
+	background-color: #fff;
+}
+
+.resv-card:before, .resv-card:after, .resv-card .row:before, .resv-card .resv-row:after
+	{
+	display: table;
+	content: " ";
+	clear: both;
+}
+
+.resv-col {
+	float: left;
+	box-sizing: border-box;
+	padding: 0px 0px 1px 0px;
+}
+
+.resv-col-15 {
+	width: 15%;
+}
+
+.resv1 {
+	width: 14%;
+}
+
+.resv-col-20 {
+	width: 20%;
+}
+
+.resv-col-25 {
+	width: 25%;
+}
+
+.resv-col-40 {
+	width: 40%;
+}
+
+.resv-col-50 {
+	width: 50%;
+}
+
+.resv-lbl {
+	font-size: 13px;
+	padding-left: 4px;
+	color: #9e9e9e;
+}
+
+.resv-txt {
+	padding: 4px;
+	padding-left: 10px;
+	margin-bottom: 5px;
+	font-size: 16px;
+	word-wrap:break-word;
+}
+
+.resv-txt-btm {
+	margin-bottom: 0;
+}
+
+.resv-stat {
+	float: right;
+	text-align: center;
+	border-top-right-radius: 2px;
+	border-bottom-left-radius: 2px;
+    width: 427px;
+	/*margin-top: -4px;*/
+	margin-right: -4px;
+}
+
+.resv-btns {
+	float: right;
+	padding-top: 78px;
+}
+
+.resv-btn {
+	padding-top: 26px;
+	margin-left: 15px;
+	cursor: pointer;
+	border-radius: 2px;
+	border: 0;
+	font-size: 13px;
+	background-color: #fff;
+	background-size: 20px;
+	background-repeat: no-repeat;
+	background-position: center 4px;
+}
+
+.resv-btn
+
+
+:hover
+
+
+:not
+
+ 
+
+(
+[
+disabled
+]
+
+ 
+
+)
+{
+background-color
+
+
+:
+
+ 
+
+#ddd
+
+
+;
+}
+.resv-btn
+
+
+:active
+
+
+:not
+
+ 
+
+(
+[
+disabled
+]
+
+ 
+
+)
+{
+background-color
+
+
+:
+
+ 
+
+#9E9E9E
+
+
+;
+}
+.resv-btn[disabled] {
+	opacity: 0.4;
+	cursor: not-allowed;
+}
+.resv-btn-deposit {
+	background-image: url("../images/deposit.svg");
+}
+.recp-btn-posting {
+	background-image: url("../images/posting.svg");
+}
+.resv-btn-edit {
+	background-image: url("../images/edit.svg");
+}
+.recp-btn-printout {
+	background-image: url("../images/printer.svg");
+}
+
+.recp-btn-checkout {
+	background-image: url("../images/checkin.svg");
+}
+.recp-btn-cform{
+	background-image:url("../images/cform.svg")
+}
+/* Reception */
+.recp-btns {
+	float: right;
+	padding-top: 22px;
+}
+
+.recp-btn-change {
+	padding: 2px 4px 2px 20px;
+	cursor: pointer;
+	border-radius: 2px;
+	border: 0;
+	font-size: 14px;
+	background-color: #fff;
+	background-image: url("../images/change.svg");
+	background-size: 12px;
+	background-repeat: no-repeat;
+	background-position: 4px 6px;
+}
+
+.recp-btn-change:hover:not ([disabled] ) {
+	background-color: #ddd;
+}
+
+.recp-btn-change:active:not ([disabled] ){
+	background-color: #9E9E9E;
+}
+
+.recp-btn-change[disabled] {
+	opacity: 0.4;
+	cursor: not-allowed;
+}
+
+.resv-col-in {
+	float: left;
+	min-width: 5%;
+}
+
+.resv-col-inBtn {
+	float: left;
+	padding-left: 4%;
+	padding-top: 54px;
+}
+
+.resv-stat.resv-status {
+	padding: 2px 60px;
+}
+
+.row.btnsdwn {
+	padding-top: 10%;
+	float: right;
+	padding-right: 5px;
+}
+
+.col-in-data {
+	padding: 5px 5px;
+}
+
+.txt-stat {
+	font-weight: 600;
+	font-size: 16px;
+}
+
+.btnsdwn .button {
+	display: inline-block;
+	height: 34px;
+	line-height: 34px;
+	padding-right: 16px;
+	padding-left: 51px;
+	position: relative;
+	background-color: rgb(53, 146, 145);
+	color: rgb(255, 255, 255);
+	text-decoration: none;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	margin-bottom: 15px;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.5);
+	-ms-filter:
+		"progid:DXImageTransform.Microsoft.dropshadow(OffX=0,OffY=1,Color=#ff123852,Positive=true)";
+	zoom: 1;
+	filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=0, OffY=1,
+		Color=#ff123852, Positive=true);
+	-moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.2);
+	-webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.2);
+	box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.2);
+	-ms-filter:
+		"progid:DXImageTransform.Microsoft.dropshadow(OffX=0,OffY=2,Color=#33000000,Positive=true)";
+	filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=0, OffY=2,
+		Color=#33000000, Positive=true);
+}
+
+.btnsdwn .button span {
+	position: absolute;
+	font-size: 25px;
+	left: 0;
+	width: 36px;
+	background-color: rgba(0, 0, 0, 0.5);
+	text-align: center;
+	-webkit-border-top-left-radius: 5px;
+	-webkit-border-bottom-left-radius: 5px;
+	-moz-border-radius-topleft: 5px;
+	-moz-border-radius-bottomleft: 5px;
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
+	border-right: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+.btnsdwn .button:hover span, .button.active span {
+	background-color: rgb(0, 102, 26);
+	border-right: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.btnsdwn .button:active {
+	margin-top: 2px;
+	margin-bottom: 13px;
+	-moz-box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.5);
+	-webkit-box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.5);
+	box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.5);
+	-ms-filter:
+		"progid:DXImageTransform.Microsoft.dropshadow(OffX=0,OffY=1,Color=#ccffffff,Positive=true)";
+	filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=0, OffY=1,
+		Color=#ccffffff, Positive=true);
+}
+
+.btnsdwn .button.orange {
+	background: #FF7F00;
+}
+
+.btnsdwn .button.purple {
+	background: #8e44ad;
+}
+
+.btnsdwn .button.turquoise {
+	background: #1abc9c;
+}
+
+.pagination_div .pagination {
+	margin: 0;
+	float: right;
+	padding: 10px;
+}
+
+.limit_drop {
+	padding: 10px;
+}
+
+.list_info {
+	float: left;
+}
+
+.limit_drop select {
+	float: left;
+	margin-left: 5px;
+	width: 60px;
+}
+
+#reservation_search md-input-container {
+	margin-left: 20px;
+}
+
+#commnSearchTxt {
+	    width: 100%;
+    padding-bottom: 11px;
+    height: 100%
+}
+
+#reqSearchTxt{   
+	width: 101%;
+    padding-bottom: 11px;
+    height: 100%
+}
+
+#resvSearchTxt{
+	width: 100%;
+    padding-bottom: 12px;
+}
+
+md-tabs-canvas {
+	background-color: #fff;
+}
+
+#recpListTab md-tabs-content-wrapper {
+	background-color: #ffffff;
+	padding: 10px 0;
+}
+
+.recptnRoomNum {
+	font-size: 20px;
+	font-weight: 700;
+	color: #fff;
+	background-color: #376c99;
+}
+.recptnRoomTxt{
+    font-size: 35px;
+    font-weight: 600;
+    padding-left: 0px;
+    text-align: center;
+}
+.recp_room_col{
+   padding-right: 10px;
+}
+.room_list_btn {
+    right: 14px;
+    bottom: 10px;
+    z-index: 1;
+}
+.room_list_btn button{
+	padding: 0px 30px;
+}
+
+.grid_div {
+    max-height: 437px;
+    padding: 5px 0px;
+}
+.color_span{
+	padding: 0px 7px;'
+}
+.occupied{
+	background-color: rgb(255, 138, 128);
+}
+.vacant{
+	background-color: rgb(62, 103, 123);
+}
+
+.reserved{
+	background-color: rgb(179, 157, 219);
+}
+.col-sm-2.room-list_main_div {
+    text-align: right;
+}
+.form-group.tab_add_btn.newreservation button.md-raised.md-warn.md-button.md-ink-ripple {
+    margin: 0;
+    height: 17px;
+    line-height: 7px;
+    min-height: 32px;
+}
+.col-sm-2.room-list_main_div .room_list_btn.room_list_button button.md-raised {
+    margin: 0;
+    height: 17px;
+    line-height: 7px;
+    min-height: 32px;
+}
+.outOfInv{
+	background-color:  rgb(179, 157, 219);
+}
+.room_info span {
+  margin-left: 4px;
+}
+.tile_details {
+  font-size: 30px;
+  font-weight: 600;
+  color: #FFF;
+}
+.room_grid_footer_label {
+  font-size: 11px;
+}
+md-grid-tile-footer figcaption{
+	width: 100%;
+	  text-align: center;
+}
+.room_grid_footer_desc{
+	display: block;
+}
+
+.room_grid_header_right {
+  float: right;
+  width: 30px;
+  height: 30px;
+  padding: 5px 7px;
+  color: #F2F2F2;
+}
+.dirty{
+/*   background-color: #2D2D2D;
+ */
+   background-color:#FF0000;
+ 
+ }
+.cleaned{
+/* 	background-color: #00237C;
+ */
+ background-color:#176b02
+ }
+.cleaning{
+/* 	background-color: #910069;
+ */	
+ background-color: #ff9000;
+}
+.room_grid_header_left{
+	float: left;
+}
+md-grid-tile-header figcaption{
+	width: 100%;
+	padding: 6px;
+}
+.button.contact {
+    padding-right: 2px;
+    padding-left: 41px;
+}
+.row.btnsdwn.contctCommunication {
+    margin-top: -50px;
+}
+.rate_tbl_div{
+	padding-top: 5px;
+}
+#tbl_rate_plan{
+	background-color: #6ccac9;
+}
+.limit_drop select.selectpicker.form-control {
+    height: 29px;
+}
+.limit_drop .list_info {
+    padding-top: 5px;
+}
+.panel-body.pdng_tp_btm {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+.pagination_div ul.pdng_tp_btm.pagination {
+    padding: 000 0 10px;
+}

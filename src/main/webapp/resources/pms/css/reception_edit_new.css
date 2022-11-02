@@ -1,0 +1,138 @@
+.rec_edit_sub_hdr {
+	color: rgb(255, 255, 255) !important;
+	background-color: #00A8B3;
+}
+
+.data_element {
+	max-height: 75px;
+}
+.delete_room_btn {
+	position: absolute;
+	
+	z-index: 999;
+	top: 11px;
+	cursor: pointer;
+	color: #e11506;
+}
+
+.guest_body {
+	background-color: rgb(255, 255, 255);
+}
+
+#entry-grid_filter {
+	float: left;
+}
+
+#infantMar{
+	margin-left: -253px;
+}
+
+#genderMar{
+	    margin-left: 125px;
+}
+
+#childMar{
+	margin-left: -50px;
+}
+
+#marInfant{
+	margin-top: 25px;
+	margin-left: -87px;
+}
+
+#marChild{
+	margin-left: -43px;
+}
+
+#expMargin{
+	margin-left: 20px;
+}
+
+#gst_div {
+    margin-left: -230px;
+}
+
+.topAddButtonDiv {
+	width: 132px;
+	float: right;
+	position: relative;
+	top: 67px;
+	margin-top: -50px;
+	z-index: 1;
+}
+
+table thead tr {
+	background-color: #00A8B3;
+}
+
+table thead tr {
+	background-color: #00A8B3;
+}
+
+.modal-header {
+	background: rgb(43, 104, 156);
+}
+
+.modal-body .md-subheader {
+	color: rgb(255, 255, 255);
+	background: #2e7e9d;
+	max-height: 45px;
+}
+
+.removeBtn {
+	color: rgb(214, 23, 0);
+	font-size: 16px;
+}
+.available_span {
+    float: right;
+    color: #097181;
+}
+.rateByRoomList {
+    width: 100%;
+}
+.discountsList .openDiscDiv {
+	height: 50px;
+	margin-top: -2px;
+}
+.availRatePlans {
+    background-color: rgb(83, 104, 123);
+    color: #fff;
+    font-weight: 600;
+}
+.md-radio-button.rcptn_nw_rad {
+    margin-bottom: 7px;
+    margin-right: 5px;
+}
+.md-virtual-repeat-container.md-autocomplete-suggestions-container {
+    z-index: 99999!important;
+}
+.autoCom{
+	padding: 10px;
+	padding-left: 0px;
+}
+md-input-container.singleOccupancy.md-input-has-value {
+    width: 74px;
+    height: 37px;
+    padding-left: 22px;
+}
+.rateoccupancyBind{
+    padding-left: 20px;
+}
+.rateperDay{
+	width: 115px !important;
+}
+md-input-container.singleOccupancy.ng-scope {
+    margin-left: 42px;
+}
+.md-datepicker-calendar-pane{
+	top:562px !important;
+}
+select#salute {
+    outline: transparent;
+    padding: 6px;
+    border-color: white;
+    border-bottom-color: gainsboro;
+}
+.md-select-menu-container{
+  z-index: 1000000 !important;
+}

@@ -1,0 +1,125 @@
+@CHARSET "UTF-8";
+#entry-grid_filter {
+	float: left;
+}
+.topAddButtonDiv{
+	width: 144px;
+    float: right;
+    position: relative;
+    top: 80px;
+    margin-top: -50px;
+    z-index: 1;
+}
+.room_num {
+	font-size: 18px;
+	padding-right: 10px;
+}
+
+.room_dtl {
+	font-size: 16px;
+	padding: 5px;
+	color: #0a4971;
+}
+
+.tableDiv table thead tr {
+	background-color: #00A8B3;
+}
+
+.tableDiv table thead tr {
+	background-color: #00A8B3;
+}
+
+.searchDiv {
+	min-height: 50px;
+	padding: 5px 0;
+	background-color: #e9eaea;
+	box-shadow: 6px 4px 6px #9e9e9e;
+}
+
+.tableDiv {
+	padding-top: 20px;
+}
+
+.mod_desc span {
+	font-size: 17px;
+	font-weight: 600;
+	color: #064d83;
+}
+
+.mod_desc {
+	text-align: center;
+	background-color: #e9eaea;
+	padding: 10px 0px;
+}
+
+.mod_edit_time {
+	padding: 10px 0px;
+}
+
+.md-datepicker-calendar-pane {
+	z-index: 1041;
+}
+
+.inactive_dates_div md-list-item {
+	min-height: 30px;
+	height: 30px;
+}
+
+.stat_del {
+	padding: 2px 25px;
+	font-size: 16px;
+	color: #ad1010;
+}
+
+.proc_box_div {
+	float: left;
+	padding: 10px 22px;
+}
+
+span.contacts-title {
+	font-size: 15px;
+	font-weight: 600;
+}
+
+.processHdr {
+	background-color: #c5d4db;
+}
+.processFooter{
+	margin-top: 20px;
+}
+.facilityDiv .md-subheader {
+	color: rgb(0, 26, 169);
+	background: #afbdc4;
+	float: left;
+	width: 100%;
+	z-index: 2;
+}
+.fcchkBox{
+	padding: 10px;
+}
+
+.facilityList {
+    min-height: 51px;
+    float: left;
+    padding: 10px 10px;
+    width: 100%;
+    position: relative;
+    z-index: 1;
+}
+
+.facilityList md-radio-button {
+	float: left;
+	padding: 10px 5px;
+}
+.facility_timePick{
+	float: left;
+}
+.facility_timePick .glyphicon{
+	line-height: 0.4;
+}
+.facilInput{
+	margin: 0;
+}
+.md-select-menu-container.md-active{
+	z-index: 1042;
+}

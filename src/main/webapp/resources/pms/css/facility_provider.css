@@ -1,0 +1,18 @@
+table thead tr {
+	background-color: #00A8B3;
+}
+
+table thead tr {
+	background-color: #00A8B3;
+}
+#entry-grid_filter {
+	float: left;
+}
+.topAddButtonDiv{
+	width: 132px;
+    float: right;
+    position: relative;
+    top: 67px;
+    margin-top: -50px;
+    z-index: 1;
+}
