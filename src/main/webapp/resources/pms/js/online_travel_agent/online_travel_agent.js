@@ -26,8 +26,7 @@ $(document).ready(function() {
 				name     : $("#name").val(),
 				password : $("#password").val(),
 		};
-		
-		console.log("loginData--->" + $("#name").val() + $("#password").val());
+
 		$.ajax({
 			url: '/pms/onlinetravelagent/onlinetravelagentLogin',
 			type: 'POST',
@@ -36,7 +35,6 @@ $(document).ready(function() {
 				password : $("#password").val(),
 			},
 			success : function (result) {
-				console.log("result"+"--->"+result);
 				
 				if(result == "/online_travel_agent_dashboard"){
 					window.location.href = "/pms/onlinetravelagent"+result;
@@ -46,25 +44,31 @@ $(document).ready(function() {
 					$('#imgloader').hide();
 			},
 			error: function(data){
-				alert(data.status + " Error Occured");
 				$('#imgloader').hide();
 				$("#errorDiv").show();
 			},
 		    });
-		}
-	
-		
+		}	
 	
 }); 
 
 
 function logout(){
 	window.location.href = "/pms/onlinetravelagent";
-	console.log("---> logout");
-}
+
+	$.ajax({
+		url: '/pms/onlinetravelagent/otalogout',
+		type: 'POST',
+		success : function (result) {
+			
+		},
+		error: function(data){
+		},
+	    });
+	}
+
 
 $("#btn-dashboard").on('click', function(){
-	console.log("---> dashboard");
 	window.location.href = "/pms/dashboard";
 });
 

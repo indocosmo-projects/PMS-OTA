@@ -1,30 +1,22 @@
 package com.indocosmo.pms.web.ota.controller.reservation;
 
-import java.text.SimpleDateFormat;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonObject;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Scope;
-import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.indocosmo.pms.web.common.PageAccessPermissionService;
-import com.indocosmo.pms.web.common.setttings.commonSettings;
 import com.indocosmo.pms.web.ota.dto.hotel.HotelInfoDTO;
 import com.indocosmo.pms.web.ota.dto.reservation.OTAReservationDTO;
+import com.indocosmo.pms.web.ota.dto.reservation.OTARoomDetailsDTO;
+import com.indocosmo.pms.web.ota.dto.reservation.OTARoomInfoDTO;
+import com.indocosmo.pms.web.ota.dto.reservation.OTARoomInventoryDTO;
 import com.indocosmo.pms.web.ota.entity.hotel.HotelInfo;
-import com.indocosmo.pms.web.ota.entity.reservation.OTAReservation;
 import com.indocosmo.pms.web.ota.service.reservation.OTAReservationServiceImpl;
 import com.indocosmo.pms.web.syetemDefPermission.model.SysPermissions;
 import com.indocosmo.pms.web.syetemDefPermission.service.SysPermissionsService;
@@ -59,6 +51,7 @@ public class OTAReservationController {
 
 		HotelInfo hotel = (HotelInfo) session.getAttribute("hotel");
 		OTAReservationDTO ota = otaReservationServiceImpl.getRetrieveAll(hotel);
+//		OTAReservationDTO ota = otaReservationServiceImpl.getRetrieveAllNewReservation(hotel);
 		return ota;
 		
 	}
@@ -73,25 +66,75 @@ public class OTAReservationController {
 	}
 	
 	@RequestMapping(value = "/otabookingreceived", method = RequestMethod.POST)
-	public HotelInfoDTO getBookingReceived(@RequestParam String BookingId,
+	public String getBookingReceived(@RequestParam String BookingId,
 			@RequestParam String PMS_BookingId, @RequestParam String Status,
 			HttpSession session) throws Exception{
 		
-		System.out.println("=====>dfo");
+		String response = "";
 		HotelInfo hotel = (HotelInfo) session.getAttribute("hotel");
 		HotelInfoDTO hotelinfo = otaReservationServiceImpl.getBookingReceived(hotel,BookingId,PMS_BookingId,Status);
-		return hotelinfo;
+		if(hotelinfo.getErrorcode().equals("0") == true) {
+			response = hotelinfo.getSuccessmsg();
+		}else {
+			response = hotelinfo.getErrormsg();
+		}
+		return response;
+		
+	}
+	
+
+	@RequestMapping(value = "/otaroominformation", method = RequestMethod.POST)
+	public OTARoomInfoDTO getRoomInformation(@RequestParam int roomrequired,HttpSession session) throws Exception{
+		
+		HotelInfo hotel = (HotelInfo) session.getAttribute("hotel");
+		OTARoomInfoDTO ota = otaReservationServiceImpl.getRoomInformation(hotel,roomrequired);
+		return ota;
+		
+	}
+	
+	
+	@RequestMapping(value = "/otaroominformationFromDB", method = RequestMethod.GET)
+	public OTARoomInfoDTO getRoomInformationFromDB(HttpSession session) throws Exception{
+		
+		OTARoomInfoDTO ota = otaReservationServiceImpl.getRoomInformationFromDB();
+		return ota;
+		
+	}
+	
+	@RequestMapping(value = "/otainventory", method = RequestMethod.GET)
+	public OTAReservationDTO getInventory(HttpSession session) throws Exception{
+		
+		HotelInfo hotel = (HotelInfo) session.getAttribute("hotel");
+		OTAReservationDTO ota = otaReservationServiceImpl.getInventory(hotel);
+		return ota;
 		
 	}
 	
 	
 	
-	@RequestMapping(value = "/otaroominformation", method = RequestMethod.GET)
-	public OTAReservationDTO getRoomInformation(HttpSession session) throws Exception{
+	@RequestMapping(value = "/bookingid", method = RequestMethod.GET)
+	public OTAReservationDTO getBookingId(HttpSession session) throws Exception{
+		OTAReservationDTO ota = otaReservationServiceImpl.getBookingId();
+		return ota;	
+	}
+	
+	
+	@RequestMapping(value = "/otareservationsingleroom", method = RequestMethod.POST)
+	public List<OTARoomDetailsDTO> getOtareservationSingleroom(@RequestParam int reservationid,HttpSession session) throws Exception{
 		
 		HotelInfo hotel = (HotelInfo) session.getAttribute("hotel");
-		OTAReservationDTO ota = otaReservationServiceImpl.getRoomInformation(hotel);
+		List<OTARoomDetailsDTO> ota = otaReservationServiceImpl.getOtareservationSingleroom(hotel,reservationid);
 		return ota;
+		
+	}
+	
+	@RequestMapping(value = "/otaretrieveroominventory", method = RequestMethod.POST)
+	public List<OTARoomInventoryDTO> getRetrieveRoomInventory(@RequestParam String fdate,@RequestParam String tdate,HttpSession session) throws Exception{
+		
+		HotelInfo hotel = (HotelInfo) session.getAttribute("hotel");
+		List<OTARoomInventoryDTO>  otaroominventorydto = otaReservationServiceImpl.getRetrieveRoomInventory(hotel);
+		
+		return otaroominventorydto;
 		
 	}
 	

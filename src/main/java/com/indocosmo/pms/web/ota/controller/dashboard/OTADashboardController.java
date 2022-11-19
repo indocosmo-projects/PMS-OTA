@@ -26,7 +26,8 @@ import com.indocosmo.pms.web.systemSettings.service.SystemSettingsService;
 public class OTADashboardController {
 	
 //	public static final String ONLINE_TRAVELAGENT_PAGE_LOGIN = "online_travel_agent/login/online_travelagent_login";
-	public static final String ONLINE_TRAVELAGENT_DASHBOARDPAGE_URL = "online_travel_agent/dashboard/online_travel_agent_dashboard";
+//	public static final String ONLINE_TRAVELAGENT_DASHBOARDPAGE_URL = "online_travel_agent/dashboard/online_travel_agent_dashboard";
+	public static final String ONLINE_TRAVELAGENT_DASHBOARDPAGE_URL = "online_travel_agent/reservation/ota_reservation";
 	public static final String ONLINE_TRAVELAGENT_RESERVATIONPAGE_URL = "online_travel_agent/reservation/ota_reservation";
 	public static final String SYDEF_PERMISION_DENIED_PAGE_URL = "exception/exception";
 	public static final String SYDEF_OTA_PERMISION_DENIED_PAGE_URL =  "exception/exceptionota";
@@ -49,7 +50,7 @@ public class OTADashboardController {
 		SysPermissions permissionObjRequest = pageAccessPermissionService.getPermission(session, "ONLINE_TRAVEL_AGENT");
 		String iscanView = session.getAttribute("iscanview").toString();
 		String otalogin = session.getAttribute("otalogin").toString();
-		System.out.println("otalogin---->"+otalogin);
+	//	System.out.println("otalogin---->"+otalogin);
 		if (permissionObj.isIs_view_applicable() && iscanView.equals("true")==true && otalogin.equals("true")==true) {
 			SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 			
@@ -96,4 +97,5 @@ public class OTADashboardController {
 		}
 		return pageUrl;
 	}	
+	
 }

@@ -33,6 +33,8 @@ import com.indocosmo.pms.web.exception.CustomException;
 import com.indocosmo.pms.web.login.model.User;
 import com.indocosmo.pms.web.login.model.UserSession;
 import com.indocosmo.pms.web.login.service.LoginService;
+import com.indocosmo.pms.web.ota.dto.hotel.HotelInfoDTO;
+import com.indocosmo.pms.web.ota.service.login.OTALoginServiceImpl;
 import com.indocosmo.pms.web.serviceTax.service.ServiceTaxService;
 import com.indocosmo.pms.web.syetemDefPermission.model.SysPermissions;
 import com.indocosmo.pms.web.syetemDefPermission.model.UserGroupPermission;
@@ -59,6 +61,9 @@ public class LoginController {
 
 	@Autowired
 	private JavaMailSenderImpl mailSenderimp;
+	
+	@Autowired
+	private OTALoginServiceImpl otaLoginServiceImpl;
 
 	@Autowired
 	private SysPermissionsService sysPermissionsService;
@@ -89,7 +94,7 @@ public class LoginController {
 		try {
 
 			DateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
-
+			
 			List users = null;
 			logger.info("Checking login with " + userForm.getName());
 			System.out.println("redirect-->user"+userForm.getName());
@@ -181,6 +186,12 @@ public class LoginController {
 					permissionsList.put(sysPermissionsListObj.getCode(), sysPermissionsListObj);
 
 				}
+				
+				String password= "d44f6590f2c3@9148790807c57666de-bb8c-11ea-a";
+				String name = "";
+				HotelInfoDTO hotelDTO = otaLoginServiceImpl.gethotelinfo(name, password);
+				session.setAttribute("hotel", hotelDTO);
+				
 				UserSession userSessionData = new UserSession();
 
 				userSessionData.setAdmin(userForm.isCashier());

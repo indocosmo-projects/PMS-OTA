@@ -4,15 +4,10 @@ package com.indocosmo.pms.web.ota.service.reservation;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
 
-import javax.servlet.http.HttpSession;
-
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.google.gson.JsonArray;
@@ -22,14 +17,23 @@ import com.indocosmo.pms.web.ota.dao.reservation.OTACancelReservationDaoImpl;
 import com.indocosmo.pms.web.ota.dao.reservation.OTARentalInfoDaoImpl;
 import com.indocosmo.pms.web.ota.dao.reservation.OTAReservationDaoImpl;
 import com.indocosmo.pms.web.ota.dao.reservation.OTATaxDeatilDaoImpl;
+import com.indocosmo.pms.web.ota.dao.room.OTARoomRatePlansDao;
+import com.indocosmo.pms.web.ota.dao.room.OTARoomRateTypesDao;
+import com.indocosmo.pms.web.ota.dao.room.OTARoomRoomTypesDao;
 import com.indocosmo.pms.web.ota.dto.hotel.HotelInfoDTO;
 import com.indocosmo.pms.web.ota.dto.reservation.OTAReservationDTO;
+import com.indocosmo.pms.web.ota.dto.reservation.OTARoomDetailsDTO;
+import com.indocosmo.pms.web.ota.dto.reservation.OTARoomInfoDTO;
+import com.indocosmo.pms.web.ota.dto.reservation.OTARoomInventoryDTO;
 import com.indocosmo.pms.web.ota.entity.hotel.HotelInfo;
 import com.indocosmo.pms.web.ota.entity.reservation.OTABookingTrans;
 import com.indocosmo.pms.web.ota.entity.reservation.OTACancelReservation;
 import com.indocosmo.pms.web.ota.entity.reservation.OTARentalInfo;
 import com.indocosmo.pms.web.ota.entity.reservation.OTAReservation;
 import com.indocosmo.pms.web.ota.entity.reservation.OTATaxDeatil;
+import com.indocosmo.pms.web.ota.entity.room.OTARoomRatePlans;
+import com.indocosmo.pms.web.ota.entity.room.OTARoomRateTypes;
+import com.indocosmo.pms.web.ota.entity.room.OTARoomRoomTypes;
 import com.indocosmo.pms.web.ota.service.common.OnlineTravelAgentServiceImpl;
 
 @Service
@@ -52,6 +56,15 @@ public class OTAReservationServiceImpl implements OTAReservationServiceInterface
 	
 	@Autowired
 	private OTACancelReservationDaoImpl otacancelreservationDaoImpl;
+	
+	@Autowired
+	private OTARoomRatePlansDao otaroomrateplansdao;
+	
+	@Autowired
+	private OTARoomRateTypesDao otaroomratetypesDao;
+	
+	@Autowired
+	private OTARoomRoomTypesDao otaroomroomtypesdao;
 
 	@Override
 	public OTAReservationDTO getRetrieveAll(HotelInfo hotel) throws Exception {
@@ -104,7 +117,9 @@ public class OTAReservationServiceImpl implements OTAReservationServiceInterface
 		int count = resrvationList.size();
 		for (int i = 0; i < jarr.size(); i++) { 
 			JsonObject  obj = jarr.get(i).getAsJsonObject();
-
+			
+			try {
+			
 			count = count + 1;
 			OTAReservation otareservation = new OTAReservation();
 
@@ -134,8 +149,11 @@ public class OTAReservationServiceImpl implements OTAReservationServiceInterface
 			bookingtransList.addAll(otaeservationDTO.getOtabookingtrans());
 			rentalinfoList.addAll(otaeservationDTO.getOtarentalinfo());
 			taxdetailList.addAll(otaeservationDTO.getOtataxdeatil());
+			
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 	
-		
 		}
 		
 		try {
@@ -187,7 +205,162 @@ public class OTAReservationServiceImpl implements OTAReservationServiceInterface
 		ota.setOtareservation(resrvationList);
 		ota.setOtataxdeatil(taxdetailList);
 		
-		System.out.println("===>Server Request");
+		return ota;
+	}
+	
+	
+	
+	@Override
+	public OTAReservationDTO getRetrieveAllNewReservation(HotelInfo hotel) throws Exception {
+		
+		List<OTAReservation> resrvationList = otareservationDaoImpl.getAllRecords();
+		List<OTABookingTrans> bookingtransList = otabookingtransDaoImpl.getAllRecords();
+		List<OTARentalInfo> rentalinfoList = otarentalInfoDaoImpl.getAllRecords();
+		List<OTATaxDeatil> taxdetailList = otataxdeatilDaoImpl.getAllRecords();
+		List<OTACancelReservation> cancelreservationlist = otacancelreservationDaoImpl.getAllRecords();
+		
+		
+		List<OTAReservation> resrvationListDB = otareservationDaoImpl.getAllRecords();
+		List<OTABookingTrans> bookingtransListDB = otabookingtransDaoImpl.getAllRecords();
+		List<OTARentalInfo> rentalinfoListDB = otarentalInfoDaoImpl.getAllRecords();
+		List<OTATaxDeatil> taxdetailListDB = otataxdeatilDaoImpl.getAllRecords();
+		List<OTACancelReservation> cancelreservationlistDB = otacancelreservationDaoImpl.getAllRecords();
+		
+		int o;
+			
+		o = otareservationDaoImpl.deleteAll(resrvationList.size());
+		o = otacancelreservationDaoImpl.deleteAll(cancelreservationlist.size());
+		o = otabookingtransDaoImpl.deleteAll(bookingtransList.size());
+		o = otarentalInfoDaoImpl.deleteAll(rentalinfoList.size());
+		o = otataxdeatilDaoImpl.deleteAll(taxdetailList.size());
+		
+		
+		String hotelcode = hotel.getHotelcode();
+		String hotelauthkey = hotel.getAuthkey();
+		
+		JSONObject request = new JSONObject();
+		JSONObject payload = new JSONObject();
+		JSONObject auth = new JSONObject();
+		
+		auth.put("HotelCode", hotelcode);
+		auth.put("AuthCode", hotelauthkey);
+		payload.put("Request_Type", "Bookings");
+		payload.put("Authentication", auth);
+		request.put("RES_Request", payload);
+		String json =  request.toString();
+		
+		String url = "https://live.ipms247.com/pmsinterface/pms_connectivity.php";
+		
+		JsonObject jsonobject = onlineTravelAgentServiceImpl.Post_JSON(url, json);
+		
+		resrvationList = new ArrayList<OTAReservation>();
+		bookingtransList = new ArrayList<OTABookingTrans>();
+		rentalinfoList = new ArrayList<OTARentalInfo>();
+		taxdetailList = new ArrayList<OTATaxDeatil>();
+		cancelreservationlist = new ArrayList<OTACancelReservation>();
+		
+		JsonObject jobj = jsonobject.get("Reservations").getAsJsonObject();
+		JsonArray jarr = jobj.get("Reservation").getAsJsonArray();
+		
+		JsonArray cancelreservationarr = jobj.get("CancelReservation").getAsJsonArray();
+		cancelreservationlist = tolistCancelReservation(cancelreservationarr);  
+		
+		int count = resrvationList.size();
+		for (int i = 0; i < jarr.size(); i++) { 
+			JsonObject  obj = jarr.get(i).getAsJsonObject();
+			
+			try {
+			
+			count = count + 1;
+			OTAReservation otareservation = new OTAReservation();
+
+			otareservation.setLocationid(obj.get("LocationId").getAsString());
+			otareservation.setUniquereservationid(obj.get("UniqueID").getAsInt());
+			otareservation.setBookedby(obj.get("BookedBy").getAsString());
+			otareservation.setSalutation(obj.get("Salutation").getAsString());
+			otareservation.setFirstname(obj.get("FirstName").getAsString()+obj.get("LastName").getAsString());
+			otareservation.setGender(obj.get("Address").getAsString());
+			otareservation.setCity(obj.get("City").getAsString());
+			otareservation.setState(obj.get("State").getAsString());
+			otareservation.setCountry(obj.get("Country").getAsString());
+			otareservation.setZipcode(obj.get("Zipcode").getAsString());
+			otareservation.setPhone(obj.get("Phone").getAsString());
+			otareservation.setMobile(obj.get("Mobile").getAsString());
+			otareservation.setFax(obj.get("Fax").getAsString());
+			otareservation.setEmail(obj.get("Email").getAsString());
+			otareservation.setRegistrationno(obj.get("RegistrationNo").getAsString());
+			otareservation.setSource(obj.get("Source").getAsString());
+			otareservation.setIschannelbooking(obj.get("IsChannelBooking").getAsString());
+			otareservation.setIsdeleted(0);
+			
+			JsonArray  BookingTransarr = obj.get("BookingTran").getAsJsonArray();
+			OTAReservationDTO otaeservationDTO= tolistBookingTrans(BookingTransarr, otareservation.getUniquereservationid());	
+			
+			resrvationList.add(otareservation);
+			bookingtransList.addAll(otaeservationDTO.getOtabookingtrans());
+			rentalinfoList.addAll(otaeservationDTO.getOtarentalinfo());
+			taxdetailList.addAll(otaeservationDTO.getOtataxdeatil());
+			
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+	
+		}
+		
+		try {
+		
+		int c = 0;
+		for(OTAReservation reselist : resrvationList) {
+			c++;
+			reselist.setId(c);
+			o = otareservationDaoImpl.save(reselist);
+		}
+		
+		c = 0;
+		for(OTABookingTrans booktrans : bookingtransList) {
+			c = c + 1;
+			booktrans.setId(c);
+			o = otabookingtransDaoImpl.save(booktrans);
+		}
+		
+		c = 0;
+		for(OTARentalInfo rentalinfo : rentalinfoList) {
+			c = c + 1;
+			rentalinfo.setId(c);
+			o = otarentalInfoDaoImpl.save(rentalinfo);
+		}
+		
+		c = 0;
+		for(OTATaxDeatil txndetail : taxdetailList) {
+			c = c + 1;
+			txndetail.setId(c);
+			o = otataxdeatilDaoImpl.save(txndetail);
+		}
+		
+		c = 0;
+		for(OTACancelReservation cancelrese : cancelreservationlist) {
+			c = c + 1;
+			cancelrese.setId(c);
+			o = otacancelreservationDaoImpl.save(cancelrese);
+		}
+		
+		
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		resrvationList.removeAll(resrvationListDB);
+		bookingtransList.removeAll(bookingtransListDB);
+		cancelreservationlist.removeAll(cancelreservationlistDB);
+		rentalinfoList.removeAll(rentalinfoListDB);
+		taxdetailList.removeAll(taxdetailListDB);
+		
+		OTAReservationDTO ota = new OTAReservationDTO();
+		ota.setOtabookingtrans(bookingtransList);
+		ota.setOtacancelreservation(cancelreservationlist);
+		ota.setOtarentalinfo(rentalinfoList);
+		ota.setOtareservation(resrvationList);
+		ota.setOtataxdeatil(taxdetailList);
 		
 		return ota;
 	}
@@ -210,7 +383,6 @@ public class OTAReservationServiceImpl implements OTAReservationServiceInterface
 	
 		OTABookingTrans otabookingtrans = new OTABookingTrans();
 		
-	//	otabookingtrans.setId(1);
 		otabookingtrans.setSubbookingid(otabooking.get("SubBookingId").getAsString());
 		otabookingtrans.setReservationid(reservationId);
 		otabookingtrans.setTransactionid(otabooking.get("TransactionId").getAsString());
@@ -305,7 +477,6 @@ public class OTAReservationServiceImpl implements OTAReservationServiceInterface
 		for (int i = 0; i < otarentalinfoarr.size(); i++) { 
 			
 		JsonObject  otarentalinfo = otarentalinfoarr.get(i).getAsJsonObject();
-	//	otarental.setId(1);
 		otarental.setEffectivedate(otarentalinfo.get("EffectiveDate").getAsString());
 		otarental.setReservationid(reservationId);
 		otarental.setPackagecode(otarentalinfo.get("PackageCode").getAsString());
@@ -335,7 +506,6 @@ public class OTAReservationServiceImpl implements OTAReservationServiceInterface
 		JsonObject  jobj = TaxDeatilobj.get(i).getAsJsonObject();
 		OTATaxDeatil otataxdeatil = new OTATaxDeatil();
 		
-	//	otataxdeatil.setId(1);
 		otataxdeatil.setTaxcode(jobj.get("TaxCode").getAsString());
 		otataxdeatil.setReservationid(reservationId);
 		otataxdeatil.setTaxname(jobj.get("TaxName").getAsString());
@@ -356,7 +526,6 @@ public class OTAReservationServiceImpl implements OTAReservationServiceInterface
 		for (int i = 0; i < cancelReservation.size(); i++) { 
 		JsonObject  jobjcancelReservation = cancelReservation.get(i).getAsJsonObject();
 		OTACancelReservation otacancelreservation = new OTACancelReservation();
-	//	otacancelreservation.setId(1);
 		otacancelreservation.setLocationid(jobjcancelReservation.get("LocationId").getAsString());
 		otacancelreservation.setReservationid(jobjcancelReservation.get("UniqueID").getAsInt());
 		otacancelreservation.setStatus(jobjcancelReservation.get("Status").getAsString());
@@ -391,7 +560,6 @@ public class OTAReservationServiceImpl implements OTAReservationServiceInterface
 	@Override
 	public HotelInfoDTO getBookingReceived(HotelInfo hotel,String BookingId,String PMS_BookingId,String Status) {
 		
-		
 		String hotelcode = hotel.getHotelcode();
 		String hotelauthkey = hotel.getAuthkey();
 		
@@ -414,41 +582,71 @@ public class OTAReservationServiceImpl implements OTAReservationServiceInterface
 		request.put("RES_Request", payload); 	
 		String json = request.toString();
 		String url = "https://live.ipms247.com/pmsinterface/pms_connectivity.php";
-		
+			
 	    JsonObject jsonobject = onlineTravelAgentServiceImpl.Post_JSON(url, json);
+	    HotelInfoDTO hotelInfo = new HotelInfoDTO();
+	    
+	    try {
 	    JsonObject jobjsuccess = jsonobject.get("Success").getAsJsonObject();
 	    String successmsg = jobjsuccess.get("SuccessMsg").getAsString();
-	    
+	    String errormsg ;
+	    String errorcode ;
+	    if(successmsg.equals("")) {
 	    JsonObject jobjerror = jsonobject.get("Errors").getAsJsonObject();
-	    String errormsg = jobjsuccess.get("ErrorMessage").getAsString();
-	    String errorcode = jobjsuccess.get("ErrorCode").getAsString();
-	    
-	    HotelInfoDTO hotelInfo = new HotelInfoDTO();
+	    errormsg = jobjsuccess.get("ErrorMessage").getAsString();
+	    errorcode = jobjsuccess.get("ErrorCode").getAsString();
 	    hotelInfo.setErrormsg(errormsg);
 	    hotelInfo.setErrorcode(errorcode);
+	    }
+	    
 	    hotelInfo.setSuccessmsg(successmsg);
-		
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	
 	    return hotelInfo;
 	}
-
-
+	
 	
 	@Override
-	public OTAReservationDTO getRoomInformation(HotelInfo hotel) {
+	public OTAReservationDTO getBookingId() {
+		OTAReservationDTO dto = new OTAReservationDTO();
+		List<OTAReservation> reservation = otareservationDaoImpl.getAllRecords();
+		List<OTABookingTrans> bookingtrans = otabookingtransDaoImpl.getAllRecords();
+		List<OTACancelReservation> cancelreservation = otacancelreservationDaoImpl.getAllRecords();
 		
+		dto.setOtareservation(reservation);
+		dto.setOtabookingtrans(bookingtrans);
+		dto.setOtacancelreservation(cancelreservation);
+		
+		return dto;
+	}
+	
+	
+	@Override
+	public OTARoomInfoDTO getRoomInformation(HotelInfo hotel,int roomrequired) {
+		
+		int o = 0;
 		String hotelcode = hotel.getHotelcode();
 		String hotelauthkey = hotel.getAuthkey();
+		
+		List<OTARoomRoomTypes> otaroomtypeslist =  otaroomroomtypesdao.getAllRecords();
+		List<OTARoomRateTypes> otaratetypeslist =  otaroomratetypesDao.getAllRecords();
+		List<OTARoomRatePlans> otarateplanslist = otaroomrateplansdao.getAllRecords();
+		
+		o = otaroomroomtypesdao.deleteAll(otaroomtypeslist.size());
+		o = otaroomratetypesDao.deleteAll(otaratetypeslist.size());
+		o = otaroomrateplansdao.deleteAll(otarateplanslist.size());
 		
 		JSONObject request = new JSONObject();
 		JSONObject payload = new JSONObject();
 		JSONObject auth = new JSONObject();
 		JSONObject roomneeds = new JSONObject();
 		
-		
 		auth.put("HotelCode", hotelcode);
 		auth.put("AuthCode", hotelauthkey);
 		payload.put("Request_Type", "RoomInfo");
-		payload.put("NeedPhysicalRooms", 1);
+		payload.put("NeedPhysicalRooms", roomrequired);
 		payload.put("Authentication", auth);
 		request.put("RES_Request", payload); 
 		
@@ -457,9 +655,292 @@ public class OTAReservationServiceImpl implements OTAReservationServiceInterface
 		
 	    JsonObject jsonobject = onlineTravelAgentServiceImpl.Post_JSON(url, json);
 	    
-	    return null;
+	    JsonObject jobj = jsonobject.get("RoomInfo").getAsJsonObject();
+	    JsonObject jobjroomtypes = jobj.get("RoomTypes").getAsJsonObject();
+	    JsonObject jobjratetypes = jobj.get("RateTypes").getAsJsonObject();
+	    JsonObject jobjrateplans = jobj.get("RatePlans").getAsJsonObject();
+	    
+	    List<OTARoomRoomTypes> otaroomtypes = toListRoomTypes(jobjroomtypes);
+	    List<OTARoomRateTypes> otaratetypes = toListRateTypes(jobjratetypes);
+	    List<OTARoomRatePlans> otarateplans = toListRatePlans(jobjrateplans);
+	   
+	    try {
+	
+		int c = 0;
+		for (OTARoomRoomTypes roomtype : otaroomtypes) {
+			c++;
+			roomtype.setId(c);
+			o = otaroomroomtypesdao.save(roomtype);
+		}
+
+		c = 0;
+		for (OTARoomRateTypes otaratetype : otaratetypes) {
+			c++;
+			otaratetype.setId(c);
+			o = otaroomratetypesDao.save(otaratetype);
+		}
+
+		c = 0;
+		for (OTARoomRatePlans otarateplan : otarateplans) {
+			c++;
+			otarateplan.setId(c);
+			o = otaroomrateplansdao.save(otarateplan);
+		}
+		
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	    
+	    OTARoomInfoDTO otaroominfodto = new OTARoomInfoDTO();
+	    otaroominfodto.setOtaroomroomtypes(otaroomtypes);
+	    otaroominfodto.setOtaroomratetypes(otaratetypes);
+	    otaroominfodto.setOtaroomrateplans(otarateplans);
+	    
+	    return otaroominfodto;
+	}
+	
+	
+	@Override
+	public OTARoomInfoDTO getRoomInformationFromDB() {
+		
+		List<OTARoomRoomTypes> otaroomtypes =  otaroomroomtypesdao.getAllRecords();
+		List<OTARoomRateTypes> otaratetypes =  otaroomratetypesDao.getAllRecords();
+		List<OTARoomRatePlans> otarateplans = otaroomrateplansdao.getAllRecords();
+		
+		OTARoomInfoDTO otaroominfodto = new OTARoomInfoDTO();
+		otaroominfodto.setOtaroomroomtypes(otaroomtypes);
+		otaroominfodto.setOtaroomratetypes(otaratetypes);
+		otaroominfodto.setOtaroomrateplans(otarateplans);
+		    
+		return otaroominfodto;
+	}
+	
+
+	@Override
+	public List<OTARoomRoomTypes> toListRoomTypes(JsonObject jobjroomtypes) {
+		
+		List<OTARoomRoomTypes> OTARoomTypes = new ArrayList<OTARoomRoomTypes>();
+		JsonArray roomtype = jobjroomtypes.get("RoomType").getAsJsonArray();
+		
+		for (int i = 0; i < roomtype.size(); i++) { 
+			try {
+				JsonObject jobjotaroomtypes = roomtype.get(i).getAsJsonObject();
+				String roomtypesid = jobjotaroomtypes.get("ID").getAsString();
+				String roomtypesname = jobjotaroomtypes.get("Name").getAsString();
+				
+				boolean isexistrooms = false;
+				String roomexists = jobjotaroomtypes.toString();
+				if(roomexists.contains("Rooms")) {
+					isexistrooms = true;
+				}
+				
+				if(isexistrooms == true) {
+				JsonArray rooms = jobjotaroomtypes.get("Rooms").getAsJsonArray();
+				for (int j = 0; j < rooms.size(); j++) { 
+					OTARoomRoomTypes otaroom = new OTARoomRoomTypes();
+					
+					JsonObject otarooms = rooms.get(j).getAsJsonObject();
+					otaroom.setRoomtypesid(roomtypesid);
+					otaroom.setRoomtypename(roomtypesname);
+					otaroom.setRoomid(otarooms.get("RoomID").getAsString());
+					otaroom.setRoomname(otarooms.get("RoomName").getAsString());	
+					
+					OTARoomTypes.add(otaroom);
+				}
+				}else {
+					OTARoomRoomTypes otaroom = new OTARoomRoomTypes();
+					
+					otaroom.setRoomtypesid(roomtypesid);
+					otaroom.setRoomtypename(roomtypesname);
+					otaroom.setRoomid("No Rooms Available");
+					otaroom.setRoomname("No Rooms Available");
+					
+					OTARoomTypes.add(otaroom);
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			} 
+		}
+		return OTARoomTypes;
+	}
+	
+	
+	@Override
+	public List<OTARoomRateTypes> toListRateTypes(JsonObject jobjratetypes) {
+		
+		List<OTARoomRateTypes>  otaratetypes = new ArrayList<OTARoomRateTypes>();
+		JsonArray jsonobjratetype = jobjratetypes.get("RateType").getAsJsonArray();
+		
+		for (int i = 0; i < jsonobjratetype.size(); i++) { 
+			try {
+				
+				OTARoomRateTypes otaratetype = new OTARoomRateTypes();
+				JsonObject ratetype = jsonobjratetype.get(i).getAsJsonObject();
+				otaratetype.setRoomtypesid(ratetype.get("ID").getAsString());
+				otaratetype.setRoomtypesname(ratetype.get("Name").getAsString());
+				
+				otaratetypes.add(otaratetype);
+			} catch (Exception e) {
+				e.printStackTrace();
+			} 
+		}
+		return otaratetypes;
+	}
+	
+	@Override
+	public List<OTARoomRatePlans> toListRatePlans(JsonObject jobjrateplans) {
+	
+		List<OTARoomRatePlans> otarateplans = new ArrayList<OTARoomRatePlans>();
+		JsonArray jarrrateplans = jobjrateplans.get("RatePlan").getAsJsonArray();
+		
+		for (int i = 0; i < jarrrateplans.size(); i++) { 
+			try {
+				OTARoomRatePlans otarate = new OTARoomRatePlans();
+				JsonObject ratetype = jarrrateplans.get(i).getAsJsonObject();
+				
+				otarate.setRateplanid(ratetype.get("RatePlanID").getAsString());
+				otarate.setRoomname(ratetype.get("Name").getAsString());
+				otarate.setRoomtypeid(ratetype.get("RoomTypeID").getAsString());
+				otarate.setRoomtype(ratetype.get("RoomType").getAsString());
+				otarate.setRatetypeid(ratetype.get("RateTypeID").getAsString());
+				otarate.setRatetype(ratetype.get("RateType").getAsString());
+			
+				otarateplans.add(otarate);
+			} catch (Exception e) {
+				e.printStackTrace();
+			} 
+		}
+		return otarateplans;
+	}
+	
+	
+	@Override
+	public List<OTARoomDetailsDTO> getOtareservationSingleroom(HotelInfo hotel, int reservationid) {
+		
+		int o = 0;
+		String hotelcode = hotel.getHotelcode();
+		String hotelauthkey = hotel.getAuthkey();
+		
+		List<OTARoomDetailsDTO> otaroomdetailslist =  new ArrayList<OTARoomDetailsDTO>();
+		
+		try {
+		JSONObject request = new JSONObject();
+		JSONObject auth = new JSONObject();
+		
+		auth.put("hotel_id", hotelcode);
+		auth.put("reservation_id", reservationid);
+		request.put("request_type", "get_reservation"); 
+		request.put("body", auth);
+		String json = request.toString();
+		String url = "https://live.ipms247.com/channelbookings/vacation_rental.php";
+		
+	    JsonObject jsonobject = onlineTravelAgentServiceImpl.Post_JSON_Header(url, json, hotel);
+	    
+	    String status = jsonobject.get("status").getAsString();
+	    JsonArray jarr = jsonobject.get("data").getAsJsonArray();
+	  
+	    if(status.equals("success")) {
+	    	for(int i = 0; i< jarr.size();i++) {
+	    		JsonObject otaroom = jarr.get(i).getAsJsonObject();
+	    		OTARoomDetailsDTO otaroomdetails = new OTARoomDetailsDTO();
+	    		
+	    		otaroomdetails.setId(i+1);
+	    		otaroomdetails.setHotel_id(otaroom.get("hotel_id").getAsString());
+	    		otaroomdetails.setHotel_name(otaroom.get("hotel_name").getAsString());
+	    		otaroomdetails.setRoom_id(otaroom.get("room_id").getAsString());
+	    		otaroomdetails.setRoom_name(otaroom.get("room_name").getAsString());
+	    		otaroomdetails.setRoom_code(otaroom.get("room_code").getAsString());
+	    		otaroomdetails.setReservation_id(otaroom.get("reservation_id").getAsString());
+	    		otaroomdetails.setBooking_status(otaroom.get("booking_status").getAsString());
+	    		otaroomdetails.setGuest_name(otaroom.get("guest_name").getAsString());
+	    		otaroomdetails.setCheck_in(otaroom.get("check_in").getAsString());
+	    		otaroomdetails.setCheck_out(otaroom.get("check_out").getAsString());
+	    		otaroomdetails.setRemark(otaroom.get("remark").getAsString());
+	    		otaroomdetails.setTotal_amount(otaroom.get("total_amount").getAsString());
+	    		otaroomdetails.setCurrency(otaroom.get("currency").getAsString());
+	    		otaroomdetails.setChannel(otaroom.get("channel").getAsString());
+	    		otaroomdetails.setPayment_type(otaroom.get("payment_type").getAsString());
+	    		
+	    		otaroomdetailslist.add(otaroomdetails);
+	    	}
+	    }
+	    
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return otaroomdetailslist;
+	}
+	
+
+	
+	@Override
+	public List<OTARoomInventoryDTO> getRetrieveRoomInventory(HotelInfo hotel) {
+		
+		List<OTARoomInventoryDTO> otaroominvList  = new ArrayList<OTARoomInventoryDTO>();
+		String hotelcode = hotel.getHotelcode();
+		String hotelauthkey = hotel.getAuthkey();
+		
+		String xmldata = "<?xml version=\"1.0\" standalone=\"yes\"?><RES_Request><Request_Type>Inventory</Request_Type><Authentication><HotelCode>"+hotelcode+"</HotelCode><AuthCode>"+hotelauthkey+"</AuthCode></Authentication><FromDate>2020-10-05</FromDate><ToDate>2020-11-18</ToDate></RES_Request>";
+		String url = "https://live.ipms247.com/pmsinterface/getdataAPI.php";
+		
+		JSONObject jobj = onlineTravelAgentServiceImpl.getUrlContents(url, xmldata);
+		String data = jobj.toString();
+		
+		try {
+			
+			JSONObject jobjresresponse = (JSONObject) jobj.get("RES_Response");
+			JSONObject jobjroominfo = (JSONObject) jobjresresponse.get("RoomInfo");
+			JSONObject jobjsource = (JSONObject) jobjroominfo.get("Source");
+			JSONObject jobjroomtypes = (JSONObject) jobjsource.get("RoomTypes");
+			JSONArray jobjrooms =  (JSONArray) jobjroomtypes.get("RoomType");
+			
+			for(int i=0; i< jobjrooms.length() ;i++) {
+				JSONObject jobjeachroom = (JSONObject) jobjrooms.get(i);
+				
+				OTARoomInventoryDTO otaroominv  = new OTARoomInventoryDTO();
+				
+				otaroominv.setId(i+1);
+				otaroominv.setRoomtypeid(jobjeachroom.get("RoomTypeID").toString()); 
+				otaroominv.setAvailability(jobjeachroom.get("Availability").toString()); 
+				otaroominv.setFromdate(jobjeachroom.get("FromDate").toString());
+				otaroominv.setTodate(jobjeachroom.get("ToDate").toString());
+				
+				otaroominvList.add(otaroominv);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	    
+		return otaroominvList;
+	}
+	
+	
+	
+	@Override
+	public OTAReservationDTO getInventory(HotelInfo hotel) {
+		
+		String hotelcode = hotel.getHotelcode();
+		String hotelauthkey = hotel.getAuthkey();
+		
+		String xmldata = "<?xml version=\"1.0\" standalone=\"yes\"?><Request_Type>Inventory</Request_Type><Authentication><HotelCode>hotelcode</HotelCode><AuthCode>hotelauthkey</AuthCode></Authentication><FromDate>2020-03-05</FromDate><ToDate>2020-03-18</ToDate></RES_Request>";
+		String url = "https://live.ipms247.com/pmsinterface/getdataAPI.php";
+		
+		org.json.JSONObject response = onlineTravelAgentServiceImpl.getUrlContents(url, xmldata);
+		String data = response.toString();
+		
+		 
+	    System.out.println("getInventory=====>"+data);
+	    
+		return null;
 	}
 
 	
+
+
+	
+
+
 	
 }

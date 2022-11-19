@@ -62,7 +62,7 @@
 			</div>
 			<div class="col-sm-10 datatable">
 					
-					<c:import url="../reservation/reservationlist.jsp" />
+<%-- 					<c:import url="../reservation/reservationlist.jsp" /> --%>
 					
 			</div>
 

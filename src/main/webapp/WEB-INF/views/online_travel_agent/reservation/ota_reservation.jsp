@@ -70,6 +70,15 @@
 						<li class="nav-item"><button class="btn btn-outline" id="btn-notification" 	style="width : 100%;"> 
 						<a class="nav-link linkcolor" href="#">Notification</a></button></li>
 						
+						<li class="nav-item"><button class="btn btn-outline" id="btn-roominfo" 	style="width : 100%;"> 
+						<a class="nav-link linkcolor" href="#">Room Information</a></button></li>
+						
+						<li class="nav-item"><button class="btn btn-outline" id="btn-reservationsingle" style="width : 100%;"> 
+						<a class="nav-link linkcolor" href="#">Room Details</a></button></li>
+						
+						<li class="nav-item"><button class="btn btn-outline" id="btn-roominventory" style="width : 100%;"> 
+						<a class="nav-link linkcolor" href="#">Room Inventory</a></button></li>
+						
 					</ul>
 				</div>
 			</div>

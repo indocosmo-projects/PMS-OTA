@@ -2,14 +2,17 @@ package com.indocosmo.pms.web.ota.service.login;
 
 import java.util.List;
 
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import com.google.gson.JsonObject;
 import com.indocosmo.pms.web.ota.dao.login.OTALoginDaoImpl;
 import com.indocosmo.pms.web.ota.dto.hotel.HotelInfoDTO;
 import com.indocosmo.pms.web.ota.entity.hotel.HotelInfo;
 import com.indocosmo.pms.web.ota.service.common.OnlineTravelAgentServiceImpl;
+import com.sun.mail.iap.Response;
 
 @Service
 public class OTALoginServiceImpl implements OTALoginServiceInterface {
@@ -21,9 +24,6 @@ public class OTALoginServiceImpl implements OTALoginServiceInterface {
 	@Autowired
 	private OnlineTravelAgentServiceImpl onlineTravelAgentServiceImpl;
 	
-	private String hotelCode = "";
-	private String hotelname = "";
-	private String hotelauthkey = "";
 	
 	@Override
 	public HotelInfoDTO gethotelinfo(String name, String password) {
@@ -31,9 +31,8 @@ public class OTALoginServiceImpl implements OTALoginServiceInterface {
 		String xmldata = "<?xml version=\"1.0\" standalone=\"yes\"?><request><auth>"+password+"</auth><oprn>gethotelinfo</oprn></request>";
 		String url = "https://live.ipms247.com/index.php/page/service.pos2pms";
 		
-		ResponseEntity<String> response = onlineTravelAgentServiceImpl.getUrlContents(url, xmldata);
-		String data = response.getBody();
-	    System.out.println(response.getStatusCode()+ "--" + response);
+		JSONObject jobj = onlineTravelAgentServiceImpl.getUrlContents(url, xmldata);
+		String data = jobj.toString();
 	  
 	    HotelInfoDTO hotelInfo = new HotelInfoDTO();
 	    HotelInfo hoteldet = new HotelInfo();
@@ -45,21 +44,23 @@ public class OTALoginServiceImpl implements OTALoginServiceInterface {
       }else {
       	lastdata = new HotelInfo();
       }
-      
-	    if(response.getStatusCode().toString().equals("200")) {
-	    	String Hotelname = data.substring(data.lastIndexOf("<hotelname>")+11, data.indexOf("</hotelname>"));
-	 	    String HotelCode = data.substring(data.lastIndexOf("<hotelcode>")+11, data.indexOf("</hotelcode>"));
+      try {
+    	  
+	    if(data.contains("success") && data.contains("ok")) {
+	    	
+	    	JSONObject jobjresponse = (JSONObject) jobj.get("response");
+	    	String HotelCode = jobjresponse.get("hotelcode").toString();
+	    	String Hotelname = jobjresponse.get("hotelname").toString();
 	    	
 	 	    hotelInfo.setHotelcode(HotelCode);
 	    	hotelInfo.setHotelname(Hotelname);
 	    	hotelInfo.setSuccessmsg("success");
-	    	hotelInfo.setStatus(response.getStatusCode().toString());
+	    	hotelInfo.setStatus("200");
 	    	hotelInfo.setPassword(password);
 	    	hotelInfo.setUsername(name);
-	    	
+	   
 	    	if(hotellist != null && hotellist.size() > 0) {
 	    		hoteldet = hotellist.get(0);
-	//    		int i = onlineTravelAgentDaoImpl.update(hoteldet);
 	    	}else {
 	    		hoteldet.setId(lastdata.getId()+1);
 		    	hoteldet.setHotelcode(HotelCode);
@@ -69,19 +70,14 @@ public class OTALoginServiceImpl implements OTALoginServiceInterface {
 		    	hoteldet.setIsdeleted(0);
 		    	int j = onlineTravelAgentDaoImpl.save(hoteldet);
 	    	}
-	    	
-	    	hotelCode = name;
-	    	hotelname = Hotelname;
-	    	hotelauthkey = password;
-	    	
-	    	
 	    }else {
-	    	hotelInfo.setStatus(response.getStatusCode().toString());
+	    	hotelInfo.setStatus("611");
 	    	hotelInfo.setErrormsg("Unauthorized Access: Invalid Auth Code or Hotel Code. ErrorCode : 611");
-	    	hotelCode = "";
-	    	hotelname = "";
-	    	hotelauthkey = "";
 	    }
+	    
+	  	} catch (Exception e) {
+			e.printStackTrace();
+		}
 	    
 		return hotelInfo;
 	}

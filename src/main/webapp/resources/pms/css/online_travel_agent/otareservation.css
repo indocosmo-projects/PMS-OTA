@@ -44,6 +44,13 @@ body{
 	color: black;
 }
 
+.roominfolist{
+	height: 50px;
+	display : inline-block;
+}
 
-
+.reservationsinglelist{
+	height: 50px;
+	display : inline-block;
+}
 

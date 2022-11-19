@@ -21,7 +21,8 @@ import java.io.StringReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import org.apache.commons.io.IOUtils;
-import org.json.simple.JSONObject;
+import org.json.XML;
+import org.json.JSONObject;
 
 import javax.xml.parsers.DocumentBuilderFactory;
 import org.w3c.dom.Document;
@@ -35,6 +36,8 @@ import com.indocosmo.pms.web.ota.dao.login.OTALoginDaoImpl;
 import com.indocosmo.pms.web.ota.dto.hotel.HotelInfoDTO;
 import com.indocosmo.pms.web.ota.entity.hotel.HotelInfo;
 
+
+
 @Service
 public class OnlineTravelAgentServiceImpl implements OnlineTravelAgentServiceInterface {
 	
@@ -42,11 +45,7 @@ public class OnlineTravelAgentServiceImpl implements OnlineTravelAgentServiceInt
 	@Autowired
 	private OTALoginDaoImpl onlineTravelAgentDaoImpl;
 	
-	  private String hotelCode = "";
-	  private String hotelname = "";
-	  private String hotelauthkey = "";
-	
-	  public  ResponseEntity<String> getUrlContents(String url, String xmldata){  
+	  public  JSONObject getUrlContents(String url, String xmldata){  
 		  RestTemplate restTemplate =  new RestTemplate();
 		    List<HttpMessageConverter<?>> messageConverters = new ArrayList<HttpMessageConverter<?>>();
 		    messageConverters.add(new StringHttpMessageConverter());
@@ -57,11 +56,18 @@ public class OnlineTravelAgentServiceImpl implements OnlineTravelAgentServiceInt
 		    HttpEntity<String> request = new HttpEntity<String>(xmldata, headers);
 		    
 		    ResponseEntity<String> response = restTemplate.postForEntity(url, request, String.class);
-		    return response;
+		    JSONObject jsondata = null;
+		    try {
+		    	jsondata = XML.toJSONObject(response.getBody());
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		    
+		    return jsondata;
 	  }  
 	  
 	  
-		public JsonObject  Post_JSON( String query_url,String json) {
+		public JsonObject  Post_JSON(String query_url,String json) {
 		JsonObject jsonObject = null;
 		try {
 			URL url = new URL(query_url);
@@ -76,7 +82,6 @@ public class OnlineTravelAgentServiceImpl implements OnlineTravelAgentServiceInt
 			os.close();
 			InputStream in = new BufferedInputStream(conn.getInputStream());
 			String result = IOUtils.toString(in, "UTF-8");
-			System.out.println("===>result after Reading JSON Response ==>" + result);
 
 			JsonParser jsonParser = new JsonParser();
 			jsonObject = jsonParser.parse(result).getAsJsonObject();
@@ -87,54 +92,40 @@ public class OnlineTravelAgentServiceImpl implements OnlineTravelAgentServiceInt
 			System.out.println(e);
 		}
 	      return jsonObject ;
-	}
-
-
-	
-
-	@Override
-	public ResponseEntity<String> getHotelList() {
-		String xmldata = "{    \r\n" + 
-				"            \"RES_Request\": {\r\n" + 
-				"            \"Request_Type\": \"RoomInfo\",\r\n" + 
-				"            \"NeedPhysicalRooms\":1,\r\n" + 
-				"            \"Authentication\": {\r\n" + 
-				"                \"HotelCode\": "+ hotelCode +",\r\n" + 
-				"                \"AuthCode\": "+hotelauthkey+"\r\n" + 
-				"            }\r\n" + 
-				"    }\r\n" + 
-				"} ";
-		String url = "https://live.ipms247.com/pmsinterface/pms_connectivity.php";
+		}
 		
-		ResponseEntity<String> response = getUrlContents(url,xmldata);
-	    System.out.println("getHotelList===>"+ response);
-	    
-	    String data = response.getBody();
 		
-	    return response;
-	}
+		public JsonObject  Post_JSON_Header(String query_url,String json, HotelInfo hotel) {
+			JsonObject jsonObject = null;
+			try {
+				URL url = new URL(query_url);
+				HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+				conn.setConnectTimeout(5000);
+				conn.setRequestProperty("Content-Type", "application/json");
+				conn.setRequestProperty("AUTH_CODE", hotel.getAuthkey());
+				conn.setDoOutput(true);
+				conn.setDoInput(true);
+				conn.setRequestMethod("POST");
+				OutputStream os = conn.getOutputStream();
+				os.write(json.getBytes("UTF-8"));
+				os.close();
+				InputStream in = new BufferedInputStream(conn.getInputStream());
+				String result = IOUtils.toString(in, "UTF-8");
+				JsonParser jsonParser = new JsonParser();
+				jsonObject = jsonParser.parse(result).getAsJsonObject();
+				
+				in.close();
+				conn.disconnect();
+			} catch (Exception e) {
+				System.out.println(e);
+			}
+		      return jsonObject ;
+			}
+		
+		
+		
+		
 
-	@Override
-	public ResponseEntity<String> getHotelDetails() {
-		String xmldata = "{    \r\n" + 
-				"            \"RES_Request\": {\r\n" + 
-				"            \"Request_Type\": \"HotelList\",\r\n" + 
-				"            \"NeedPhysicalRooms\":1,\r\n" + 
-				"            \"Authentication\": {\r\n" + 
-				"                \"HotelCode\": "+ hotelCode +",\r\n" + 
-				"                \"AuthCode\": "+hotelauthkey+"\r\n" + 
-				"            }\r\n" + 
-				"    }\r\n" + 
-				"} ";
-		String url = "https://live.ipms247.com/booking/reservation_api/listing.php";
-		
-		ResponseEntity<String> response = getUrlContents(url,xmldata);
-	    System.out.println("getHotelDetails===>"+ response);
-	    
-	    String data = response.getBody();
-		
-	    return response;
-	}
 	
 	@Override
 	public ResponseEntity<String> getUpdateRoomRates() {
@@ -142,8 +133,8 @@ public class OnlineTravelAgentServiceImpl implements OnlineTravelAgentServiceInt
 				"		 \"RES_Request\": {\r\n" + 
 				"		         \"Request_Type\": \"UpdateRoomRates\",\r\n" + 
 				"		         \"Authentication\": {\r\n" + 
-				"		             \"HotelCode\": "+hotelCode+",\r\n" + 
-				"		             \"AuthCode\": "+hotelauthkey+"\r\n" + 
+				"		             \"HotelCode\": "+"hotelCode"+",\r\n" + 
+				"		             \"AuthCode\": "+"hotelauthkey"+"\r\n" + 
 				"		         },\r\n" + 
 				"		        \"Sources\": {\r\n" + 
 				"		             \"ContactId\": [\r\n" + 
@@ -178,37 +169,13 @@ public class OnlineTravelAgentServiceImpl implements OnlineTravelAgentServiceInt
 		
 		String url = "https://live.ipms247.com/pmsinterface/pms_connectivity.php";
 		
-		ResponseEntity<String> response = getUrlContents(url,xmldata);
+		JSONObject response = getUrlContents(url,xmldata);
 	    System.out.println("getUpdateRoomRates===>"+ response);
 	    
-	    String data = response.getBody();
+	    
 		
-	    return response;
+	    return null;
 	}
-	  
-	@Override
-	public ResponseEntity<String> getInventory() {
-	String xmldata = "<?xml version=\"1.0\" standalone=\"yes\"?><RES_Request>   \r\n" + 
-			"	<Request_Type>Inventory</Request_Type>\r\n" + 
-			"	   <Authentication>\r\n" + 
-			"	       <HotelCode>"+hotelCode+"</HotelCode>\r\n" + 
-			"	       <AuthCode>"+hotelauthkey+"</AuthCode>\r\n" + 
-			"	   </Authentication>\r\n" + 
-			"	   <FromDate>2020-03-05</FromDate>\r\n" + 
-			"	   <ToDate>2020-03-18</ToDate>\r\n" + 
-			"	</RES_Request>";
-
-		String url = "https://live.ipms247.com/index.php/page/service.pos2pms";
-		
-		ResponseEntity<String> response = getUrlContents(url, xmldata);
-		System.out.println("getInventory===>"+ response);
-		 
-		String data = response.getBody();
-		   
-		return response;
-	}
-
-	
 	
 
 	

@@ -107,18 +107,14 @@ public class OTALoginController {
 	}
 	
 	
-	
-	
 	@RequestMapping(value = "/otalogout", method = RequestMethod.GET)
 	public String logout(Model model, HttpSession session,HttpServletResponse response) throws IOException, ServletException {
 		String pageUrl = ONLINE_TRAVELAGENT_PAGE_LOGIN;
 		HotelInfo hotel = new HotelInfo();
 		model.addAttribute("hotel", hotel);
 		session.setAttribute("iscanview", false);
-	//	session.invalidate();
 		
 		return pageUrl;
 	}
-	
 	
 }
