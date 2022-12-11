@@ -1,5 +1,7 @@
 package com.indocosmo.pms.web.ota.controller.reservation;
 
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -11,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.indocosmo.pms.web.common.PageAccessPermissionService;
-import com.indocosmo.pms.web.ota.dto.hotel.HotelInfoDTO;
 import com.indocosmo.pms.web.ota.dto.reservation.OTAReservationDTO;
 import com.indocosmo.pms.web.ota.dto.reservation.OTARoomDetailsDTO;
 import com.indocosmo.pms.web.ota.dto.reservation.OTARoomInfoDTO;
@@ -21,6 +22,9 @@ import com.indocosmo.pms.web.ota.service.reservation.OTAReservationServiceImpl;
 import com.indocosmo.pms.web.syetemDefPermission.model.SysPermissions;
 import com.indocosmo.pms.web.syetemDefPermission.service.SysPermissionsService;
 import com.indocosmo.pms.web.systemSettings.service.SystemSettingsService;
+
+import java.time.format.DateTimeFormatter;  
+import java.time.LocalDateTime;  
 
 @RestController
 @RequestMapping(value = "/otadata")
@@ -48,13 +52,17 @@ public class OTAReservationController {
 	
 	@RequestMapping(value = "/otareservationlist", method = RequestMethod.GET)
 	public OTAReservationDTO getReservationList(HttpSession session) throws Exception{
-
+		
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");  
+		LocalDateTime now = LocalDateTime.now();   
 		HotelInfo hotel = (HotelInfo) session.getAttribute("hotel");
 		OTAReservationDTO ota = otaReservationServiceImpl.getRetrieveAll(hotel);
 //		OTAReservationDTO ota = otaReservationServiceImpl.getRetrieveAllNewReservation(hotel);
-		return ota;
+		session.setAttribute("refreshdatetime", now); 
 		
+		return ota;
 	}
+	
 	
 	@RequestMapping(value = "/otareservationlistFromDB", method = RequestMethod.GET)
 	public OTAReservationDTO getReservationListFromDB(HttpSession session) throws Exception{
@@ -70,14 +78,10 @@ public class OTAReservationController {
 			@RequestParam String PMS_BookingId, @RequestParam String Status,
 			HttpSession session) throws Exception{
 		
-		String response = "";
+	
 		HotelInfo hotel = (HotelInfo) session.getAttribute("hotel");
-		HotelInfoDTO hotelinfo = otaReservationServiceImpl.getBookingReceived(hotel,BookingId,PMS_BookingId,Status);
-		if(hotelinfo.getErrorcode().equals("0") == true) {
-			response = hotelinfo.getSuccessmsg();
-		}else {
-			response = hotelinfo.getErrormsg();
-		}
+		String response = otaReservationServiceImpl.getBookingReceived(hotel,BookingId,PMS_BookingId,Status);
+		
 		return response;
 		
 	}
@@ -101,16 +105,6 @@ public class OTAReservationController {
 		
 	}
 	
-	@RequestMapping(value = "/otainventory", method = RequestMethod.GET)
-	public OTAReservationDTO getInventory(HttpSession session) throws Exception{
-		
-		HotelInfo hotel = (HotelInfo) session.getAttribute("hotel");
-		OTAReservationDTO ota = otaReservationServiceImpl.getInventory(hotel);
-		return ota;
-		
-	}
-	
-	
 	
 	@RequestMapping(value = "/bookingid", method = RequestMethod.GET)
 	public OTAReservationDTO getBookingId(HttpSession session) throws Exception{
@@ -128,15 +122,9 @@ public class OTAReservationController {
 		
 	}
 	
-	@RequestMapping(value = "/otaretrieveroominventory", method = RequestMethod.POST)
-	public List<OTARoomInventoryDTO> getRetrieveRoomInventory(@RequestParam String fdate,@RequestParam String tdate,HttpSession session) throws Exception{
-		
-		HotelInfo hotel = (HotelInfo) session.getAttribute("hotel");
-		List<OTARoomInventoryDTO>  otaroominventorydto = otaReservationServiceImpl.getRetrieveRoomInventory(hotel);
-		
-		return otaroominventorydto;
-		
-	}
+
+
+	
 	
 	
 	

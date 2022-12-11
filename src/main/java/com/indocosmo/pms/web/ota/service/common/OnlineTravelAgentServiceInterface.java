@@ -15,6 +15,4 @@ public interface OnlineTravelAgentServiceInterface {
 	
 	public JsonObject  Post_JSON_Header(String query_url,String json, HotelInfo hotel);
 	
-	public ResponseEntity<String> getUpdateRoomRates();
-	
 }

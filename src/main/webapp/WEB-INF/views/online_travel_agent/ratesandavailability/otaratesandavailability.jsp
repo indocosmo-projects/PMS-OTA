@@ -52,38 +52,20 @@
 				<div class="verticalnav" >
 
 					<ul class="nav flex-column" >
-						<li class="nav-item"><button class="btn btn-outline " id="btn-reservation" 	style="width : 100%;"> 
-						<a class="nav-link linkcolor" href="#">Reservations</a></button></li>
 						
-						<li class="nav-item"><button class="btn btn-outline" id="btn-rental" 	style="width : 100%;"> 
-						<a class="nav-link linkcolor" href="#">Rental Info</a></button></li>
+						<li class="nav-item"><button class="btn btn-outline" id="btn-roominventory" style="width : 100%;"> 
+						<a class="nav-link linkcolor" href="#">Room Inventory</a></button></li>
 						
-						<li class="nav-item"><button class="btn btn-outline" id="btn-booktrans" 	style="width : 100%;"> 
-						<a class="nav-link linkcolor" href="#">Booking Trans</a></button></li>
+						<li class="nav-item"><button class="btn btn-outline" id="btn-updatelinear" style="width : 100%;"> 
+						<a class="nav-link linkcolor" href="#">Linear Rate</a></button></li>
 						
-						<li class="nav-item"><button class="btn btn-outline" id="btn-taxdetil" 	style="width : 100%;"> 
-						<a class="nav-link linkcolor" href="#">Tax Details</a></button></li>
-						
-						<li class="nav-item"><button class="btn btn-outline" id="btn-cancelreservation" 	style="width : 100%;"> 
-						<a class="nav-link linkcolor" href="#">Cancelled</a></button></li>
-						
-						<li class="nav-item"><button class="btn btn-outline" id="btn-notification" 	style="width : 100%;"> 
-						<a class="nav-link linkcolor" href="#">Notification</a></button></li>
-						
-						<li class="nav-item"><button class="btn btn-outline" id="btn-roominfo" 	style="width : 100%;"> 
-						<a class="nav-link linkcolor" href="#">Room Information</a></button></li>
-						
-						<li class="nav-item"><button class="btn btn-outline" id="btn-reservationsingle" style="width : 100%;"> 
-						<a class="nav-link linkcolor" href="#">Room Details</a></button></li>
-						
-						
-						
+							
 					</ul>
 				</div>
 			</div>
 			<div class="col-sm-10 datatable">
 
-				<c:import url="../reservation/reservationlist.jsp" />
+				<c:import url="../ratesandavailability/ratesandavailabilityList.jsp" />
 
 			</div>
 
@@ -92,7 +74,7 @@
 	
 	
 	<script type="text/javascript"
-			src="<c:url value='/resources/pms/js/online_travel_agent/otareservation.js' />"></script>
+			src="<c:url value='/resources/pms/js/online_travel_agent/otaratesandavailability.js' />"></script>
 	
 </body>
 </html>

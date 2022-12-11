@@ -6,20 +6,28 @@ body{
     padding : 10px;
     background-color: grey;
     color : black;
-    height: 87vh;
+    height: 100vh;
     width : 100%;
     border : 2px solid black;
+    overflow: hidden;
 }
 
 .datatable{
 	padding : 10px;
 	background-color : white;
 	padding-right : 10px;
+	height: 100vh;
 }
 
 .tdwidth{
 	width : 200px;
 }
+
+table thead .tdwidth{
+	background-color : black !important;
+	
+}
+
 
 .default{
 	position : relative;
@@ -52,5 +60,21 @@ body{
 .reservationsinglelist{
 	height: 50px;
 	display : inline-block;
+}
+
+.header1{
+	background-color : lightblue;
+	padding : 10px;
+	color : white;
+	border : 2px solid white;
+	border-radius : 5px;
+}
+
+.header2{
+	background-color : lightblue;
+	padding : 10px;
+	color : white;
+	border : 2px solid white;
+	border-radius : 5px;
 }
 
