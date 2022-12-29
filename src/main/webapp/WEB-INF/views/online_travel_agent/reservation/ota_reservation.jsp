@@ -48,10 +48,10 @@
 
 	<div>
 		<div class="row">
-			<div class="col-sm-2 ">
-				<div class="verticalnav">
+			<div class="col-sm-2 col-md-2" style="overflow : auto;">
+				<div class="verticalnav" >
 
-					<ul class="nav flex-column">
+					<ul class="nav flex-column" >
 						<li class="nav-item"><button class="btn btn-outline " id="btn-reservation" 	style="width : 100%;"> 
 						<a class="nav-link linkcolor" href="#">Reservations</a></button></li>
 						
@@ -76,13 +76,12 @@
 						<li class="nav-item"><button class="btn btn-outline" id="btn-reservationsingle" style="width : 100%;"> 
 						<a class="nav-link linkcolor" href="#">Room Details</a></button></li>
 						
-						<li class="nav-item"><button class="btn btn-outline" id="btn-roominventory" style="width : 100%;"> 
-						<a class="nav-link linkcolor" href="#">Room Inventory</a></button></li>
+						
 						
 					</ul>
 				</div>
 			</div>
-			<div class="col-sm-10 datatable">
+			<div class="col-sm-10 col-md-10 datatable">
 
 				<c:import url="../reservation/reservationlist.jsp" />
 

@@ -13,21 +13,34 @@
         	<li class="nav-item">
                 <a class="nav-link" href="/pms/onlinetravelagent/online_travel_agent_dashboard">Home</a>
             </li>
-        	<li class="nav-item">
-                <a class="nav-link" href="/pms/onlinetravelagent/otareservation">Reservations</a>
+            <li class="nav-item">
+                <a class="nav-link" href="/pms/onlinetravelagent/otaratesandavailability">Rates And Availabilty</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Rooms And Availabilty</a>
+                <a class="nav-link" href="/pms/onlinetravelagent/otabookings">Bookings</a>
             </li>
-         </ul>
-         <ul class="log ">
-         	<li class="nav-item logoutbtn">
-            	<button class="btn btn-success" onclick="logout();">Logout</button>
+             <li class="nav-item">
+                <a class="nav-link" href="/pms/onlinetravelagent/otafinance">Finance</a>
+            </li>
+             <li class="nav-item">
+                <a class="nav-link" href="/pms/onlinetravelagent/otahousekeeping">Housekeeping</a>
+            </li>
+             <li class="nav-item">
+                <a class="nav-link" href="/pms/onlinetravelagent/otaotarms">OTA/RMS</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/pms/onlinetravelagent/otaothers">Others</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/pms/onlinetravelagent/otaconfiguration">Configuration</a>
             </li>
          	<li class="nav-item logoutbtn">
-            	<div class="hotelname">
-            	 <img src="/pms/resources/common/images/profile_pic.svg" alt="logo" style="width:20px;"> 
-            	 ${name}
+         		<div>
+	            	<div class="hotelname">
+	            	 <img src="/pms/resources/common/images/profile_pic.svg" alt="logo" style="width:20px;"> 
+	            	 ${name}
+	            	 <button class="btn btn-success" onclick="logout();" title="Logout">Logout</button>
+	            	</div>
             	</div>
             </li>
             
