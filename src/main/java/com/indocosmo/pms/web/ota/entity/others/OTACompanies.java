@@ -63,6 +63,12 @@ public class OTACompanies {
     @Column(name = "isactive")
     private String isactive;
     
+    private String commissionplan;
+    
+    private String commissionvalue;
+    
+    private String discount;
+    
 	public int getSid() {
 		return sid;
 	}
@@ -197,6 +203,30 @@ public class OTACompanies {
 
 	public void setIsactive(String isactive) {
 		this.isactive = isactive;
+	}
+
+	public String getCommissionplan() {
+		return commissionplan;
+	}
+
+	public void setCommissionplan(String commissionplan) {
+		this.commissionplan = commissionplan;
+	}
+
+	public String getCommissionvalue() {
+		return commissionvalue;
+	}
+
+	public void setCommissionvalue(String commissionvalue) {
+		this.commissionvalue = commissionvalue;
+	}
+
+	public String getDiscount() {
+		return discount;
+	}
+
+	public void setDiscount(String discount) {
+		this.discount = discount;
 	}
     
     

@@ -33,6 +33,7 @@ import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
 
+import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.indocosmo.pms.web.ota.dao.login.OTALoginDaoImpl;
@@ -148,6 +149,33 @@ public class OnlineTravelAgentServiceImpl implements OnlineTravelAgentServiceInt
 		      return jsonObject ;
 			}
 		
+		
+		public JsonArray  Post_JSONARR_Header(String query_url,String json, HotelInfo hotel) {
+			JsonArray jsonArray = null;
+			try {
+				URL url = new URL(query_url);
+				HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+				conn.setConnectTimeout(5000);
+				conn.setRequestProperty("Content-Type", "application/json");
+				conn.setRequestProperty("AUTH_CODE", hotel.getAuthkey());
+				conn.setDoOutput(true);
+				conn.setDoInput(true);
+				conn.setRequestMethod("POST");
+				OutputStream os = conn.getOutputStream();
+				os.write(json.getBytes("UTF-8"));
+				os.close();
+				InputStream in = new BufferedInputStream(conn.getInputStream());
+				String result = IOUtils.toString(in, "UTF-8");
+				JsonParser jsonParser = new JsonParser();
+				jsonArray = jsonParser.parse(result).getAsJsonArray();
+				
+				in.close();
+				conn.disconnect();
+			} catch (Exception e) {
+				System.out.println(e);
+			}
+		      return jsonArray ;
+			}
 		
 		
 		public String  Post_JSON_CSV(String query_url,String json, HotelInfo hotel) {

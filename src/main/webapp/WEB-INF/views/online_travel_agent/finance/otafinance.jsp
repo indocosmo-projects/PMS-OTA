@@ -48,27 +48,41 @@
 
 	<div>
 		<div class="row">
-			<div class="col-sm-2 " style="overflow : auto;">
+			<div class="col-sm-2 col-md-2" style="overflow : auto;">
 				<div class="verticalnav" >
 
 					<ul class="nav flex-column" >
-						<li class="nav-item"><button class="btn btn-outline " id="btn-reservation" 	style="width : 100%;"> 
-						<a class="nav-link linkcolor" href="#">Reservations</a></button></li>
+						<li class="nav-item"><button class="btn btn-outline " id="btn-extraslist" style="width : 100%;"> 
+						<a class="nav-link linkcolor" href="#">Extras</a></button></li>
 						
-						<li class="nav-item"><button class="btn btn-outline" id="btn-rental" 	style="width : 100%;"> 
-						<a class="nav-link linkcolor" href="#">Rental Info</a></button></li>
+						<li class="nav-item"><button class="btn btn-outline" id="btn-hotelexpenseslist" style="width : 100%;"> 
+						<a class="nav-link linkcolor" href="#">Hotel Expenses</a></button></li>
 						
-						<li class="nav-item"><button class="btn btn-outline" id="btn-booktrans" 	style="width : 100%;"> 
-						<a class="nav-link linkcolor" href="#">Booking Trans</a></button></li>
+						<li class="nav-item"><button class="btn btn-outline" id="btn-billslist" style="width : 100%;"> 
+						<a class="nav-link linkcolor" href="#">Bills</a></button></li>
 						
-						<li class="nav-item"><button class="btn btn-outline" id="btn-taxdetil" 	style="width : 100%;"> 
-						<a class="nav-link linkcolor" href="#">Tax Details</a></button></li>
+						<li class="nav-item"><button class="btn btn-outline" id="btn-financialaccountslist" 	style="width : 100%;"> 
+						<a class="nav-link linkcolor" href="#">Financial Accounts</a></button></li>
 						
+						<li class="nav-item"><button class="btn btn-outline" id="btn-revenueslist" 	style="width : 100%;"> 
+						<a class="nav-link linkcolor" href="#">Revenues</a></button></li>
+						
+						<li class="nav-item"><button class="btn btn-outline" id="btn-outwardspaymentlist" 	style="width : 100%;"> 
+						<a class="nav-link linkcolor" href="#">Outwards Payments</a></button></li>
+						
+						<li class="nav-item"><button class="btn btn-outline" id="btn-inwardspaymentlist" 	style="width : 100%;"> 
+						<a class="nav-link linkcolor" href="#">Inwards Payments</a></button></li>
+						
+						<li class="nav-item"><button class="btn btn-outline" id="btn-journallist" 	style="width : 100%;"> 
+						<a class="nav-link linkcolor" href="#">Journals</a></button></li>
+						
+						<li class="nav-item"><button class="btn btn-outline" id="btn-incidentalinvoiceslist" 	style="width : 100%;"> 
+						<a class="nav-link linkcolor" href="#">Incidental Invoices</a></button></li>
 						
 					</ul>
 				</div>
 			</div>
-			<div class="col-sm-10 datatable">
+			<div class="col-sm-10 col-md-10 datatable">
 
 				<c:import url="../finance/financeList.jsp" />
 
@@ -79,7 +93,8 @@
 	
 	
 	<script type="text/javascript"
-			src="<c:url value='/resources/pms/js/online_travel_agent/otareservation.js' />"></script>
+			src="<c:url value='/resources/pms/js/online_travel_agent/otafinance.js' />"></script>
+	
 	
 </body>
 </html>

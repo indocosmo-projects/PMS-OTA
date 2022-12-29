@@ -736,12 +736,10 @@ public class OTAOTA_RmsServiceImpl implements OTAOTA_RmsServiceInterface {
 		payload.put("Request_Type","UpdateCOD");
 		request.put("RES_Request", payload);
 		String json =  request.toString();
-		System.out.println("--->"+json+"----");
 		
 		String url = "https://live.ipms247.com/pmsinterface/pms_connectivity.php";
 	    JsonObject jobj = onlineTravelAgentServiceImpl.Post_JSON(url, json);
 		String jobjresponse = jobj.toString();
-		System.out.println("--->"+hotelcode+"----"+jobjresponse);
 		
 		 try {
 		    	if(jobjresponse.contains("Success")) {

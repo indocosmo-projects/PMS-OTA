@@ -36,7 +36,7 @@
  
 <title>PMS</title>
 
-<link href="<c:url value="/resources/pms/css/online_travel_agent/otareservation.css"/>"
+<link href="<c:url value="/resources/pms/css/online_travel_agent/otabooking.css"/>"
 	rel="stylesheet">
 </head>
 
@@ -48,27 +48,107 @@
 
 	<div>
 		<div class="row">
-			<div class="col-sm-2 " style="overflow : auto;">
-				<div class="verticalnav" >
+			<div class="col-sm-2 col-md-2" style="overflow : auto;">
+				<div class="verticalnav divheight" >
 
 					<ul class="nav flex-column" >
-						<li class="nav-item"><button class="btn btn-outline " id="btn-reservation" 	style="width : 100%;"> 
-						<a class="nav-link linkcolor" href="#">Reservations</a></button></li>
+						<li class="nav-item"><button class="btn btn-outline " id="btn-checkavailabilitylist" 	style="width : 100%;"> 
+						<a class="nav-link linkcolor" href="#">Check Availability</a></button></li>
 						
-						<li class="nav-item"><button class="btn btn-outline" id="btn-rental" 	style="width : 100%;"> 
-						<a class="nav-link linkcolor" href="#">Rental Info</a></button></li>
+						<li class="nav-item"><button class="btn btn-outline" id="btn-retrieveallbookinglist" 	style="width : 100%;"> 
+						<a class="nav-link linkcolor" href="#">All Booking</a></button></li>
 						
-						<li class="nav-item"><button class="btn btn-outline" id="btn-booktrans" 	style="width : 100%;"> 
-						<a class="nav-link linkcolor" href="#">Booking Trans</a></button></li>
+						<li class="nav-item"><button class="btn btn-outline" id="btn-retrievesinglebookinglist" 	style="width : 100%;"> 
+						<a class="nav-link linkcolor" href="#">Single Booking</a></button></li>
 						
-						<li class="nav-item"><button class="btn btn-outline" id="btn-taxdetil" 	style="width : 100%;"> 
-						<a class="nav-link linkcolor" href="#">Tax Details</a></button></li>
+						<li class="nav-item"><button class="btn btn-outline" id="btn-bookingreceivednotificationlist" 	style="width : 100%;"> 
+						<a class="nav-link linkcolor" href="#">Booking Received</a></button></li>
 						
+						<li class="nav-item"><button class="btn btn-outline" id="btn-arrivalslist" 	style="width : 100%;"> 
+						<a class="nav-link linkcolor" href="#">Arrivals</a></button></li>
+						
+						<li class="nav-item"><button class="btn btn-outline" id="btn-departureslist" 	style="width : 100%;"> 
+						<a class="nav-link linkcolor" href="#">Departures</a></button></li>
+						
+						<li class="nav-item"><button class="btn btn-outline" id="btn-chargetoroomlist" 	style="width : 100%;"> 
+						<a class="nav-link linkcolor" href="#">Charge To Room</a></button></li>
+						
+						<li class="nav-item"><button class="btn btn-outline" id="btn-chargeonroomlist" 	style="width : 100%;"> 
+						<a class="nav-link linkcolor" href="#">Charge On Room</a></button></li>
+						
+						<li class="nav-item"><button class="btn btn-outline" id="btn-posreceiptnolist" 	style="width : 100%;"> 
+						<a class="nav-link linkcolor" href="#">POS Receipt No </a></button></li>
+						
+						<li class="nav-item"><button class="btn btn-outline" id="btn-postroominfolist" style="width : 100%;"> 
+						<a class="nav-link linkcolor" href="#">Room Information</a></button></li>
+						
+						<li class="nav-item"><button class="btn btn-outline" id="btn-postroominfospecificlist" style="width : 100%;"> 
+						<a class="nav-link linkcolor" href="#">Room Information(S)</a></button></li>
+						
+						<li class="nav-item"><button class="btn btn-outline" id="btn-roomsalesdatalist" style="width : 100%;"> 
+						<a class="nav-link linkcolor" href="#">Room Sales Data</a></button></li>
+						
+						<li class="nav-item"><button class="btn btn-outline" id="btn-roomscalendarlist" style="width : 100%;"> 
+						<a class="nav-link linkcolor" href="#">Rooms Calendar</a></button></li>
+						
+						<li class="nav-item"><button class="btn btn-outline" id="btn-physicalroomslist" style="width : 100%;"> 
+						<a class="nav-link linkcolor" href="#">Physical Rooms </a></button></li>
+						
+						<li class="nav-item"><button class="btn btn-outline" id="btn-checkincheckoutlist" style="width : 100%;"> 
+						<a class="nav-link linkcolor" href="#">Checkin - Checkout </a></button></li>
+						
+						<li class="nav-item"><button class="btn btn-outline" id="btn-reservationdetailslist" style="width : 100%;"> 
+						<a class="nav-link linkcolor" href="#">Reservation Details </a></button></li>
+						
+						<li class="nav-item"><button class="btn btn-outline" id="btn-historicalbookingslist" style="width : 100%;"> 
+						<a class="nav-link linkcolor" href="#">Historical Bookings </a></button></li>
+						
+						<li class="nav-item"><button class="btn btn-outline" id="btn-createabookinglist" style="width : 100%;"> 
+						<a class="nav-link linkcolor" href="#">Create A Booking </a></button></li>
+						
+						<li class="nav-item"><button class="btn btn-outline" id="btn-postcreatebookingactionslist" style="width : 100%;"> 
+						<a class="nav-link linkcolor" href="#">Booking Actions</a></button></li>
+						
+						<li class="nav-item"><button class="btn btn-outline" id="btn-bookingbasedonparamslist" style="width : 100%;"> 
+						<a class="nav-link linkcolor" href="#">Booking(Parameters)</a></button></li>
+						
+						<li class="nav-item"><button class="btn btn-outline" id="btn-readabookinglist" style="width : 100%;"> 
+						<a class="nav-link linkcolor" href="#">Read A Booking</a></button></li>
+						
+						<li class="nav-item"><button class="btn btn-outline" id="btn-cancelabookinglist" style="width : 100%;"> 
+						<a class="nav-link linkcolor" href="#">Cancel A Booking</a></button></li>
+						
+						<li class="nav-item"><button class="btn btn-outline" id="btn-autosynclist" style="width : 100%;"> 
+						<a class="nav-link linkcolor" href="#">AutoSync</a></button></li>
+						
+						<li class="nav-item"><button class="btn btn-outline" id="btn-guestdatalist" style="width : 100%;"> 
+						<a class="nav-link linkcolor" href="#">Guest Data</a></button></li>
+						
+						<li class="nav-item"><button class="btn btn-outline" id="btn-addpaymentlist" style="width : 100%;"> 
+						<a class="nav-link linkcolor" href="#">Add Payment</a></button></li>
+						
+						<li class="nav-item"><button class="btn btn-outline" id="btn-guestprofilelist" style="width : 100%;"> 
+						<a class="nav-link linkcolor" href="#">Guest Profile</a></button></li>
+						
+						<li class="nav-item"><button class="btn btn-outline" id="btn-guestcheckinlist" style="width : 100%;"> 
+						<a class="nav-link linkcolor" href="#">Guest Check In</a></button></li>
+						
+						<li class="nav-item"><button class="btn btn-outline" id="btn-roomassignmentlist" style="width : 100%;"> 
+						<a class="nav-link linkcolor" href="#">Room Assignment</a></button></li>
+						
+						<li class="nav-item"><button class="btn btn-outline" id="btn-guestcheckoutlist" style="width : 100%;"> 
+						<a class="nav-link linkcolor" href="#">Guest Check Out</a></button></li>
+						
+						<li class="nav-item"><button class="btn btn-outline" id="btn-listofbillslist" style="width : 100%;"> 
+						<a class="nav-link linkcolor" href="#">List Of Bills</a></button></li>
+						
+						<li class="nav-item"><button class="btn btn-outline" id="btn-transactiondetailslist" style="width : 100%;"> 
+						<a class="nav-link linkcolor" href="#">Transaction Details</a></button></li>
 						
 					</ul>
 				</div>
 			</div>
-			<div class="col-sm-10 datatable">
+			<div class="col-sm-10 col-md-10 datatable ">
 
 				<c:import url="../bookings/bookinglist.jsp" />
 
@@ -79,7 +159,7 @@
 	
 	
 	<script type="text/javascript"
-			src="<c:url value='/resources/pms/js/online_travel_agent/otareservation.js' />"></script>
+			src="<c:url value='/resources/pms/js/online_travel_agent/otabooking.js' />"></script>
 	
 </body>
 </html>

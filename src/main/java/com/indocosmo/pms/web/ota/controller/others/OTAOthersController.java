@@ -58,5 +58,49 @@ public class OTAOthersController {
 		
 	}
 	
+	
+	
+	@RequestMapping(value = "/otaretrieveta", method = RequestMethod.POST)
+	public List<OTACompanies> getotaretrievetravelagent(
+			@RequestParam String[] id,@RequestParam String[] name,
+			@RequestParam String createdfromdate,@RequestParam String createdtodate,
+			@RequestParam String updatedfromdate,@RequestParam String updatedtodate,@RequestParam String isactive,
+			HttpSession session) throws Exception{
+		
+		HotelInfo hotel = (HotelInfo) session.getAttribute("hotel");
+		List<OTACompanies> otacompanies = otaothersserviceimpl.getotaretrievetravelagent(hotel, id, name, createdfromdate, createdtodate, updatedfromdate, updatedtodate, isactive) ;
+		
+		return otacompanies;
+	}
+	
+	
+	
+	@RequestMapping(value = "/otacreateta", method = RequestMethod.POST)
+	public String getotacreatetravelagent(
+			@RequestParam String user,@RequestParam String businessname,
+			@RequestParam String country,@RequestParam String email,
+			@RequestParam String percentdiscount,
+			HttpSession session) throws Exception{
+		
+		HotelInfo hotel = (HotelInfo) session.getAttribute("hotel");
+		String res = otaothersserviceimpl.getCreatetravelagent(hotel, user, businessname, country, email, percentdiscount) ;
+		
+		return res;
+	}
+	
+	
+	@RequestMapping(value = "/otaguestlist", method = RequestMethod.GET)
+	public List<OTACompanies> getGuestDetails(HttpSession session) throws Exception{
+		
+		HotelInfo hotel = (HotelInfo) session.getAttribute("hotel");
+		List<OTACompanies> otacompanies = otaothersserviceimpl.getGuestList(hotel);		
+		return otacompanies;
+		
+	}
 
+	
+	
+	
+	
+	
 }

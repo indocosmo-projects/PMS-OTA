@@ -48,7 +48,7 @@
 
 	<div>
 		<div class="row">
-			<div class="col-sm-2 " style="overflow : auto;">
+			<div class="col-sm-2 col-md-2 " style="overflow : auto;">
 				<div class="verticalnav" >
 
 					<ul class="nav flex-column" >
@@ -68,7 +68,7 @@
 					</ul>
 				</div>
 			</div>
-			<div class="col-sm-10 datatable">
+			<div class="col-sm-10 col-md-10 datatable">
 
 				<c:import url="../configuration/configurationList.jsp" />
 

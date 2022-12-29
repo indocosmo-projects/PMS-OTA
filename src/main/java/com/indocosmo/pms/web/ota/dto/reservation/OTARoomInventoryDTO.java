@@ -24,6 +24,10 @@ public class OTARoomInventoryDTO {
 	
 	private String rateplanid;
 	
+	private String adultrates;
+	
+	private String childrates;
+	
 
 	private ArrayList<String> contactids;
 
@@ -115,5 +119,23 @@ public class OTARoomInventoryDTO {
 	public void setRateplanid(String rateplanid) {
 		this.rateplanid = rateplanid;
 	}
+
+	public String getAdultrates() {
+		return adultrates;
+	}
+
+	public void setAdultrates(String adultrates) {
+		this.adultrates = adultrates;
+	}
+
+	public String getChildrates() {
+		return childrates;
+	}
+
+	public void setChildrates(String childrates) {
+		this.childrates = childrates;
+	}
+	
+
 	
 }

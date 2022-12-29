@@ -140,12 +140,12 @@ public class OTAGuestStaticsDaoImpl {
 	}  
 	
 	
-	public static List<OTAGuestStatics> getRecordById(int reservationid){  
+	public static List<OTAGuestStatics> getRecordById(int id){  
 		  List<OTAGuestStatics> otagueststaticslist =new ArrayList<OTAGuestStatics>();   
 	    try{  
 	        Connection con=getConnection();  
 	        PreparedStatement ps=con.prepareStatement("select * from otagueststatics where id=?");  
-	        ps.setInt(1,reservationid);  
+	        ps.setInt(1,id);  
 	        ResultSet rs=ps.executeQuery();  
 	        while(rs.next()){  
 	        	OTAGuestStatics otagueststatics = new OTAGuestStatics();  

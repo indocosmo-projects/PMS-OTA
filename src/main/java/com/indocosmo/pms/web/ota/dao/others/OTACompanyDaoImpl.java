@@ -117,65 +117,73 @@ public class OTACompanyDaoImpl {
 	}  
 	
 	
-	public static List<OTAGuestStatics> getAllRecords(){  
-	    List<OTAGuestStatics> otagueststaticslist = new ArrayList<OTAGuestStatics>();  
+	public static List<OTACompanies> getAllRecords(){  
+	    List<OTACompanies> otacompaniesList = new ArrayList<OTACompanies>();  
 	      
 	    try{  
 	        Connection con=getConnection();  
 	        PreparedStatement ps=con.prepareStatement("select * from otacompanies");  
 	        ResultSet rs=ps.executeQuery();  
 	        while(rs.next()){  
-	        	OTAGuestStatics otagueststatics = new OTAGuestStatics();  
-	        	otagueststatics.setId(rs.getInt("id"));  
-	        	otagueststatics.setGuestname(rs.getString("guestname"));  
-	        	otagueststatics.setGuestemail(rs.getString("guestemail"));  
-	        	otagueststatics.setTotalnumberofstays(rs.getString("totalnumberofstays"));   
-	        	otagueststatics.setFirststay(rs.getString("firststay"));  
-	        	otagueststatics.setFirstreservationno(rs.getString("firstreservationno"));  
-	        	otagueststatics.setFirstfoliono(rs.getString("firstfoliono"));  
-	        	otagueststatics.setLaststay(rs.getString("laststay"));  
-	        	otagueststatics.setLastreservationno(rs.getString("lastreservationno"));   
-	        	otagueststatics.setLastfoliono(rs.getString("lastfoliono"));  
-	        	otagueststatics.setNextstay(rs.getString("nextstay"));  
-	        	otagueststatics.setNextreservationno(rs.getString("nextreservationno"));  
-	        	otagueststatics.setNextfoliono(rs.getString("nextfoliono"));  
-	        	otagueststatics.setLifetimespending(rs.getString("lifetimespending"));   
-	  
-	        	otagueststaticslist.add(otagueststatics);
+	        	OTACompanies otacompanies = new OTACompanies();  
+	        	otacompanies.setSid(rs.getInt("sid"));  
+	        	otacompanies.setId(rs.getString("id"));  
+	        	otacompanies.setAccountname(rs.getString("accountname"));  
+	        	otacompanies.setAccountcode(rs.getString("accountcode"));  
+	        	otacompanies.setContact_person(rs.getString("contact_person"));   
+	        	otacompanies.setAddress(rs.getString("address"));  
+	        	otacompanies.setCity(rs.getString("city"));  
+	        	otacompanies.setPostalcode(rs.getString("postalcode"));  
+	        	otacompanies.setState(rs.getString("state"));  
+	        	otacompanies.setCountry(rs.getString("country"));   
+	        	otacompanies.setPhone(rs.getString("phone"));  
+	        	otacompanies.setMobile(rs.getString("mobile"));  
+	        	otacompanies.setFax(rs.getString("fax"));  
+	        	otacompanies.setEmail(rs.getString("email"));  
+	        	otacompanies.setTaxid(rs.getString("taxid"));   
+	        	otacompanies.setRegistrationno(rs.getString("registrationno"));   
+	        	otacompanies.setIsactive(rs.getString("isactive"));   
+	        	
+	        	otacompaniesList.add(otacompanies);
 	        }  
 	    }catch(Exception e){System.out.println(e);}  
-	    return otagueststaticslist;  
+	    return otacompaniesList;  
 	}  
 	
 	
-	public static List<OTAGuestStatics> getRecordById(int id){  
-		  List<OTAGuestStatics> otagueststaticslist =new ArrayList<OTAGuestStatics>();   
+	public static List<OTACompanies> getRecordById(int id){  
+		   List<OTACompanies> otacompaniesList = new ArrayList<OTACompanies>();  
 	    try{  
 	        Connection con=getConnection();  
 	        PreparedStatement ps=con.prepareStatement("select * from otacompanies where id=?");  
 	        ps.setInt(1,id);  
 	        ResultSet rs=ps.executeQuery();  
 	        while(rs.next()){  
-	        	OTAGuestStatics otagueststatics = new OTAGuestStatics();  
-	        	otagueststatics.setId(rs.getInt("id"));  
-	        	otagueststatics.setGuestname(rs.getString("guestname"));  
-	        	otagueststatics.setGuestemail(rs.getString("guestemail"));  
-	        	otagueststatics.setTotalnumberofstays(rs.getString("totalnumberofstays"));   
-	        	otagueststatics.setFirststay(rs.getString("firststay"));  
-	        	otagueststatics.setFirstreservationno(rs.getString("firstreservationno"));  
-	        	otagueststatics.setFirstfoliono(rs.getString("firstfoliono"));  
-	        	otagueststatics.setLaststay(rs.getString("laststay"));  
-	        	otagueststatics.setLastreservationno(rs.getString("lastreservationno"));   
-	        	otagueststatics.setLastfoliono(rs.getString("lastfoliono"));  
-	        	otagueststatics.setNextstay(rs.getString("nextstay"));  
-	        	otagueststatics.setNextreservationno(rs.getString("nextreservationno"));  
-	        	otagueststatics.setNextfoliono(rs.getString("nextfoliono"));  
-	        	otagueststatics.setLifetimespending(rs.getString("lifetimespending"));   
-	  
-	        	otagueststaticslist.add(otagueststatics);
+	        	OTACompanies otacompanies = new OTACompanies();  
+	        	otacompanies.setSid(rs.getInt("sid"));  
+	        	otacompanies.setId(rs.getString("id"));  
+	        	otacompanies.setAccountname(rs.getString("accountname"));  
+	        	otacompanies.setAccountcode(rs.getString("accountcode"));  
+	        	otacompanies.setContact_person(rs.getString("contact_person"));   
+	        	otacompanies.setAddress(rs.getString("address"));  
+	        	otacompanies.setCity(rs.getString("city"));  
+	        	otacompanies.setPostalcode(rs.getString("postalcode"));  
+	        	otacompanies.setState(rs.getString("state"));  
+	        	otacompanies.setCountry(rs.getString("country"));   
+	        	otacompanies.setPhone(rs.getString("phone"));  
+	        	otacompanies.setMobile(rs.getString("mobile"));  
+	        	otacompanies.setFax(rs.getString("fax"));  
+	        	otacompanies.setEmail(rs.getString("email"));  
+	        	otacompanies.setTaxid(rs.getString("taxid"));   
+	        	otacompanies.setRegistrationno(rs.getString("registrationno"));   
+	        	otacompanies.setIsactive(rs.getString("isactive"));   
+	        	
+	        	otacompaniesList.add(otacompanies);
 	        }  
 	    }catch(Exception e){System.out.println(e);}  
-	    return otagueststaticslist;  
+	    return otacompaniesList;  
 	}  
+	
+	
 	
 }

@@ -48,22 +48,48 @@
 
 	<div>
 		<div class="row">
-			<div class="col-sm-2 " style="overflow : auto;">
+			<div class="col-sm-2 col-md-2" style="overflow : auto;">
 				<div class="verticalnav" >
 
 					<ul class="nav flex-column" >
 						
-						<li class="nav-item"><button class="btn btn-outline" id="btn-roominventory" style="width : 100%;"> 
-						<a class="nav-link linkcolor" href="#">Room Inventory</a></button></li>
+						<li class="nav-item"><button class="btn btn-outline" id="btn-updateroominventorylist" style="width : 100%;"> 
+						<a class="nav-link linkcolor" href="#">Room Inventory(U)</a></button></li>
 						
-						<li class="nav-item"><button class="btn btn-outline" id="btn-updatelinear" style="width : 100%;"> 
+						<li class="nav-item"><button class="btn btn-outline" id="btn-updatelinearratelist" style="width : 100%;"> 
 						<a class="nav-link linkcolor" href="#">Linear Rate</a></button></li>
 						
-							
+						<li class="nav-item"><button class="btn btn-outline" id="btn-updatenonlinearratelist" style="width : 100%;"> 
+						<a class="nav-link linkcolor" href="#">Non Linear Rate</a></button></li>
+						
+						<li class="nav-item"><button class="btn btn-outline" id="btn-retrieveroomratessdlist" style="width : 100%;"> 
+						<a class="nav-link linkcolor" href="#">Room Rates(SD)</a></button></li>
+						
+						<li class="nav-item"><button class="btn btn-outline" id="btn-updatemaxnightslist" style="width : 100%;"> 
+						<a class="nav-link linkcolor" href="#">Max Nights</a></button></li>
+						
+						<li class="nav-item"><button class="btn btn-outline" id="btn-updateminnightslist" style="width : 100%;"> 
+						<a class="nav-link linkcolor" href="#">Min Nights</a></button></li>
+						
+						<li class="nav-item"><button class="btn btn-outline" id="btn-updatestopselllist" style="width : 100%;"> 
+						<a class="nav-link linkcolor" href="#">StopSell</a></button></li>
+						
+						<li class="nav-item"><button class="btn btn-outline" id="btn-updatecloseonarrivallist" style="width : 100%;"> 
+						<a class="nav-link linkcolor" href="#">Close On Arrival</a></button></li>
+						
+						<li class="nav-item"><button class="btn btn-outline" id="btn-updatecloseondeparturelist" style="width : 100%;"> 
+						<a class="nav-link linkcolor" href="#">Close On Departure</a></button></li>
+						
+						<li class="nav-item"><button class="btn btn-outline" id="btn-retrieveroominventorylist" style="width : 100%;"> 
+						<a class="nav-link linkcolor" href="#">Room Inventory(R)</a></button></li>
+						
+						<li class="nav-item"><button class="btn btn-outline" id="btn-retrieveroomrateslist" style="width : 100%;"> 
+						<a class="nav-link linkcolor" href="#">Room Rates</a></button></li>
+						
 					</ul>
 				</div>
 			</div>
-			<div class="col-sm-10 datatable">
+			<div class="col-sm-10 col-md-10 datatable">
 
 				<c:import url="../ratesandavailability/ratesandavailabilityList.jsp" />
 

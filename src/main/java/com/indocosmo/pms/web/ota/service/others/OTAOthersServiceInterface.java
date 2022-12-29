@@ -14,5 +14,14 @@ public interface OTAOthersServiceInterface {
 	public List<OTACompanies> getretrievecompany(HotelInfo hotel,String[] ids,String[] names,String createdfromdate,
 			String createdtodate,String updatedfromdate,String updatedtodate,String isactive);
 	
+	public List<OTAGuestStatics> getRetrievegueststaticsFromDB();
 	
+	public List<OTACompanies> getotaretrievetravelagent(HotelInfo hotel,String[] id,String[] name,String createdfromdate,
+			String createdtodate,String updatedfromdate,String updatedtodate,String isactive);
+	
+	
+	public String getCreatetravelagent(HotelInfo hotel,String user,String businessname,
+			String country,String email,String percentdiscount);
+	
+	public List<OTACompanies> getGuestList(HotelInfo hotel);
 }

@@ -48,30 +48,30 @@
 
 	<div>
 		<div class="row">
-			<div class="col-sm-2 " style="overflow : auto;">
+			<div class="col-sm-2 col-md-2" style="overflow : auto;">
 				<div class="verticalnav" >
 
 					<ul class="nav flex-column" >
 						<li class="nav-item"><button class="btn btn-outline " id="btn-statistics" style="width : 100%;"> 
 						<a class="nav-link linkcolor" href="#">Statistics</a></button></li>
 						
-						<li class="nav-item"><button class="btn btn-outline" id="btn-company" style="width : 100%;"> 
+						<li class="nav-item"><button class="btn btn-outline" id="btn-companyList" style="width : 100%;"> 
 						<a class="nav-link linkcolor" href="#">Company</a></button></li>
 						
-						<li class="nav-item"><button class="btn btn-outline" id="btn-retrieveagent" style="width : 100%;"> 
+						<li class="nav-item"><button class="btn btn-outline" id="btn-retrieveagentlist" style="width : 100%;"> 
 						<a class="nav-link linkcolor" href="#">Retrieve Agent</a></button></li>
 						
-						<li class="nav-item"><button class="btn btn-outline" id="btn-createagent" style="width : 100%;"> 
+						<li class="nav-item"><button class="btn btn-outline" id="btn-createagentlist" style="width : 100%;"> 
 						<a class="nav-link linkcolor" href="#">Create Agent</a></button></li>
 						
-						<li class="nav-item"><button class="btn btn-outline" id="btn-guest" style="width : 100%;"> 
+						<li class="nav-item"><button class="btn btn-outline" id="btn-guestlist" style="width : 100%;"> 
 						<a class="nav-link linkcolor" href="#">Guest</a></button></li>
 						
 						
 					</ul>
 				</div>
 			</div>
-			<div class="col-sm-10 datatable">
+			<div class="col-sm-10 col-md-10 datatable">
 
 				<c:import url="../otaothers/othersList.jsp" />
 

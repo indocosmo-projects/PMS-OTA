@@ -6,7 +6,7 @@ body{
     padding : 10px;
     background-color: grey;
     color : black;
-    height: 100vh;
+    height: 240vh;
     width : 100%;
     border : 2px solid black;
     overflow: hidden;
@@ -16,7 +16,7 @@ body{
 	padding : 10px;
 	background-color : white;
 	padding-right : 10px;
-	height: 100vh;
+	height: 240vh;
 }
 
 .tdwidth{
@@ -26,6 +26,11 @@ body{
 table thead .tdwidth{
 	background-color : black !important;
 	
+}
+
+
+.btn-outline{
+	overflow-x : clip;
 }
 
 
@@ -42,14 +47,13 @@ table thead .tdwidth{
 }
 
 #btnrefresh{
-	position : absolute;
-	top : 10px;
-	right : 40px;
 	margin-right : 40px;
 }
 
 .linkcolor{
 	color: black;
+	word-wrap: break-word;
+	word-break: break-all;
 }
 
 .roominfolist{
@@ -78,6 +82,5 @@ table thead .tdwidth{
 	border-radius : 5px;
 }
 
-.btn-outline{
-	overflow-x : clip;
-}
+
+

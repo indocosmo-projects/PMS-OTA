@@ -275,7 +275,6 @@ public class OTAOTA_RmsController {
 			HotelInfo hotel = (HotelInfo) session.getAttribute("hotel");
 			response = otaota_rmsserviceimpl.getBookingstoezee(hotel, otapushreservationdto);
 		
-			System.out.println("--->"+response);
 		return response;   
 	}
 	
