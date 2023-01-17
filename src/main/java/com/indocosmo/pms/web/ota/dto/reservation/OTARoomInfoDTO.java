@@ -14,6 +14,8 @@ public class OTARoomInfoDTO {
 	private List<OTARoomRateTypes> otaroomratetypes;
 	
 	private List<OTARoomRoomTypes> otaroomroomtypes;
+	
+	private List<OTARoomRateTypes> separatechannels;
 
 	public List<OTARoomRatePlans> getOtaroomrateplans() {
 		return otaroomrateplans;
@@ -38,8 +40,14 @@ public class OTARoomInfoDTO {
 	public void setOtaroomroomtypes(List<OTARoomRoomTypes> otaroomroomtypes) {
 		this.otaroomroomtypes = otaroomroomtypes;
 	}
-	
-	
+
+	public List<OTARoomRateTypes> getSeparatechannels() {
+		return separatechannels;
+	}
+
+	public void setSeparatechannels(List<OTARoomRateTypes> separatechannels) {
+		this.separatechannels = separatechannels;
+	}
 	
 	
 }

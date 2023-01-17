@@ -12,6 +12,9 @@ $( document ).ready(function() {
 	
 });
 
+$("#btnrefresh").tooltip();
+
+
 function logout(){
 	window.location.href = "/pms/onlinetravelagent";
 
@@ -70,10 +73,6 @@ $("#btn-reservationsingle").on('click',function(){
 })
 
 
-$("#btn-roominventory").on('click',function(){
-	x = 8;
-	nav(x);
-})
 
 
 
@@ -88,7 +87,7 @@ case 0:
 	$(".receivedbookingNotifylist").hide();
 	$(".roominformation").hide();
 	$(".reservationsingle").hide();
-	$(".retrieveroominventory").hide();
+	
 	break;
 case 1:
 	$(".reservelist").hide();
@@ -99,7 +98,7 @@ case 1:
 	$(".receivedbookingNotifylist").hide();
 	$(".roominformation").hide();
 	$(".reservationsingle").hide();
-	$(".retrieveroominventory").hide();
+	
 	break;
 case 2:
 	$(".reservelist").hide();
@@ -110,7 +109,7 @@ case 2:
 	$(".receivedbookingNotifylist").hide();
 	$(".roominformation").hide();
 	$(".reservationsingle").hide();
-	$(".retrieveroominventory").hide();
+	
 	break;
 case 3:
 	$(".reservelist").hide();
@@ -121,7 +120,7 @@ case 3:
 	$(".receivedbookingNotifylist").hide();
 	$(".roominformation").hide();
 	$(".reservationsingle").hide();
-	$(".retrieveroominventory").hide();
+	
 	break;
 case 4:
 	$(".reservelist").hide();
@@ -132,7 +131,7 @@ case 4:
 	$(".receivedbookingNotifylist").hide();
 	$(".roominformation").hide();
 	$(".reservationsingle").hide();
-	$(".retrieveroominventory").hide();
+
 	break;
 case 5:
 	$(".reservelist").hide();
@@ -143,7 +142,7 @@ case 5:
 	$(".receivedbookingNotifylist").show();
 	$(".roominformation").hide();
 	$(".reservationsingle").hide();
-	$(".retrieveroominventory").hide();
+	
 	break;
 	
 case 6:
@@ -155,7 +154,7 @@ case 6:
 	$(".receivedbookingNotifylist").hide();
 	$(".roominformation").show();
 	$(".reservationsingle").hide();
-	$(".retrieveroominventory").hide();
+	
 	break;
 	
 case 7:
@@ -167,19 +166,7 @@ case 7:
 	$(".receivedbookingNotifylist").hide();
 	$(".roominformation").hide();
 	$(".reservationsingle").show();
-	$(".retrieveroominventory").hide();
-	break;
 	
-case 8:
-	$(".reservelist").hide();
-	$(".rentallist").hide();
-	$(".booktranslist").hide();
-	$(".taxdeatillist").hide();
-	$(".cancelreservelist").hide();
-	$(".receivedbookingNotifylist").hide();
-	$(".roominformation").hide();
-	$(".reservationsingle").hide();
-	$(".retrieveroominventory").show();
 	break;
 	
 }
@@ -202,7 +189,7 @@ function getOtaReservationListFromDB(){
 		   $('#imgloader').hide();
 		},
 		error: function() {
-			
+			 $('#imgloader').hide();
 		}
 	    });
 	
@@ -223,7 +210,7 @@ function getOtaReservationList(){
 		   $('#imgloader').hide();
 		},
 		error: function() {
-
+			 $('#imgloader').hide();
 		}
 	    });
 	
@@ -391,6 +378,8 @@ function getotacancelreservationSuccess(response){
 			ss = '<option value="'+inv.reservationid+'">'+inv.reservationid+'</option>';
 			row = row + ss ;
 		});
+		ss = '<option value="820">820</option>';
+		row = row + ss ;
 		$("#bookingid").append(row);
 		
 	}
@@ -409,6 +398,8 @@ function getotacancelreservationSuccess(response){
 			ss = '<option value="'+inv.reservationid+'">'+inv.reservationid+'</option>';
 			row = row + ss ;
 		});
+		ss = '<option value="820">820</option>';
+		row = row + ss ;
 		$("#pmsbookingid").append(row);
 		
 	}
@@ -423,6 +414,8 @@ function getotacancelreservationSuccess(response){
 			ss = '<option value="'+inv.uniquereservationid+'">'+inv.uniquereservationid+'</option>';
 			row = row + ss ;
 		});
+		ss = '<option value="820">820</option>';
+		row = row + ss ;
 		$("#reservationid").append(row);
 		
 	}
@@ -446,13 +439,22 @@ function getotacancelreservationSuccess(response){
 	             Status: status,
 			},
 			success: function (result) {
+				if(result === "1 booking(s) updated"){
+					 $("#successmsg").show();
+				}
+				if(result === "0 booking(s) updated"){
+					 $("#errormsg").show();
+				} 
 				   $('#imgloader').hide();
-				   $("#successmsg").show();
 				   setInterval(function () {
 					   $("#successmsg").hide();
 						}, 5000);
+				   setInterval(function () {
+					   $("#errormsg").hide();
+						}, 5000);
 				},
 				error: function(error) {
+					 $('#imgloader').hide();
 					 $("#errormsg").show();
 					 setInterval(function () {
 						   $("#errormsg").hide();
@@ -481,12 +483,13 @@ function getotacancelreservationSuccess(response){
 				   getotaroomtypesSuccess(result.otaroomroomtypes);
 				   getotaratetypesSuccess(result.otaroomratetypes);
 				   getotarateplansSuccess(result.otaroomrateplans);
+				   rateroomtypesdropdown(result.otaroomrateplans);
 				   $(".roominfolist").show();
 				   y = 0;
 				   roominfonav(y);
 				},
 				error: function(error) {
-
+					 $('#imgloader').hide();
 				}
 			    });
 		}
@@ -504,6 +507,7 @@ function getotacancelreservationSuccess(response){
 				   getotaroomtypesSuccess(result.otaroomroomtypes);
 				   getotaratetypesSuccess(result.otaroomratetypes);
 				   getotarateplansSuccess(result.otaroomrateplans);
+				   rateroomtypesdropdown(result.otaroomrateplans);
 				   $(".roominfolist").show();
 				   y = 0;
 				   roominfonav(y);
@@ -587,6 +591,8 @@ function getotacancelreservationSuccess(response){
 	}
 	
 	
+	
+	
 
 	$("#btnroomtypes").on('click',function(){
 		y = 0;
@@ -645,7 +651,7 @@ function getotacancelreservationSuccess(response){
 			   $('#imgloader').hide();
 			},
 			error: function() {
-				
+				 $('#imgloader').hide();
 			}
 		    });
 		
@@ -681,60 +687,47 @@ function getotacancelreservationSuccess(response){
 			
 		}
 	
+
 	
-	$("#searchroominventory").on('click',function(){
-		getotaretrieveroominventory();
-		$(".retrieveroominventorylist").show();
-	})
-	
-	
-	function getotaretrieveroominventory(){
+	function rateroomtypesdropdown(response){
 		
-		var fromdate = $(".fdate").val();
-		var todate =  $(".tdate").val();
-		$('#imgloader').show();
-		$.ajax({
-			url: '/pms/otadata/otaretrieveroominventory',
-			type: 'POST',
-			data: {
-				fdate : fromdate ,
-				tdate : todate,
-			},
-			success: function (result) {
-				getotaretrieveroominventorySuccess(result);
-			   $('#imgloader').hide();
-			},
-			error: function() {
-				
-			}
-		    });
-		
-		}
-	
-	
-	function getotaretrieveroominventorySuccess(response){
-		
-		$(".retrieveroominventorybody").empty();
-		var row = '';
-		var ss = '';
-		var c = 0;
+		$("#roomtypeid").empty();
+		$("#ratetypeid").empty();
+		$("#contactid").empty();
+		$("#roomtypeidpush").empty();
+		var rowroom = '';
+		var ssroom = '';
+		var rowrate = '';
+		var ssrate = '';
+		var rowcontact = '';
+		var sscontact = '';
 		$.each(response,function(key,inv){
-			c = c + 1;
-			ss = '<tr>'+
-			+'<td class="tdwidth">'+c+'</td>'
-			+'<td class="tdwidth">'+inv.id+''+'</td>'
-			+'<td class="tdwidth">'+inv.roomtypeid+''+'</td>'
-			+'<td class="tdwidth">'+inv.availability+''+'</td>'
-			+'<td class="tdwidth">'+inv.fromdate+''+'</td>'
-			+'<td class="tdwidth">'+inv.todate+''+'</td>'
-			+'</tr>'
-		
-			row = row + ss ;
+			ssroom = '<option value="'+inv.roomtypeid+'">'+inv.roomtypeid+'</option>';
+			rowroom = rowroom + ssroom ;
+			ssrate = '<option value="'+inv.ratetypeid+'">'+inv.ratetypeid+'</option>';
+			rowrate = rowrate + ssrate ;
+			sscontact = '<option value="'+inv.roomtypeid+'">'+inv.roomtypeid+'</option>';
+			rowcontact = rowcontact + sscontact ;
 		});
-		$(".retrieveroominventorybody").append(row);
+		
+		ss = '<option value="1872700000000000001">1872700000000000001</option>';
+		rowroom = rowroom + ss ;
+		rowrate = rowrate + ss ;
+		rowcontact = rowcontact + ss ;
+		
+		$("#roomtypeid").append(rowroom);
+		$("#ratetypeid").append(rowrate);
+		$("#contactid").append(rowcontact);
+		$("#roomtypeidpush").append(rowroom);
+		
 		
 	}
 	
+	
+
 		
 	
-		
+	
+	
+	
+	

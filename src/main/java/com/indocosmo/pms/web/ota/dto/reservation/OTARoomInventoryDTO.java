@@ -1,5 +1,7 @@
 package com.indocosmo.pms.web.ota.dto.reservation;
 
+import java.util.ArrayList;
+
 public class OTARoomInventoryDTO {
 	
 	private int id;
@@ -11,6 +13,23 @@ public class OTARoomInventoryDTO {
 	private String fromdate;
 	
 	private String todate;
+	
+	private String base;
+	
+	private String extraadult;
+	
+	private String extrachild;
+	
+	private String ratetypeid;
+	
+	private String rateplanid;
+	
+	private String adultrates;
+	
+	private String childrates;
+	
+
+	private ArrayList<String> contactids;
 
 	public int getId() {
 		return id;
@@ -51,6 +70,72 @@ public class OTARoomInventoryDTO {
 	public void setTodate(String todate) {
 		this.todate = todate;
 	}
+
+	public String getBase() {
+		return base;
+	}
+
+	public void setBase(String base) {
+		this.base = base;
+	}
+
+	public String getExtraadult() {
+		return extraadult;
+	}
+
+	public void setExtraadult(String extraadult) {
+		this.extraadult = extraadult;
+	}
+
+	public String getExtrachild() {
+		return extrachild;
+	}
+
+	public void setExtrachild(String extrachild) {
+		this.extrachild = extrachild;
+	}
+
+	public String getRatetypeid() {
+		return ratetypeid;
+	}
+
+	public void setRatetypeid(String ratetypeid) {
+		this.ratetypeid = ratetypeid;
+	}
+
+	public ArrayList<String> getContactids() {
+		return contactids;
+	}
+
+	public void setContactids(ArrayList<String> contactids) {
+		this.contactids = contactids;
+	}
+	
+	
+	public String getRateplanid() {
+		return rateplanid;
+	}
+
+	public void setRateplanid(String rateplanid) {
+		this.rateplanid = rateplanid;
+	}
+
+	public String getAdultrates() {
+		return adultrates;
+	}
+
+	public void setAdultrates(String adultrates) {
+		this.adultrates = adultrates;
+	}
+
+	public String getChildrates() {
+		return childrates;
+	}
+
+	public void setChildrates(String childrates) {
+		this.childrates = childrates;
+	}
 	
 
+	
 }

@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -231,6 +233,9 @@ public class LoginController {
 				session.setAttribute("longStay", longStay);
 				session.setAttribute("iscanview", false);
 				session.setAttribute("otalogin", false);
+				DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");  
+				LocalDateTime now = LocalDateTime.now();  
+				session.setAttribute("refreshdatetime", now); 
 				
 				session.setAttribute("rootPath", request.getContextPath());
 

@@ -23,7 +23,7 @@ public interface OTAReservationServiceInterface {
 	
 	public OTAReservationDTO getRetrieveAllNewReservation(HotelInfo hotel) throws Exception;
 	
-	public HotelInfoDTO getBookingReceived(HotelInfo hotel,String BookingId,String PMS_BookingId,String Status);
+	public String getBookingReceived(HotelInfo hotel,String BookingId,String PMS_BookingId,String Status);
 	
 	public OTAReservationDTO tolistBookingTrans(JsonArray BookingTransarr, int reservationId);
 	
@@ -37,8 +37,6 @@ public interface OTAReservationServiceInterface {
 	
 	public OTARoomInfoDTO getRoomInformation(HotelInfo hotel,int roomrequired);
 	
-	public OTAReservationDTO getInventory(HotelInfo hotel);
-	
 	public OTAReservationDTO getBookingId();
 	
 	public List<OTARoomRoomTypes> toListRoomTypes(JsonObject jobjroomtypes);
@@ -51,6 +49,10 @@ public interface OTAReservationServiceInterface {
 	
 	public List<OTARoomDetailsDTO> getOtareservationSingleroom(HotelInfo hotel, int reservationid);
 	
-	public List<OTARoomInventoryDTO> getRetrieveRoomInventory(HotelInfo hotel);
+	public List<OTARoomInventoryDTO> getRetrieveRoomInventory(HotelInfo hotel, String fdate, String tdate);
+	
+	public String updateLinearRateinventory(HotelInfo hotel,OTARoomInventoryDTO otaroominv);
+	
+	
 	
 }

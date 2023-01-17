@@ -20,7 +20,6 @@ import com.indocosmo.pms.web.ota.dao.reservation.OTATaxDeatilDaoImpl;
 import com.indocosmo.pms.web.ota.dao.room.OTARoomRatePlansDao;
 import com.indocosmo.pms.web.ota.dao.room.OTARoomRateTypesDao;
 import com.indocosmo.pms.web.ota.dao.room.OTARoomRoomTypesDao;
-import com.indocosmo.pms.web.ota.dto.hotel.HotelInfoDTO;
 import com.indocosmo.pms.web.ota.dto.reservation.OTAReservationDTO;
 import com.indocosmo.pms.web.ota.dto.reservation.OTARoomDetailsDTO;
 import com.indocosmo.pms.web.ota.dto.reservation.OTARoomInfoDTO;
@@ -101,13 +100,14 @@ public class OTAReservationServiceImpl implements OTAReservationServiceInterface
 		String url = "https://live.ipms247.com/pmsinterface/pms_connectivity.php";
 		
 		JsonObject jsonobject = onlineTravelAgentServiceImpl.Post_JSON(url, json);
-		
+		System.out.println("jsonobject==>"+jsonobject);
 		resrvationList = new ArrayList<OTAReservation>();
 		bookingtransList = new ArrayList<OTABookingTrans>();
 		rentalinfoList = new ArrayList<OTARentalInfo>();
 		taxdetailList = new ArrayList<OTATaxDeatil>();
 		cancelreservationlist = new ArrayList<OTACancelReservation>();
 		
+		try {
 		JsonObject jobj = jsonobject.get("Reservations").getAsJsonObject();
 		JsonArray jarr = jobj.get("Reservation").getAsJsonArray();
 		
@@ -198,7 +198,18 @@ public class OTAReservationServiceImpl implements OTAReservationServiceInterface
 			e.printStackTrace();
 		}
 		
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		OTAReservationDTO ota = new OTAReservationDTO();
+		
+		OTAReservation otares = new OTAReservation(820,"ICS");
+		OTAReservation otares1 = new OTAReservation(821,"ICS");
+     	OTABookingTrans otabook = new OTABookingTrans(820,"12-12-2023","New","1","2023-11-20","2023-11-26","11:00:00","12:00:00","1100.00","Mr. Laxmi ","Prasad");
+     	OTABookingTrans otabook1 = new OTABookingTrans(821,"21-12-2023","New","1","2023-11-30","2023-12-26","11:00:00","12:00:00","1100.00","Mr. Mithun B ","Palat");
+     	bookingtransList.add(otabook); bookingtransList.add(otabook1);
+    	resrvationList.add(otares); resrvationList.add(otares1);
+     	
 		ota.setOtabookingtrans(bookingtransList);
 		ota.setOtacancelreservation(cancelreservationlist);
 		ota.setOtarentalinfo(rentalinfoList);
@@ -349,11 +360,6 @@ public class OTAReservationServiceImpl implements OTAReservationServiceInterface
 			e.printStackTrace();
 		}
 		
-		resrvationList.removeAll(resrvationListDB);
-		bookingtransList.removeAll(bookingtransListDB);
-		cancelreservationlist.removeAll(cancelreservationlistDB);
-		rentalinfoList.removeAll(rentalinfoListDB);
-		taxdetailList.removeAll(taxdetailListDB);
 		
 		OTAReservationDTO ota = new OTAReservationDTO();
 		ota.setOtabookingtrans(bookingtransList);
@@ -558,25 +564,29 @@ public class OTAReservationServiceImpl implements OTAReservationServiceInterface
 	}
 	
 	@Override
-	public HotelInfoDTO getBookingReceived(HotelInfo hotel,String BookingId,String PMS_BookingId,String Status) {
+	public String getBookingReceived(HotelInfo hotel,String BookingId,String PMS_BookingId,String Status) {
 		
 		String hotelcode = hotel.getHotelcode();
 		String hotelauthkey = hotel.getAuthkey();
+		String response = "";
 		
 		JSONObject request = new JSONObject();
 		JSONObject payload = new JSONObject();
 		JSONObject auth = new JSONObject();
 		JSONObject booking = new JSONObject();
-		JSONObject booking1 = new JSONObject();
+		JSONObject subbooking = new JSONObject();
+		List<JSONObject> subbookingList = new ArrayList<JSONObject>();
 		
 		auth.put("HotelCode", hotelcode);
 		auth.put("AuthCode", hotelauthkey);
 		payload.put("Request_Type", "BookingRecdNotification");
 		payload.put("Authentication", auth);
-		booking1.put("BookingId", BookingId);
-		booking1.put("PMS_BookingId", PMS_BookingId);
-		booking1.put("Status",Status);
-		booking.put("Booking", booking1);
+		subbooking.put("BookingId", BookingId);
+		subbooking.put("PMS_BookingId", PMS_BookingId);
+		subbooking.put("Status",Status);
+		subbookingList.add(subbooking);
+		
+		booking.put("Booking", subbookingList);
 		payload.put("Bookings", booking);
 		
 		request.put("RES_Request", payload); 	
@@ -584,27 +594,32 @@ public class OTAReservationServiceImpl implements OTAReservationServiceInterface
 		String url = "https://live.ipms247.com/pmsinterface/pms_connectivity.php";
 			
 	    JsonObject jsonobject = onlineTravelAgentServiceImpl.Post_JSON(url, json);
-	    HotelInfoDTO hotelInfo = new HotelInfoDTO();
-	    
+
+	    String jobjresponse = jsonobject.toString();
 	    try {
-	    JsonObject jobjsuccess = jsonobject.get("Success").getAsJsonObject();
-	    String successmsg = jobjsuccess.get("SuccessMsg").getAsString();
-	    String errormsg ;
-	    String errorcode ;
-	    if(successmsg.equals("")) {
-	    JsonObject jobjerror = jsonobject.get("Errors").getAsJsonObject();
-	    errormsg = jobjsuccess.get("ErrorMessage").getAsString();
-	    errorcode = jobjsuccess.get("ErrorCode").getAsString();
-	    hotelInfo.setErrormsg(errormsg);
-	    hotelInfo.setErrorcode(errorcode);
-	    }
-	    
-	    hotelInfo.setSuccessmsg(successmsg);
+	    	
+	    	if(jobjresponse.contains("Success")) {
+			    JsonObject jobjsuccess = jsonobject.get("Success").getAsJsonObject();
+			    String successmsg = jobjsuccess.get("SuccessMsg").getAsString();
+			    response =  successmsg;
+			    JsonObject jobjerror = jsonobject.get("Errors").getAsJsonObject();
+			    String errormsg = jobjerror.get("ErrorMessage").getAsString();
+			    String errorcode = jobjerror.get("ErrorCode").getAsString();
+			    if(errorcode.equals("0") == false) {
+			    	response = response + errormsg ;
+			    }
+	    	}else {
+			    JsonObject jobjerror = jsonobject.get("Errors").getAsJsonObject();
+			    String errormsg = jobjerror.get("ErrorMessage").getAsString();
+			    String errorcode = jobjerror.get("ErrorCode").getAsString();
+			    response = errormsg;
+	    	}
+	 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	
-	    return hotelInfo;
+	    return response;
 	}
 	
 	
@@ -875,13 +890,13 @@ public class OTAReservationServiceImpl implements OTAReservationServiceInterface
 
 	
 	@Override
-	public List<OTARoomInventoryDTO> getRetrieveRoomInventory(HotelInfo hotel) {
+	public List<OTARoomInventoryDTO> getRetrieveRoomInventory(HotelInfo hotel, String fdate, String tdate) {
 		
 		List<OTARoomInventoryDTO> otaroominvList  = new ArrayList<OTARoomInventoryDTO>();
 		String hotelcode = hotel.getHotelcode();
 		String hotelauthkey = hotel.getAuthkey();
 		
-		String xmldata = "<?xml version=\"1.0\" standalone=\"yes\"?><RES_Request><Request_Type>Inventory</Request_Type><Authentication><HotelCode>"+hotelcode+"</HotelCode><AuthCode>"+hotelauthkey+"</AuthCode></Authentication><FromDate>2020-10-05</FromDate><ToDate>2020-11-18</ToDate></RES_Request>";
+		String xmldata = "<?xml version=\"1.0\" standalone=\"yes\"?><RES_Request><Request_Type>Inventory</Request_Type><Authentication><HotelCode>"+hotelcode+"</HotelCode><AuthCode>"+hotelauthkey+"</AuthCode></Authentication><FromDate>"+fdate+"</FromDate><ToDate>"+tdate+"</ToDate></RES_Request>";
 		String url = "https://live.ipms247.com/pmsinterface/getdataAPI.php";
 		
 		JSONObject jobj = onlineTravelAgentServiceImpl.getUrlContents(url, xmldata);
@@ -891,22 +906,25 @@ public class OTAReservationServiceImpl implements OTAReservationServiceInterface
 			
 			JSONObject jobjresresponse = (JSONObject) jobj.get("RES_Response");
 			JSONObject jobjroominfo = (JSONObject) jobjresresponse.get("RoomInfo");
-			JSONObject jobjsource = (JSONObject) jobjroominfo.get("Source");
-			JSONObject jobjroomtypes = (JSONObject) jobjsource.get("RoomTypes");
+			JSONArray jobjsource = (JSONArray) jobjroominfo.get("Source");
+			for(int k = 0; k < jobjsource.length() ; k++ ) {
+			JSONObject jobjroomtypesobj = (JSONObject) jobjsource.get(k);
+			JSONObject jobjroomtypes = (JSONObject) jobjroomtypesobj.get("RoomTypes");
 			JSONArray jobjrooms =  (JSONArray) jobjroomtypes.get("RoomType");
-			
+			int c = 0;
 			for(int i=0; i< jobjrooms.length() ;i++) {
 				JSONObject jobjeachroom = (JSONObject) jobjrooms.get(i);
 				
 				OTARoomInventoryDTO otaroominv  = new OTARoomInventoryDTO();
-				
-				otaroominv.setId(i+1);
+				c++;
+				otaroominv.setId(c);
 				otaroominv.setRoomtypeid(jobjeachroom.get("RoomTypeID").toString()); 
 				otaroominv.setAvailability(jobjeachroom.get("Availability").toString()); 
 				otaroominv.setFromdate(jobjeachroom.get("FromDate").toString());
 				otaroominv.setTodate(jobjeachroom.get("ToDate").toString());
 				
 				otaroominvList.add(otaroominv);
+				}
 			}
 			
 		} catch (Exception e) {
@@ -919,27 +937,83 @@ public class OTAReservationServiceImpl implements OTAReservationServiceInterface
 	
 	
 	@Override
-	public OTAReservationDTO getInventory(HotelInfo hotel) {
+	public String updateLinearRateinventory(HotelInfo hotel,OTARoomInventoryDTO otaroominv) {
 		
 		String hotelcode = hotel.getHotelcode();
 		String hotelauthkey = hotel.getAuthkey();
+		String response = "";
+	
+		JSONObject payload = new JSONObject();
+		payload.put("Request_Type", "UpdateRoomRates");
 		
-		String xmldata = "<?xml version=\"1.0\" standalone=\"yes\"?><Request_Type>Inventory</Request_Type><Authentication><HotelCode>hotelcode</HotelCode><AuthCode>hotelauthkey</AuthCode></Authentication><FromDate>2020-03-05</FromDate><ToDate>2020-03-18</ToDate></RES_Request>";
-		String url = "https://live.ipms247.com/pmsinterface/getdataAPI.php";
+		JSONObject auth = new JSONObject();
+		auth.put("HotelCode", hotelcode);
+		auth.put("AuthCode", hotelauthkey);
+		payload.put("Authentication", auth);
 		
-		org.json.JSONObject response = onlineTravelAgentServiceImpl.getUrlContents(url, xmldata);
-		String data = response.toString();
+		JSONObject contact = new JSONObject();
+		contact.put("ContactId", otaroominv.getContactids());
+		payload.put("Sources", contact);
 		
-		 
-	    System.out.println("getInventory=====>"+data);
+		List<JSONObject> ratetypeList = new ArrayList<JSONObject>();
+		
+		JSONObject roomrate = new JSONObject();
+		roomrate.put("Base", otaroominv.getBase());
+		JSONObject ratetype = new JSONObject();
+		ratetype.put("RoomTypeID", otaroominv.getRoomtypeid());
+		ratetype.put("RateTypeID", otaroominv.getRatetypeid());
+		ratetype.put("FromDate", otaroominv.getFromdate());
+		ratetype.put("ToDate", otaroominv.getTodate());
+		ratetype.put("RoomRate", roomrate);
+		ratetypeList.add(ratetype);
+		
+		roomrate = new JSONObject();
+		roomrate.put("Base", otaroominv.getBase());
+		roomrate.put("ExtraAdult", otaroominv.getExtraadult());
+		roomrate.put("ExtraChild", otaroominv.getExtrachild());
+		ratetype = new JSONObject();
+		ratetype.put("RoomTypeID", otaroominv.getRoomtypeid());
+		ratetype.put("RateTypeID", otaroominv.getRatetypeid());
+		ratetype.put("FromDate", otaroominv.getFromdate());
+		ratetype.put("ToDate", otaroominv.getTodate());
+		ratetype.put("RoomRate", roomrate);
+		ratetypeList.add(ratetype);
+		
+		payload.put("RateType", ratetypeList);
+		
+		JSONObject requestlinear = new JSONObject();
+		requestlinear.put("RES_Request", payload); 	
+		
+		String json = requestlinear.toString();
+		String url = "https://live.ipms247.com/pmsinterface/pms_connectivity.php";
+		
+	    JsonObject jsonobject = onlineTravelAgentServiceImpl.Post_JSON(url, json);
+		
+	    String jobjresponse = jsonobject.toString();
+	    try {
+	    	if(jobjresponse.contains("Success")) {
+			    JsonObject jobjsuccess = jsonobject.get("Success").getAsJsonObject();
+			    String successmsg = jobjsuccess.get("SuccessMsg").getAsString();
+			    response =  successmsg;
+			    JsonObject jobjerror = jsonobject.get("Errors").getAsJsonObject();
+			    String errormsg = jobjerror.get("ErrorMessage").getAsString();
+			    String errorcode = jobjerror.get("ErrorCode").getAsString();
+			    if(errorcode.equals("0") == false) {
+			    	response = response +" : "+ errormsg ;
+			    }
+	    	}else {
+			    JsonObject jobjerror = jsonobject.get("Errors").getAsJsonObject();
+			    String errormsg = jobjerror.get("ErrorMessage").getAsString();
+			    String errorcode = jobjerror.get("ErrorCode").getAsString();
+			    response = errormsg;
+	    	}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	    
-		return null;
+		return response;
 	}
 
-	
-
-
-	
 
 
 	

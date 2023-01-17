@@ -1,0 +1,86 @@
+body{
+	background-color : black;
+}
+
+.verticalnav{
+    padding : 10px;
+    background-color: grey;
+    color : black;
+    height: 240vh;
+    width : 100%;
+    border : 2px solid black;
+    overflow: hidden;
+}
+
+.datatable{
+	padding : 10px;
+	background-color : white;
+	padding-right : 10px;
+	height: 240vh;
+}
+
+.tdwidth{
+	width : 200px;
+}
+
+table thead .tdwidth{
+	background-color : black !important;
+	
+}
+
+
+.btn-outline{
+	overflow-x : clip;
+}
+
+
+.default{
+	position : relative;
+	height : 210vh;
+	padding : 2px;
+}
+
+.display{
+	display : none;
+	height : 500px;
+	overflow : auto;
+}
+
+#btnrefresh{
+	margin-right : 40px;
+}
+
+.linkcolor{
+	color: black;
+	word-wrap: break-word;
+	word-break: break-all;
+}
+
+.roominfolist{
+	height: 50px;
+	display : inline-block;
+}
+
+.reservationsinglelist{
+	height: 50px;
+	display : inline-block;
+}
+
+.header1{
+	background-color : lightblue;
+	padding : 10px;
+	color : white;
+	border : 2px solid white;
+	border-radius : 5px;
+}
+
+.header2{
+	background-color : lightblue;
+	padding : 10px;
+	color : white;
+	border : 2px solid white;
+	border-radius : 5px;
+}
+
+
+

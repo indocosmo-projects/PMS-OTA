@@ -2,14 +2,17 @@
 	<img src="/pms/resources/common/images/loading.gif" id="imgloader"
 	style="display: none; position: fixed; top: 39%; left: 39%; z-index: 9999" />
 	<div style="text-align : right;">
-		<button class="btn btn-warning" id="btnrefresh">Refresh</button>
+		<button class="btn btn-warning" id="btnrefresh" data-toggle="tooltip" title=${refreshdatetime}>Refresh</button>
 	</div>
+	
+	<h3 class="header1">Reservation</h3>
+	
 	
 	<div class="reservelist display">
 		<h3>Reservations</h3>
 		<div>
-			<table class="table table-responsive table-bordered">
-				<thead>
+			<table class="table table-dark table-responsive table-bordered">
+				<thead class="thead-dark">
 					<tr>
 						<th class="tdwidth">Id</th>
 						<th class="tdwidth">Reservation Id</th>
@@ -129,6 +132,14 @@
 		<h3>Booking Received Notification</h3><br/><br/>
 		
 		<div style="margin-left:15px; width:700px;">
+		
+		<div class="bg-success" id="successmsg" style="display:none;width:50%;padding:10px;">
+			<strong>Updated Successfully!</strong> 
+		</div>
+		<div class="bg-danger" id="errormsg" style="display:none;width:50%;padding:10px;">
+			<strong>Booking Does not exists!</strong> 
+		</div><br/>
+		
          <form>
 			<div class="form-group">
 				<label for="bookingid">Booking Id</label> 
@@ -160,13 +171,6 @@
      		</div>
 		</div>
 		
-		<div class="bg-success" id="successmsg" style="display:none;width:50%;padding:10px;">
-			<strong>Updated Successfully!</strong> 
-		</div>
-		<div class="bg-danger" id="errormsg" style="display:none;width:50%;padding:10px;">
-			<strong>Booking Does not exists!</strong> 
-		</div>
-		
 	</div>  
 	
 	
@@ -177,7 +181,7 @@
 			<div class="form-group">
 			  <label for="roomrequired">Number Of Rooms:</label>
 			  <input type="number" class="form-control roomrequired" id="roomrequired" min="1"
-			  placeholder="Enter Required Number Of Rooms" value="1"
+			  placeholder="Enter Required Number Of Rooms" value="1" disabled
 			  style="width:50%;">
 			</div>
 			<div>
@@ -302,49 +306,10 @@
 	
 	
 	
-	<div class="retrieveroominventory display" >
-		<h3>Room Inventory</h3>
-		
-		<div style="margin-left:15px; width:700px;">
-			<form>
-				<div class="form-group">
-					<label for="fdate">From Date</label> 
-					 <input type="date" class="form-control fdate" id="fdate" 
-			  		  placeholder="Enter From Date" style="width:50%;">
-				</div>
-				<div class="form-group">
-					<label for="tdate">To Date</label> 
-					 <input type="date" class="form-control tdate" id="tdate" 
-			  		  placeholder="Enter To Date" style="width:50%;">
-				</div>
-				<div>
-					<button type="button" class="btn btn-primary" id="searchroominventory">Search</button>
-				</div>
-			</form>
-		</div>
-		
-		<div class="retrieveroominventorylist display">
-			<h4>Room </h4>
-			<table class="table table-responsive table-bordered">
-				<thead>
-					<tr>
-						<th class="tdwidth">Id</th>
-						<th class="tdwidth">Room Type Id</th>
-						<th class="tdwidth">Availability</th>
-						<th class="tdwidth">From Date</th>
-						<th class="tdwidth">To Date</th>
-					</tr>
-				</thead>
-				<tbody class="retrieveroominventorybody">
-				</tbody>
-			</table>
-		</div>
-		
-		
-	</div>  
+	
+</div>
 	
 	
 	
-  
 
 	
