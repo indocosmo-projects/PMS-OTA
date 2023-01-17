@@ -6,6 +6,8 @@ import java.sql.Timestamp;
 import java.util.HashMap;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.joda.time.DateTime;
 
 import com.google.gson.JsonArray;
@@ -90,5 +92,6 @@ public interface ReservationDaoTest {
 
 	public JsonArray getBookingData(int resvNo)throws Exception;
 
+	public JsonArray getOnlineTAServerResponse() throws Exception;
 	
 }

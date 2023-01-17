@@ -377,6 +377,7 @@
 				<table class="table table-responsive table-bordered">
 					<thead>
 						<tr>
+							<th class="tdwidth">SId</th>
 							<th class="tdwidth">Id</th>
 							<th class="tdwidth">Contact Person</th>
 							<th class="tdwidth">Type</th>

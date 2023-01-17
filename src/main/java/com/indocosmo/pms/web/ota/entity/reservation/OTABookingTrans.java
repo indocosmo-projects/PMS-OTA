@@ -201,6 +201,41 @@ public class OTABookingTrans {
 	@Column(name = "cardholdersname")
 	private String cardholdersname;
 	
+	
+	private String reservationdate ;
+	
+	private String noofguest ;
+    
+	private String noofnights ;
+	
+	private String totalactiveroominhotel ;
+
+	private String totalblockrooms ;
+	
+	private String totaloccupiedrooms ;
+	
+	
+	public OTABookingTrans() {
+		super();
+	}
+
+	public OTABookingTrans(int reservationid, String createdatetime, String status, String isconfirmed, String start,
+			String end, String arrivaltime, String departuretime, String totalamountaftertax, String firstname,
+			String lastname) {
+		super();
+		this.reservationid = reservationid;
+		this.createdatetime = createdatetime;
+		this.status = status;
+		this.isconfirmed = isconfirmed;
+		this.start = start;
+		this.end = end;
+		this.arrivaltime = arrivaltime;
+		this.departuretime = departuretime;
+		this.totalamountaftertax = totalamountaftertax;
+		this.firstname = firstname;
+		this.lastname = lastname;
+	}
+
 	public int getId() {
 		return id;
 	}
@@ -697,6 +732,54 @@ public class OTABookingTrans {
 
 	public void setCardholdersname(String cardholdersname) {
 		this.cardholdersname = cardholdersname;
+	}
+
+	public String getReservationdate() {
+		return reservationdate;
+	}
+
+	public void setReservationdate(String reservationdate) {
+		this.reservationdate = reservationdate;
+	}
+
+	public String getNoofguest() {
+		return noofguest;
+	}
+
+	public void setNoofguest(String noofguest) {
+		this.noofguest = noofguest;
+	}
+
+	public String getNoofnights() {
+		return noofnights;
+	}
+
+	public void setNoofnights(String noofnights) {
+		this.noofnights = noofnights;
+	}
+
+	public String getTotalactiveroominhotel() {
+		return totalactiveroominhotel;
+	}
+
+	public void setTotalactiveroominhotel(String totalactiveroominhotel) {
+		this.totalactiveroominhotel = totalactiveroominhotel;
+	}
+
+	public String getTotalblockrooms() {
+		return totalblockrooms;
+	}
+
+	public void setTotalblockrooms(String totalblockrooms) {
+		this.totalblockrooms = totalblockrooms;
+	}
+
+	public String getTotaloccupiedrooms() {
+		return totaloccupiedrooms;
+	}
+
+	public void setTotaloccupiedrooms(String totaloccupiedrooms) {
+		this.totaloccupiedrooms = totaloccupiedrooms;
 	}
 	
 	                  

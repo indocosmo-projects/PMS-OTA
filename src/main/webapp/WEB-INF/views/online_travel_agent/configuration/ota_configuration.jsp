@@ -52,18 +52,44 @@
 				<div class="verticalnav" >
 
 					<ul class="nav flex-column" >
-						<li class="nav-item"><button class="btn btn-outline " id="btn-reservation" 	style="width : 100%;"> 
-						<a class="nav-link linkcolor" href="#">Reservations</a></button></li>
+						<li class="nav-item"><button class="btn btn-outline " id="btn-authenticationList" 	style="width : 100%;"> 
+						<a class="nav-link linkcolor" href="#">Authentication</a></button></li>
 						
-						<li class="nav-item"><button class="btn btn-outline" id="btn-rental" 	style="width : 100%;"> 
-						<a class="nav-link linkcolor" href="#">Rental Info</a></button></li>
+						<li class="nav-item"><button class="btn btn-outline" id="btn-roominfoList" style="width : 100%;"> 
+						<a class="nav-link linkcolor" href="#">Room Info</a></button></li>
 						
-						<li class="nav-item"><button class="btn btn-outline" id="btn-booktrans" 	style="width : 100%;"> 
-						<a class="nav-link linkcolor" href="#">Booking Trans</a></button></li>
+						<li class="nav-item"><button class="btn btn-outline" id="btn-hotelinfoList" style="width : 100%;"> 
+						<a class="nav-link linkcolor" href="#">Hotel Info</a></button></li>
 						
-						<li class="nav-item"><button class="btn btn-outline" id="btn-taxdetil" 	style="width : 100%;"> 
-						<a class="nav-link linkcolor" href="#">Tax Details</a></button></li>
+						<li class="nav-item"><button class="btn btn-outline" id="btn-amenitiesList" style="width : 100%;"> 
+						<a class="nav-link linkcolor" href="#">Amenities</a></button></li>
 						
+						<li class="nav-item"><button class="btn btn-outline" id="btn-roomtypesList" style="width : 100%;"> 
+						<a class="nav-link linkcolor" href="#">Room Types</a></button></li>
+						
+						<li class="nav-item"><button class="btn btn-outline" id="btn-countryList" style="width : 100%;"> 
+						<a class="nav-link linkcolor" href="#">Country</a></button></li>
+						
+						<li class="nav-item"><button class="btn btn-outline" id="btn-extrasrateList" style="width : 100%;"> 
+						<a class="nav-link linkcolor" href="#">Extras Rate</a></button></li>
+						
+						<li class="nav-item"><button class="btn btn-outline" id="btn-verifyTAList" style="width : 100%;"> 
+						<a class="nav-link linkcolor" href="#">Verify TA</a></button></li>
+						
+						<li class="nav-item"><button class="btn btn-outline" id="btn-paymentList" style="width : 100%;"> 
+						<a class="nav-link linkcolor" href="#">Payment</a></button></li>
+						
+						<li class="nav-item"><button class="btn btn-outline" id="btn-currencyList" style="width : 100%;"> 
+						<a class="nav-link linkcolor" href="#">Currency</a></button></li>
+						
+						<li class="nav-item"><button class="btn btn-outline" id="btn-paymethodsList" style="width : 100%;"> 
+						<a class="nav-link linkcolor" href="#">Pay Methods</a></button></li>
+						
+						<li class="nav-item"><button class="btn btn-outline" id="btn-identitytypeList" style="width : 100%;"> 
+						<a class="nav-link linkcolor" href="#">Identity Type</a></button></li>
+						
+						<li class="nav-item"><button class="btn btn-outline" id="btn-roomsList" style="width : 100%;"> 
+						<a class="nav-link linkcolor" href="#">Rooms</a></button></li>
 						
 					</ul>
 				</div>
@@ -79,7 +105,7 @@
 	
 	
 	<script type="text/javascript"
-			src="<c:url value='/resources/pms/js/online_travel_agent/otareservation.js' />"></script>
+			src="<c:url value='/resources/pms/js/online_travel_agent/otaconfiguration.js' />"></script>
 	
 </body>
 </html>

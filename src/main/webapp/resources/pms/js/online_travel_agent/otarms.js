@@ -467,6 +467,15 @@ function rateroomtypesdropdown(response){
 		ssratetype = '<option value="'+inv.ratetype+'">'+inv.ratetype+'</option>';
 		rowratetype = rowratetype + ssratetype ;
 	});
+	
+    var ss = '<option value="1872700000000000001">1872700000000000001</option>';
+	rowroom = rowroom + ss ;
+	rowrate = rowrate + ss ;
+	rowcontact = rowcontact + ss ;
+	rowplan = rowplan + ss ;
+	rowratetype = rowratetype + '<option value="4000">4000</option>';
+	rowroomname = rowroomname + '<option value="DELUXE">DELUXE</option>';
+	
 	$("#roomtypeid").append(rowroom);
 	$("#ratetypeid").append(rowrate);
 	$("#contactid").append(rowcontact);
@@ -499,7 +508,6 @@ function rateroomtypesdropdown(response){
 	$("#eratetype").append(rowratetype);
 	$("#eroomtypename").append(rowroomname);
 	$("#eroomtypecode").append(rowroom);
-	
 	
 }
 
@@ -935,6 +943,9 @@ function getpushnonlinearrates(){
 			bookingid = '<option value="'+inv.reservationid+'">'+inv.reservationid+'</option>';
 			rowbookingid  = rowbookingid + bookingid ;
 		});
+		ss = '<option value="820">820</option>';
+		rowbookingid = rowbookingid + ss ;
+		rowsubbookingid = rowsubbookingid + ss;
 		
 		$("#esubbookingid").append(rowsubbookingid);
 		$("#ebookingid").append(rowbookingid);
