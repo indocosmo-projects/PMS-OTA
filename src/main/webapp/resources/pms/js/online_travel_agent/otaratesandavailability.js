@@ -878,6 +878,12 @@ function rateroomtypesdropdown(response){
 		sscontact = '<option value="'+inv.roomtypeid+'">'+inv.roomtypeid+'</option>';
 		rowcontact = rowcontact + sscontact ;
 	});
+	
+	ss = '<option value="1872700000000000001">1872700000000000001</option>';
+	rowroom = rowroom + ss ;
+	rowrate = rowrate + ss ;
+	rowcontact = rowcontact + ss ;
+	
 	$("#linearroomtypeid").append(rowroom);
 	$("#linearratetypeid").append(rowrate);
 	$("#linearcontactid").append(rowcontact);

@@ -113,6 +113,7 @@ public class OTALoginController {
 		HotelInfo hotel = new HotelInfo();
 		model.addAttribute("hotel", hotel);
 		session.setAttribute("iscanview", false);
+		session.setAttribute("otalogin", false);
 		
 		return pageUrl;
 	}
