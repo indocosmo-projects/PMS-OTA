@@ -1,4 +1,6 @@
 
+getroominformationFromDB();
+bookingId();
 
 var x = 0;
 var y = 0;
@@ -17,11 +19,6 @@ function logout(){
 		},
 	    });
 	}
-
-
-getroominformationFromDB();
-bookingId();
-
 
 $( document ).ready(function() {
 	getOtaReservationListFromDB();
@@ -107,11 +104,13 @@ $("#btn-roomscalendarlist").on('click',function(){
 $("#btn-physicalroomslist").on('click',function(){
 	x = 13;
 	nav(x);
+	getRetrievephysicalrooms();
 })
 
 $("#btn-checkincheckoutlist").on('click',function(){
 	x = 14;
 	nav(x);
+	getCheckincheckout();
 })
 
 $("#btn-reservationdetailslist").on('click',function(){
@@ -132,6 +131,7 @@ $("#btn-createabookinglist").on('click',function(){
 $("#btn-postcreatebookingactionslist").on('click',function(){
 	x = 18;
 	nav(x);
+	getPostcreatebookingsactions();
 })
 
 $("#btn-bookingbasedonparamslist").on('click',function(){
@@ -152,6 +152,7 @@ $("#btn-cancelabookinglist").on('click',function(){
 $("#btn-autosynclist").on('click',function(){
 	x = 22;
 	nav(x);
+	getAutosync();
 })
 
 $("#btn-guestdatalist").on('click',function(){
@@ -1238,6 +1239,7 @@ function getroominformationFromDB(){
 		success: function (result) {
 			   $('#imgloader').hide();
 			   rateroomtypesdropdown(result.otaroomrateplans);
+			   rateroomnamedropdown(result.otaroomroomtypes);
 			},
 			error: function(error) {
 
@@ -1251,11 +1253,18 @@ function rateroomtypesdropdown(response){
 	
 	$("#checkavailabilityroomtypeid").empty();
 	$("#roomsalesdataroomid").empty();
+	$("#reservedroomscalendarroomid").empty();
+	$("#createabookingrateplanid").empty();
+	$("#createabookingratetypeid").empty();
+	$("#createabookingroomtypeid").empty();
+	$("#roomassignmentroomtypeid").empty();
 	
 	var rowroom = '';
 	var ssroom = '';
 	var rowrate = '';
 	var ssrate = '';
+	var rowplan = '';
+	var ssplan = '';
 	var rowcontact = '';
 	var sscontact = '';
 	$.each(response,function(key,inv){
@@ -1265,12 +1274,53 @@ function rateroomtypesdropdown(response){
 		rowrate = rowrate + ssrate ;
 		sscontact = '<option value="'+inv.roomtypeid+'">'+inv.roomtypeid+'</option>';
 		rowcontact = rowcontact + sscontact ;
+		ssplan = '<option value="'+inv.rateplanid+'">'+inv.rateplanid+'</option>';
+		rowplan = rowplan + ssplan ;
 	});
+	
+	ss = '<option value="1872700000000000001">1872700000000000001</option>';
+	rowroom = rowroom + ss ;
+	rowrate = rowrate + ss ;
+	rowcontact = rowcontact + ss ;
+	rowplan = rowplan + ss ;
 	
 	$("#checkavailabilityroomtypeid").append(rowrate);
 	$("#roomsalesdataroomid").append(rowroom);
+	$("#reservedroomscalendarroomid").append(rowroom);
+	$("#createabookingrateplanid").append(rowplan);
+	$("#createabookingratetypeid").append(rowrate);
+	$("#createabookingroomtypeid").append(rowroom);
+	$("#roomassignmentroomtypeid").append(rowroom);
 	
+}
+
+
+function rateroomnamedropdown(response){
 	
+	$("#reservedroomscalendarroomcode").empty();
+	$("#roomassignmentroomid").empty();
+	
+	var rowroomname = '';
+	var ssroomname = '';
+	
+	var rowroomid = '';
+	var ssroomid = '';
+
+	$.each(response,function(key,inv){
+		ssroomname = '<option value="'+inv.roomname+'">'+inv.roomname+'</option>';
+		rowroomname = rowroomname + ssroomname ;
+		
+		ssroomid = '<option value="'+inv.roomid+'">'+inv.roomid+'</option>';
+		rowroomid = rowroomid + ssroomid ;
+
+	});
+	ss = '<option value="1872700000000000001">1872700000000000001</option>';
+	rowroomname = rowroomname + ss ;
+	rowroomid = rowroomid + ss ;
+	
+	$("#reservedroomscalendarroomcode").append(rowroomname);
+	$("#roomassignmentroomid").append(rowroomid);
+
 }
 
 
@@ -1633,6 +1683,19 @@ function getotacancelreservationSuccess(response){
 		$("#retrievearrivalsbookingId").empty();
 		$("#retrievedeparturesbookingId").empty();
 		$("#bookingid").empty();
+		$("#reservationdetailsofaroomreseid").empty();
+		$("#postcreatebookingsactionsbookingId").empty();
+		$("#readabookingreservationnumber").empty();
+		$("#cancelabookingreservationnumber").empty();
+		$("#guestdataupdatereservationid").empty();
+		$("#addpaymentreservationid").empty();
+		$("#addguestprofiletobookingsreservationid").empty();
+		$("#guestcheckinreservationid").empty();
+		$("#roomassignmentreservationid").empty();
+		$("#guestcheckoutreservationid").empty();
+		$("#retrievelistofbillsreservationid").empty();
+		$("#retrievetransactiondetailsreservationid").empty();
+		
 		var row = '';
 		var ss = '';
 		$.each(response1,function(key,inv){
@@ -1643,10 +1706,24 @@ function getotacancelreservationSuccess(response){
 			ss = '<option value="'+inv.reservationid+'">'+inv.reservationid+'</option>';
 			row = row + ss ;
 		});
+		ss = '<option value="820">820</option>';
+		row = row + ss ;
 		$("#bookingid").append(row);
 		$("#retrievesinglebookingbookingId").append(row);
 		$("#retrievearrivalsbookingId").append(row);
 		$("#retrievedeparturesbookingId").append(row);
+		$("#reservationdetailsofaroomreseid").append(row);
+		$("#postcreatebookingsactionsbookingId").append(row);
+		$("#readabookingreservationnumber").append(row);
+		$("#cancelabookingreservationnumber").append(row);
+		$("#guestdataupdatereservationid").append(row);
+		$("#addpaymentreservationid").append(row);
+		$("#addguestprofiletobookingsreservationid").append(row);
+		$("#guestcheckinreservationid").append(row);
+		$("#roomassignmentreservationid").append(row);
+		$("#guestcheckoutreservationid").append(row);
+		$("#retrievelistofbillsreservationid").append(row);
+		$("#retrievetransactiondetailsreservationid").append(row);
 		
 		
 	}
@@ -1665,6 +1742,8 @@ function getotacancelreservationSuccess(response){
 			ss = '<option value="'+inv.reservationid+'">'+inv.reservationid+'</option>';
 			row = row + ss ;
 		});
+		ss = '<option value="820">820</option>';
+		row = row + ss ;
 		$("#pmsbookingid").append(row);
 		
 	}
@@ -2170,14 +2249,8 @@ function getRoomSalesData(){
 		},
 		success: function (result) {
 			   $('#imgloader').hide();
-			   console.log("result"+result);
-			   if(result[0].id < 0){
 				   $("#roomsalesdatasuccess").empty();
-				   $("#roomsalesdatasuccess").append(result[0].remarks);
-				   $(".roomsalesdatadivlist").show();
-			   }else{
-				   getRoomSalesDataSuccess(result);
-			   }
+				   $("#roomsalesdatasuccess").append(result);
 			   $("#successmsgroomsalesdata").show();
 			   setInterval(function () {
 				   $("#successmsgroomsalesdata").hide();
@@ -2219,5 +2292,979 @@ function getRoomSalesDataSuccess(result){
 }
 
 
+
+$("#btn-reservedroomscalendar").on('click',function (){
+	getReservedroomscalendar();
+})
+
+function getReservedroomscalendar(){
+	
+	$.ajax({
+		url: '/pms/otabooking/otareservedroomscalendar',
+		type: 'POST',
+		data: {
+			roomid 		: $(".reservedroomscalendarroomid").val(),
+			roomcode 	: $(".reservedroomscalendarroomcode").val(),
+			fromdate 	: $(".reservedroomscalendarfromdate").val(),
+			todate 		: $(".reservedroomscalendartodate").val(),
+		},
+		success: function (result) {
+			   $('#imgloader').hide();
+			   if(result[0].id < 0){
+				   $("#reservedroomscalendarsuccess").empty();
+				   $("#reservedroomscalendarsuccess").append(result[0].status);
+			   }else{
+				   getReservedroomscalendarSuccess(result);
+			   }
+			   $("#successmsgreservedroomscalendar").show();
+			   setInterval(function () {
+				   $("#successmsgreservedroomscalendar").hide();
+					}, 5000);
+			},
+			error: function(error) {
+			   $('#imgloader').hide();
+			   $("#errormsgreservedroomscalendar").show();
+				 setInterval(function () {
+					   $("#errormsgreservedroomscalendar").hide();
+						}, 5000);
+			}
+		    });
+	}
+
+
+function getReservedroomscalendarSuccess(response){
+	
+	$(".reservedroomscalendardivlist").show();
+	$(".reservedroomscalendarbody").empty();
+	var row = '';
+	var ss = '';
+	var c = 0;
+	$.each(response,function(key,inv){
+		c = c + 1;
+		ss = '<tr>'+
+		+'<td class="tdwidth">'+c+'</td>'
+		+'<td class="tdwidth">'+inv.id+''+'</td>'
+		+'<td class="tdwidth">'+inv.room_name+''+'</td>'
+		+'<td class="tdwidth">'+inv.room_code+'</td>'
+		+'<td class="tdwidth">'+inv.date+''+'</td>'
+		+'<td class="tdwidth">'+inv.status+''+'</td>'
+		+'<td class="tdwidth">'+inv.reservation_id+''+'</td>'
+		+'<td class="tdwidth">'+inv.guest_name+'</td>'
+		+'<td class="tdwidth">'+inv.check_in+''+'</td>'
+		+'<td class="tdwidth">'+inv.check_out+''+'</td>'
+		+'<td class="tdwidth">'+inv.booking_status+''+'</td>'
+		+'<td class="tdwidth">'+inv.total_amount+'</td>'
+		+'<td class="tdwidth">'+inv.payment_type+''+'</td>'
+		+'<td class="tdwidth">'+inv.creation_date+''+'</td>'
+		+'</tr>'
+	
+		row = row + ss ;
+	});
+	$(".reservedroomscalendarbody").append(row);
+	
+}
+
+
+
+
+function getRetrievephysicalrooms(){
+	
+	$.ajax({
+		url: '/pms/otabooking/otaretrievephysicalrooms',
+		type: 'GET',
+		success: function (result) {
+			   $('#imgloader').hide();
+			   if(result[0].id < 0){
+				   $("#retrievephysicalroomssuccess").empty();
+				   $("#retrievephysicalroomssuccess").append(result[0].status);
+			   }else{
+				   getRetrievephysicalroomsSuccess(result);
+			   }
+			   $("#successmsgretrievephysicalrooms").show();
+			   setInterval(function () {
+				   $("#successmsgretrievephysicalrooms").hide();
+					}, 5000);
+			},
+			error: function(error) {
+			   $('#imgloader').hide();
+			   $("#errormsgretrievephysicalrooms").show();
+				 setInterval(function () {
+					   $("#errormsgretrievephysicalrooms").hide();
+						}, 5000);
+			}
+		    });
+	}
+
+
+function getRetrievephysicalroomsSuccess(response){
+	
+	$(".retrievephysicalroomsdivlist").show();
+	$(".retrievephysicalroomsbody").empty();
+	var row = '';
+	var ss = '';
+	var c = 0;
+	$.each(response,function(key,inv){
+		c = c + 1;
+		ss = '<tr>'+
+		+'<td class="tdwidth">'+c+'</td>'
+		+'<td class="tdwidth">'+inv.id+''+'</td>'
+		+'<td class="tdwidth">'+inv.roomid+''+'</td>'
+		+'<td class="tdwidth">'+inv.room_name+'</td>'
+		+'<td class="tdwidth">'+inv.room_code+'</td>'
+		+'<td class="tdwidth">'+inv.rooms+'</td>'
+		+'</tr>'
+	
+		row = row + ss ;
+	});
+	$(".retrievephysicalroomsbody").append(row);
+	
+}
+
+
+
+function getCheckincheckout(){
+	
+	$.ajax({
+		url: '/pms/otabooking/otacheckincheckout',
+		type: 'GET',
+		success: function (result) {
+			   $('#imgloader').hide();
+			   if(result[0].id < 0){
+				   $("#todayscheckincheckoutsuccess").empty();
+				   $("#todayscheckincheckoutsuccess").append(result[0].status);
+			   }else{
+				   getCheckincheckoutSuccess(result);
+			   }
+			   $("#successmsgtodayscheckincheckout").show();
+			   setInterval(function () {
+				   $("#successmsgtodayscheckincheckout").hide();
+					}, 5000);
+			},
+			error: function(error) {
+			   $('#imgloader').hide();
+			   $("#errormsgtodayscheckincheckout").show();
+				 setInterval(function () {
+					   $("#errormsgtodayscheckincheckout").hide();
+						}, 5000);
+			}
+		    });
+	}
+
+
+function getCheckincheckoutSuccess(response){
+	
+	$(".todayscheckincheckoutdivlist").show();
+	$(".todayscheckincheckoutbody").empty();
+	var row = '';
+	var ss = '';
+	var c = 0;
+	$.each(response,function(key,inv){
+		c = c + 1;
+		ss = '<tr>'+
+		+'<td class="tdwidth">'+c+'</td>'
+		+'<td class="tdwidth">'+inv.id+''+'</td>'
+		+'<td class="tdwidth">'+inv.reservation_id+''+'</td>'
+		+'<td class="tdwidth">'+inv.room_code+'</td>'
+		+'<td class="tdwidth">'+inv.departuredate+'</td>'
+		+'</tr>'
+	
+		row = row + ss ;
+	});
+	$(".todayscheckincheckoutbody").append(row);
+	
+}
+
+
+$("#btn-reservationdetailsofaroom").on('click',function (){
+	getReservationdetailsofaroom();
+})
+
+
+function getReservationdetailsofaroom(){
+	
+	$.ajax({
+		url: '/pms/otabooking/otareservationdetailsofaroom',
+		type: 'POST',
+		data: {
+			reservation_id :   $(".reservationdetailsofaroomreseid").val(),
+		},
+		success: function (result) {
+			   $('#imgloader').hide();
+			   console.log("result"+result);
+			   $(".reservationdetailsofaroomdivlist").show();
+			   if(result[0].id < 0){
+				   $("#todayscheckincheckoutsuccess").empty();
+				   $("#todayscheckincheckoutsuccess").append(result[0].status);
+				   $(".reservationdetailsofaroomdivlist").hide();
+			   }else{
+				   getReservationdetailsofaroomSuccess(result);
+			   }
+			   $("#successmsgreservationdetailsofaroom").show();
+			   setInterval(function () {
+				   $("#successmsgreservationdetailsofaroom").hide();
+					}, 5000);
+			},
+			error: function(error) {
+			   $('#imgloader').hide();
+			   $("#errormsgreservationdetailsofaroom").show();
+				 setInterval(function () {
+					   $("#errormsgreservationdetailsofaroom").hide();
+						}, 5000);
+			}
+		    });
+	}
+
+
+function getReservationdetailsofaroomSuccess(response){
+	
+	$(".reservationdetailsofaroomdivlist").show();
+	$(".reservationdetailsofaroombody").empty();
+	var row = '';
+	var ss = '';
+	var c = 0;
+	$.each(response,function(key,inv){
+		c = c + 1;
+		ss = '<tr>'+
+		+'<td class="tdwidth">'+c+'</td>'
+		+'<td class="tdwidth">'+inv.id+''+'</td>'
+		+'<td class="tdwidth">'+inv.roomid+''+'</td>'
+		+'<td class="tdwidth">'+inv.room_name+'</td>'
+		+'<td class="tdwidth">'+inv.reservation_id+'</td>'
+		+'<td class="tdwidth">'+inv.booking_status+''+'</td>'
+		+'<td class="tdwidth">'+inv.guest_name+''+'</td>'
+		+'<td class="tdwidth">'+inv.check_in+'</td>'
+		+'<td class="tdwidth">'+inv.check_out+'</td>'
+		+'<td class="tdwidth">'+inv.total_amount+''+'</td>'
+		+'<td class="tdwidth">'+inv.channel+''+'</td>'
+		+'<td class="tdwidth">'+inv.payment_type+'</td>'
+		+'</tr>'
+	
+		row = row + ss ;
+	});
+	$(".reservationdetailsofaroombody").append(row);
+	
+}
+
+
+$("#btn-pullhistoricalbookings").on('click',function (){
+	getPullhistoricalbookings();
+})
+
+
+function getPullhistoricalbookings(){
+	
+	$.ajax({
+		url: '/pms/otabooking/otapullhistoricalbookings',
+		type: 'POST',
+		data: {
+			fromdate :   $(".pullhistoricalbookingsfromdate").val(),
+			todate   :   $(".pullhistoricalbookingstodate").val(),
+		},
+		success: function (result) {
+			   $('#imgloader').hide();
+			   console.log("result"+result);
+			   $(".pullhistoricalbookingsdivlist").show();
+			   if(result[0].id < 0){
+				   $("#pullhistoricalbookingssuccess").empty();
+				   $("#pullhistoricalbookingssuccess").append(result[0].source);
+				   $(".pullhistoricalbookingsdivlist").hide();
+			   }else{
+				   getPullhistoricalbookingsSuccess(result);
+			   }
+			   $("#successmsgpullhistoricalbookings").show();
+			   setInterval(function () {
+				   $("#successmsgpullhistoricalbookings").hide();
+					}, 5000);
+			},
+			error: function(error) {
+			   $('#imgloader').hide();
+			   $("#errormsgpullhistoricalbookings").show();
+				 setInterval(function () {
+					   $("#errormsgpullhistoricalbookings").hide();
+						}, 5000);
+			}
+		    });
+	}
+
+
+function getPullhistoricalbookingsSuccess(response){
+	
+	$(".pullhistoricalbookingsdivlist").show();
+	$(".pullhistoricalbookingsbody").empty();
+	var row = '';
+	var ss = '';
+	var c = 0;
+	$.each(response,function(key,inv){
+		c = c + 1;
+		ss = '<tr>'+
+		+'<td class="tdwidth"></td>'
+		+'<td class="tdwidth">'+inv.id+''+'</td>'
+		+'<td class="tdwidth">'+inv.uniquereservationid+''+'</td>'
+		+'<td class="tdwidth">'+inv.bookedby+''+'</td>'
+		+'<td class="tdwidth">'+inv.firstname+''+'</td>'
+		+'<td class="tdwidth">'+inv.locationid+''+'</td>'
+		+'<td class="tdwidth">'+inv.source+''+'</td>'
+		+'<td class="tdwidth">'+inv.email+''+'</td>'
+		+'</tr>'
+	
+	
+		row = row + ss ;
+	});
+	$(".pullhistoricalbookingsbody").append(row);
+	
+}
+
+
+
+$("#btn-createabooking").on('click',function (){
+	getCreateabooking();
+})
+
+
+function getCreateabooking(){
+	
+	$.ajax({
+		url: '/pms/otabooking/otacreateabooking',
+		type: 'POST',
+		data: {
+			rateplanid      	:   $(".createabookingrateplanid").val(),
+			ratetypeid      	:   $(".createabookingratetypeid").val(), 
+			roomtypeid     		:   $(".createabookingroomtypeid").val(),
+			baserate        	:   $(".createabookingbaserate").val(), 
+			extradultrate   	:   $(".createabookingextradultrate").val(),
+			extrachildrate      :   $(".createabookingextrachildrate").val(),
+			numberadults        :   $(".createabookingnumberadults").val(),
+			numberchildren      :   $(".createabookingnumberchildren").val(), 
+			extrachildage       :   $(".createabookingextrachildage").val(),
+			title     			:   $(".createabookingtitle").val(), 
+			firstname      		:   $(".createabookingfirstname").val(),
+			lastname       		:   $(".createabookinglastname").val(),
+			gender      		:   $(".createabookinggender").val(),
+			specialrequest      :   $(".createabookingspecialrequest").val(),
+			checkindate         :   $(".createabookingcheckindate").val(),
+			checkoutdate        :   $(".createabookingcheckoutdate").val(),
+			bookingpaymentmode  :   $(".createabookingbookingpaymentmode").val(),
+			emailaddress        :   $(".createabookingemailaddress").val(),
+			sourceid            :   $(".createabookingsourceid").val(),
+			mobileno            :   $(".createabookingmobileno").val(), 
+			address             :   $(".createabookingaddress").val(), 
+			state               :   $(".createabookingstate").val(),  
+			country             :   $(".createabookingcountry").val(),
+		    city                :   $(".createabookingcity").val(),
+		    zipcode             :   $(".createabookingzipcode").val(),
+		    fax                 :   $(".createabookingfax").val(),
+		    device              :   $(".createabookingdevice").val(),
+		    languagekey         :   $(".createabookinglanguagekey").val(), 
+		    paymenttypeunkid    :   $(".createabookingpaymenttypeunkid").val(),
+		},
+		success: function (result) {
+			   $('#imgloader').hide();
+				   $("#createabookingsuccess").empty();
+				   $("#createabookingsuccess").append(result);
+			   $("#successmsgcreateabooking").show();
+			   setInterval(function () {
+				   $("#successmsgcreateabooking").hide();
+					}, 5000);
+			},
+			error: function(error) {
+			   $('#imgloader').hide();
+			   $("#errormsgcreateabooking").show();
+				 setInterval(function () {
+					   $("#errormsgcreateabooking").hide();
+						}, 5000);
+			}
+		    });
+	}
+
+
+
+
+function getPostcreatebookingsactions(){
+	
+	$.ajax({
+		url: '/pms/otabooking/otapostcreatebookingsactions',
+		type: 'GET',
+		success: function (result) {
+			   $('#imgloader').hide();
+				$("#postcreatebookingsactionssuccess").empty();
+				$("#postcreatebookingsactionssuccess").append(result);
+			   $("#successmsgpostcreatebookingsactions").show();
+			   setInterval(function () {
+				   $("#successmsgpostcreatebookingsactions").hide();
+					}, 5000);
+			},
+			error: function(error) {
+			   $('#imgloader').hide();
+			   $("#errormsgpostcreatebookingsactions").show();
+				 setInterval(function () {
+					   $("#errormsgpostcreatebookingsactions").hide();
+						}, 5000);
+			}
+		    });
+	}
+
+
+
+$("#btn-retrieveabookingbasedonparameters").on('click',function (){
+	getRetrieveabookingbasedonparameters();
+})
+
+
+
+function getRetrieveabookingbasedonparameters(){
+	
+	$.ajax({
+		url  : '/pms/otabooking/otaretrieveabookingbasedonparameters',
+		type : 'POST',
+		data : {
+			fromdate    : $("#retrieveabookingbasedonparametersfromdate").val(),
+			todate		: $("#retrieveabookingbasedonparameterstodate").val(),
+			email       : $("#retrieveabookingbasedonparametersemail").val(),
+		},
+		success: function (result) {
+			   $('#imgloader').hide();
+			    $(".totalactiveroominhotel").empty();
+				$(".totalblockrooms").empty();
+				$(".totaloccupiedrooms").empty();
+				$(".totalactiveroominhotel").append(result[0].totalactiveroominhotel);
+				$(".totalblockrooms").append(result[0].totalblockrooms);
+				$(".totaloccupiedrooms").append(result[0].totaloccupiedrooms);
+			   if(result[0].id < 0){
+					$("#retrieveabookingbasedonparameterssuccess").empty();
+					$("#retrieveabookingbasedonparameterssuccess").append(result[0].comment);
+			   }else{
+				   result.splice(0,1);
+				   getRetrieveabookingbasedonparametersSuccess(result);
+			   }
+			   $("#successmsgretrieveabookingbasedonparameters").show();
+			   setInterval(function () {
+				   $("#successmsgretrieveabookingbasedonparameters").hide();
+					}, 5000);
+			},
+			error: function(error) {
+			   $('#imgloader').hide();
+			   $("#errormsgretrieveabookingbasedonparameters").show();
+				 setInterval(function () {
+					   $("#errormsgretrieveabookingbasedonparameters").hide();
+				  }, 5000);
+			}
+		    });
+	}
+
+
+
+function getRetrieveabookingbasedonparametersSuccess(response){
+	
+	$(".retrieveabookingbasedonparametersbooktransdivlist").show();
+	$(".retrieveabookingbasedonparametersbooktransbody").empty();
+	var row = '';
+	var ss = '';
+	var c = 0;
+	$.each(response,function(key,inv){
+		c = c + 1;
+		ss = '<tr>'+
+		+'<td class="tdwidth">'+c+'</td>'
+		+'<td class="tdwidth">'+inv.id+''+'</td>'
+		+'<td class="tdwidth">'+inv.reservationid+''+'</td>'
+		+'<td class="tdwidth">'+inv.firstname+''+inv.lastname+'</td>'
+		+'<td class="tdwidth">'+inv.rateplanname+''+'</td>'
+		+'<td class="tdwidth">'+inv.start+''+'</td>'
+		+'<td class="tdwidth">'+inv.end+''+'</td>'
+		+'<td class="tdwidth">'+inv.arrivaltime+''+'</td>'
+		+'<td class="tdwidth">'+inv.departuretime+''+'</td>'
+		+'<td class="tdwidth">'+inv.email+''+'</td>'
+		+'<td class="tdwidth">'+inv.currentstatus+''+'</td>'
+		+'<td class="tdwidth">'+inv.reservationdate+''+'</td>'
+		+'<td class="tdwidth">'+inv.noofguest+''+'</td>'
+		+'<td class="tdwidth">'+inv.noofnights+''+'</td>'
+		+'</tr>'
+	
+		row = row + ss ;
+	});
+	$(".retrieveabookingbasedonparametersbooktransbody").append(row);
+	
+}
+
+
+$("#btn-readabooking").on('click',function (){
+	getReadabooking();
+})
+
+function getReadabooking(){
+	
+	$.ajax({
+		url  : '/pms/otabooking/otareadabooking',
+		type : 'POST',
+		data : {
+			reservationnumber  :  $("#readabookingreservationnumber").val(),
+		},
+		success: function (result) {
+			   $('#imgloader').hide();
+			   if(result[0].id < 0){
+					$("#readabookingsuccess").empty();
+					$("#readabookingsuccess").append(result[0].comment);
+			   }else{
+				   getReadabookingSuccess(result);
+			   }
+			   $("#successmsgreadabooking").show();
+			   setInterval(function () {
+				   $("#successmsgreadabooking").hide();
+					}, 5000);
+			},
+			error: function(error) {
+			   $('#imgloader').hide();
+			   $("#errormsgreadabooking").show();
+				 setInterval(function () {
+					   $("#errormsgreadabooking").hide();
+				  }, 5000);
+			}
+		    });
+	}
+
+
+function getReadabookingSuccess(response){
+	
+	$(".readabookingdivlist").show();
+	$(".readabookingbody").empty();
+	var row = '';
+	var ss = '';
+	var c = 0;
+	$.each(response,function(key,inv){
+		c = c + 1;
+		ss = '<tr>'+
+		+'<td class="tdwidth">'+c+'</td>'
+		+'<td class="tdwidth">'+inv.id+''+'</td>'
+		+'<td class="tdwidth">'+inv.reservationid+''+'</td>'
+		+'<td class="tdwidth">'+inv.firstname+''+inv.lastname+'</td>'
+		+'<td class="tdwidth">'+inv.rateplanname+''+'</td>'
+		+'<td class="tdwidth">'+inv.start+''+'</td>'
+		+'<td class="tdwidth">'+inv.end+''+'</td>'
+		+'<td class="tdwidth">'+inv.email+''+'</td>'
+		+'<td class="tdwidth">'+inv.phone+''+'</td>'
+		+'<td class="tdwidth">'+inv.currentstatus+''+'</td>'
+		+'<td class="tdwidth">'+inv.noofnights+''+'</td>'
+		+'<td class="tdwidth">'+inv.affiliatecode+''+'</td>'
+		+'<td class="tdwidth">'+inv.country+''+'</td>'
+		+'</tr>'
+	
+		row = row + ss ;
+	});
+	$(".readabookingbody").append(row);
+	
+}
+
+
+$("#btn-cancelabooking").on('click',function (){
+	getCancelabooking();
+})
+
+function getCancelabooking(){
+	
+	$.ajax({
+		url  : '/pms/otabooking/otacancelabooking',
+		type : 'POST',
+		data : {
+			reservationnumber  :  $("#cancelabookingreservationnumber").val(),
+		},
+		success: function (result) {
+			   $('#imgloader').hide();
+				$("#cancelabookingsuccess").empty();
+				$("#cancelabookingsuccess").append(result);
+			   $("#successmsgcancelabooking").show();
+			   setInterval(function () {
+				   $("#successmsgcancelabooking").hide();
+					}, 5000);
+			},
+			error: function(error) {
+			   $('#imgloader').hide();
+			   $("#errormsgcancelabooking").show();
+				 setInterval(function () {
+					   $("#errormsgcancelabooking").hide();
+				  }, 5000);
+			}
+		    });
+	}
+
+
+
+function getAutosync(){
+	
+	$.ajax({
+		url  : '/pms/otabooking/otaautosync',
+		type : 'POST',
+		data : {
+			reservationnumber  :  "",
+		},
+		success: function (result) {
+			   $('#imgloader').hide();
+				$("#autosyncfuturebookingsanditsmodificationssuccess").empty();
+				$("#autosyncfuturebookingsanditsmodificationssuccess").append(result);
+			   $("#successmsgautosyncfuturebookingsanditsmodifications").show();
+			   setInterval(function () {
+				   $("#successmsgautosyncfuturebookingsanditsmodifications").hide();
+					}, 5000);
+			},
+			error: function(error) {
+			   $('#imgloader').hide();
+			   $("#errormsgautosyncfuturebookingsanditsmodifications").show();
+				 setInterval(function () {
+					   $("#errormsgautosyncfuturebookingsanditsmodifications").hide();
+				  }, 5000);
+			}
+		    });
+	}
+
+
+
+
+$("#btn-guestdataupdate").on('click',function (){
+	getGuestdataupdate();
+})
+
+function getGuestdataupdate(){
+	
+	$.ajax({
+		url  : '/pms/otabooking/otaguestdataupdate',
+		type : 'POST',
+		data : {
+			reservationid   :  $("#guestdataupdatereservationid").val(),
+			firstname  		:  $("#guestdataupdatefirstname").val(),
+			lastname  		:  $("#guestdataupdatelastname").val(),
+			email  			:  $("#guestdataupdateemail").val(),
+		},
+		success: function (result) {
+			   $('#imgloader').hide();
+				$("#guestdataupdatesuccess").empty();
+				$("#guestdataupdatesuccess").append(result);
+			   $("#successmsgguestdataupdate").show();
+			   setInterval(function () {
+				   $("#successmsgguestdataupdate").hide();
+					}, 5000);
+			},
+			error: function(error) {
+			   $('#imgloader').hide();
+			   $("#errormsgguestdataupdate").show();
+				 setInterval(function () {
+					   $("#errormsgguestdataupdate").hide();
+				  }, 5000);
+			}
+		    });
+	}
+
+
+
+
+
+$("#btn-addpayment").on('click',function (){
+	getAddPayment();
+})
+
+function getAddPayment(){
+	
+	$.ajax({
+		url  : '/pms/otabooking/otaaddpayment',
+		type : 'POST',
+		data : {
+			reservationid  :  $("#addpaymentreservationid").val(),
+			paymentid      :  $("#addpaymentpaymentid").val(),
+			currencyid     :  $("#addpaymentcurrencyid").val(),
+			payment        :  $("#addpaymentpayment").val(),
+		},
+		success: function (result) {
+			   $('#imgloader').hide();
+				$("#addpaymentsuccess").empty();
+				$("#addpaymentsuccess").append(result);
+			   $("#successmsgaddpayment").show();
+			   setInterval(function () {
+				   $("#successmsgaddpayment").hide();
+					}, 5000);
+			},
+			error: function(error) {
+			   $('#imgloader').hide();
+			   $("#errormsgaddpayment").show();
+				 setInterval(function () {
+					   $("#errormsgaddpayment").hide();
+				  }, 5000);
+			}
+		    });
+	}
+
+
+
+
+$("#btn-addguestprofiletobookings").on('click',function (){
+	getAddguestprofiletobookings();
+})
+
+function getAddguestprofiletobookings(){
+	
+	$.ajax({
+		url  : '/pms/otabooking/otaguestprofile',
+		type : 'POST',
+		data : {
+			reservationid  	:  $("#addguestprofiletobookingsreservationid").val(),
+			firstname      	:  $("#addguestprofiletobookingsfirstname").val(),
+			lastname     	:  $("#addguestprofiletobookingslastname").val(),
+			gender        	:  $("#addguestprofiletobookingspaymentgender").val(),
+			type       		:  $("#addguestprofiletobookingspaymenttype").val(),
+		},
+		success: function (result) {
+			   $('#imgloader').hide();
+				$("#addguestprofiletobookingssuccess").empty();
+				$("#addguestprofiletobookingssuccess").append(result);
+			   $("#successmsgaddguestprofiletobookings").show();
+			   setInterval(function () {
+				   $("#successmsgaddguestprofiletobookings").hide();
+					}, 5000);
+			},
+			error: function(error) {
+			   $('#imgloader').hide();
+			   $("#errormsgaddguestprofiletobookings").show();
+				 setInterval(function () {
+					   $("#errormsgaddguestprofiletobookings").hide();
+				  }, 5000);
+			}
+		    });
+	}
+
+
+
+
+
+$("#btn-guestcheckin").on('click',function (){
+	guestCheckin();
+})
+
+function guestCheckin(){
+	
+	$.ajax({
+		url  : '/pms/otabooking/otaguestcheckIn',
+		type : 'POST',
+		data : {
+			reservationid  	:  $("#guestcheckinreservationid").val(),
+			guestname      	:  $("#guestcheckinguestname").val(),
+			email     		:  $("#guestcheckinemail").val(),
+			address        	:  $("#guestcheckinaddress").val(),
+			phone       	:  $("#guestcheckinphone").val(),
+			mobile 			:  $("#guestcheckinmobile").val(),
+		},
+		success: function (result) {
+			   $('#imgloader').hide();
+				$("#guestcheckinsuccess").empty();
+				$("#guestcheckinsuccess").append(result);
+			   $("#successmsgguestcheckin").show();
+			   setInterval(function () {
+				   $("#successmsgguestcheckin").hide();
+					}, 5000);
+			},
+			error: function(error) {
+			   $('#imgloader').hide();
+			   $("#errormsgguestcheckin").show();
+				 setInterval(function () {
+					   $("#errormsgguestcheckin").hide();
+				  }, 5000);
+			}
+		    });
+	}
+
+
+
+$("#btn-roomassignment").on('click',function (){
+	roomassignment();
+})
+
+function roomassignment(){
+	
+	$.ajax({
+		url  : '/pms/otabooking/otaroomassignment',
+		type : 'POST',
+		data : {
+			reservationid  	:  $("#roomassignmentreservationid").val(),
+			roomtypeid      :  $("#roomassignmentroomtypeid").val(),
+			roomid     		:  $("#roomassignmentroomid").val(),
+		},
+		success: function (result) {
+			   $('#imgloader').hide();
+				$("#roomassignmentsuccess").empty();
+				$("#roomassignmentsuccess").append(result);
+			   $("#successmsgroomassignment").show();
+			   setInterval(function () {
+				   $("#successmsgroomassignment").hide();
+					}, 5000);
+			},
+			error: function(error) {
+			   $('#imgloader').hide();
+			   $("#errormsgroomassignment").show();
+				 setInterval(function () {
+					   $("#errormsgroomassignment").hide();
+				  }, 5000);
+			}
+		    });
+	}
+
+
+
+
+$("#btn-guestcheckout").on('click',function (){
+	guestcheckout();
+})
+
+function guestcheckout(){
+	
+	$.ajax({
+		url  : '/pms/otabooking/otaguestcheckout',
+		type : 'POST',
+		data : {
+			reservationid  	:  $("#guestcheckoutreservationid").val()
+		},
+		success: function (result) {
+			   $('#imgloader').hide();
+				$("#guestcheckoutsuccess").empty();
+				$("#guestcheckoutsuccess").append(result);
+			   $("#successmsgguestcheckout").show();
+			   setInterval(function () {
+				   $("#successmsgguestcheckout").hide();
+					}, 5000);
+			},
+			error: function(error) {
+			   $('#imgloader').hide();
+			   $("#errormsgguestcheckout").show();
+				 setInterval(function () {
+					   $("#errormsgguestcheckout").hide();
+				  }, 5000);
+			}
+		    });
+	}
+
+
+
+$("#btn-retrievelistofbills").on('click',function (){
+	retrievelistofbills();
+})
+
+function retrievelistofbills(){
+	
+	$.ajax({
+		url  : '/pms/otabooking/otaretrievelistofbills',
+		type : 'POST',
+		data : {
+			reservationid  	:  $("#retrievelistofbillsreservationid").val()
+		},
+		success: function (result) {
+			   $('#imgloader').hide();
+			   if(result[0].id < 0){
+				$("#retrievelistofbillssuccess").empty();
+				$("#retrievelistofbillssuccess").append(result[0].guestname);
+			   }else{
+				   retrievelistofbillsSuccess(result);
+			   }
+			   $("#successmsgretrievelistofbills").show();
+			   setInterval(function () {
+				   $("#successmsgretrievelistofbills").hide();
+					}, 5000);
+			},
+			error: function(error) {
+			   $('#imgloader').hide();
+			   $("#errormsgretrievelistofbills").show();
+				 setInterval(function () {
+					   $("#errormsgretrievelistofbills").hide();
+				  }, 5000);
+			}
+		    });
+	}
+
+
+function retrievelistofbillsSuccess(response){
+	$(".retrievelistofbillsdivlist").show();
+	$(".retrievelistofbillsbody").empty();
+	var row = '';
+	var ss = '';
+	var c = 0;
+	$.each(response,function(key,inv){
+		c = c + 1;
+		ss = '<tr>'+
+		+'<td class="tdwidth">'+c+'</td>'
+		+'<td class="tdwidth">'+inv.id+''+'</td>'
+		+'<td class="tdwidth">'+inv.foliono+''+'</td>'
+		+'<td class="tdwidth">'+inv.billtocontact+'</td>'
+		+'<td class="tdwidth">'+inv.guestname+''+'</td>'
+		+'<td class="tdwidth">'+inv.currencycode+''+'</td>'
+		+'<td class="tdwidth">'+inv.totalcharges+''+'</td>'
+		+'<td class="tdwidth">'+inv.paidamount+''+'</td>'
+		+'<td class="tdwidth">'+inv.dueamount+''+'</td>'
+		+'</tr>'
+		row = row + ss ;
+	});
+	$(".retrievelistofbillsbody").append(row);
+}
+
+
+
+$("#btn-retrievetransactiondetails").on('click',function (){
+	retrievertransactiondetails();
+})
+
+function retrievertransactiondetails(){
+	
+	$.ajax({
+		url  : '/pms/otabooking/otaretrievertransactiondetails',
+		type : 'POST',
+		data : {
+			tranunkid  	:  $("#retrievetransactiondetailsreservationid").val(),
+		},
+		success: function (result) {
+			   $('#imgloader').hide();
+			   console.log(result);
+			   if(result[0].id < 0){
+				$("#retrievetransactiondetailssuccess").empty();
+				$("#retrievetransactiondetailssuccess").append(result[0].comment);
+			   }else{
+				   retrievertransactiondetailsSuccess(result);
+			   }
+			   $("#successmsgretrievetransactiondetails").show();
+			   setInterval(function () {
+				   $("#successmsgretrievetransactiondetails").hide();
+					}, 5000);
+			},
+			error: function(error) {
+			   $('#imgloader').hide();
+			   $("#errormsgretrievetransactiondetails").show();
+				 setInterval(function () {
+					   $("#errormsgretrievetransactiondetails").hide();
+				  }, 5000);
+			}
+		    });
+	}
+
+
+
+function  retrievertransactiondetailsSuccess(response){
+	
+	$(".retrievetransactiondetailsdivbooktranslist").show();
+	$(".retrievetransactiondetailsbooktransbody").empty();
+	var row = '';
+	var ss = '';
+	var c = 0;
+	$.each(response,function(key,inv){
+		c = c + 1;
+		ss = '<tr>'+
+		+'<td class="tdwidth">'+c+'</td>'
+		+'<td class="tdwidth">'+inv.id+''+'</td>'
+		+'<td class="tdwidth">'+inv.reservationid+''+'</td>'
+		+'<td class="tdwidth">'+inv.firstname+''+inv.lastname+'</td>'
+		+'<td class="tdwidth">'+inv.rateplanname+''+'</td>'
+		+'<td class="tdwidth">'+inv.start+''+'</td>'
+		+'<td class="tdwidth">'+inv.end+''+'</td>'
+		+'<td class="tdwidth">'+inv.arrivaltime+''+'</td>'
+		+'<td class="tdwidth">'+inv.departuretime+''+'</td>'
+		+'<td class="tdwidth">'+inv.email+''+'</td>'
+		+'<td class="tdwidth">'+inv.currentstatus+''+'</td>'
+		+'</tr>'
+	
+		row = row + ss ;
+	});
+	$(".retrievetransactiondetailsbooktransbody").append(row);
+	
+}
 
 

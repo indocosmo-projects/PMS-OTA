@@ -71,9 +71,16 @@ public class OTAReservation {
 
 	@Column(name = "isdeleted")
 	private int isdeleted ;
-	
 
-	
+	public OTAReservation() {
+		super();
+	}
+
+	public OTAReservation(int uniquereservationid, String bookedby) {
+		super();
+		this.uniquereservationid = uniquereservationid;
+		this.bookedby = bookedby;
+	}
 
 	public int getId() {
 		return id;

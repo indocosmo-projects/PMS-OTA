@@ -20,6 +20,24 @@ public class HotelInfoDTO {
 	
 	private String username;
 
+	private String hotelunkid;
+	
+	private String country;
+	
+	private String propertytype ;
+	
+	private String bookingengineurl;
+	
+	private String phone;
+	
+	private String email;
+	
+	private String  bookingenginefoldername;
+	
+	private String currencycode ;
+	 
+	private String amenity;
+	
 	public String getUsername() {
 		return username;
 	}
@@ -91,6 +109,79 @@ public class HotelInfoDTO {
 	public void setErrorcode(String errorcode) {
 		this.errorcode = errorcode;
 	}
+
+	public String getHotelunkid() {
+		return hotelunkid;
+	}
+
+	public void setHotelunkid(String hotelunkid) {
+		this.hotelunkid = hotelunkid;
+	}
+
+	public String getCountry() {
+		return country;
+	}
+
+	public void setCountry(String country) {
+		this.country = country;
+	}
+
+	public String getPropertytype() {
+		return propertytype;
+	}
+
+	public void setPropertytype(String propertytype) {
+		this.propertytype = propertytype;
+	}
+
+	public String getBookingengineurl() {
+		return bookingengineurl;
+	}
+
+	public void setBookingengineurl(String bookingengineurl) {
+		this.bookingengineurl = bookingengineurl;
+	}
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getBookingenginefoldername() {
+		return bookingenginefoldername;
+	}
+
+	public void setBookingenginefoldername(String bookingenginefoldername) {
+		this.bookingenginefoldername = bookingenginefoldername;
+	}
+
+	public String getCurrencycode() {
+		return currencycode;
+	}
+
+	public void setCurrencycode(String currencycode) {
+		this.currencycode = currencycode;
+	}
+
+	public String getAmenity() {
+		return amenity;
+	}
+
+	public void setAmenity(String amenity) {
+		this.amenity = amenity;
+	}
+	
 	
 	
 }

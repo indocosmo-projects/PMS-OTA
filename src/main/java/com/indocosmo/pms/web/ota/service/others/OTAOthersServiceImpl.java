@@ -352,7 +352,7 @@ public class OTAOthersServiceImpl implements OTAOthersServiceInterface{
 	@Override
 	public List<OTACompanies> getGuestList(HotelInfo hotel) {
 		
-		int o = 0;
+		int o = 0, c= 0;
 		String hotelcode = hotel.getHotelcode();
 		String hotelauthkey = hotel.getAuthkey();
 		
@@ -382,6 +382,7 @@ public class OTAOthersServiceImpl implements OTAOthersServiceInterface{
 			    String errorcode = jobjerror.get("ErrorCode").getAsString();
 			    response = errormsg;
 			    OTACompanies otacompany = new OTACompanies();
+			    otacompany.setSid(-1);
 			    otacompany.setId(response);
 			    otacompanyList.add(otacompany);
 		    }else {
@@ -392,6 +393,8 @@ public class OTAOthersServiceImpl implements OTAOthersServiceInterface{
 			    	for(int i = 0; i< jsonCompany.size();i++) {
 			    		JsonObject jobjotacompany = jsonCompany.get(i).getAsJsonObject();
 			    		OTACompanies otacompany = new OTACompanies();
+			    		c = i + 1;
+			    		otacompany.setSid(c);
 			    		otacompany.setId(jobjotacompany.get("Id").getAsString());
 			    		otacompany.setContact_person(jobjotacompany.get("Contact_person").getAsString());
 			    		otacompany.setAddress(jobjotacompany.get("Type").getAsString());

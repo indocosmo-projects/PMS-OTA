@@ -14,6 +14,8 @@ import java.sql.Types;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalTime;
+import java.time.Period;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
@@ -21,11 +23,17 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.stream.Collectors;
+
+import javax.servlet.http.HttpSession;
+
+import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 import org.hibernate.SessionFactory;
+import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
@@ -48,7 +56,13 @@ import com.indocosmo.pms.web.common.setttings.commonSettings;
 import com.indocosmo.pms.web.discount.model.Discount;
 import com.indocosmo.pms.web.discount.service.DiscountService;
 import com.indocosmo.pms.web.exception.CustomException;
+import com.indocosmo.pms.web.ota.dto.reservation.OTAReservationDTO;
+import com.indocosmo.pms.web.ota.entity.hotel.HotelInfo;
+import com.indocosmo.pms.web.ota.entity.reservation.OTABookingTrans;
+import com.indocosmo.pms.web.ota.entity.reservation.OTAReservation;
 import com.indocosmo.pms.web.reservation.controller.ReservationController;
+import com.indocosmo.pms.web.ota.service.common.OnlineTravelAgentServiceImpl;
+import com.indocosmo.pms.web.ota.service.reservation.OTAReservationServiceImpl;
 import com.indocosmo.pms.web.reservation.dao.ReservationDAOImp;
 import com.indocosmo.pms.web.reservation.model.Cancelreason;
 import com.indocosmo.pms.web.reservation_test.model.AvailableRoomTypes;
@@ -64,6 +78,7 @@ import com.indocosmo.pms.web.room.dao.RoomDAO;
 import com.indocosmo.pms.web.room.model.Room;
 import com.indocosmo.pms.web.systemSettings.model.SystemSettings;
 import com.indocosmo.pms.web.systemSettings.service.SystemSettingsService;
+import com.sun.org.apache.xerces.internal.impl.xpath.regex.ParseException;
 import com.thoughtworks.xstream.XStream;
 
 @Repository
@@ -79,6 +94,12 @@ public class ReservationDaoTestImpl implements ReservationDaoTest {
 
 	@Autowired
 	RoomDAO roomDao;
+	
+	@Autowired
+	OTAReservationServiceImpl otareservationserviceImpl;
+	
+	@Autowired
+	OnlineTravelAgentServiceImpl onlineTravelAgentServiceImpl;
 
 	@Autowired
 	JdbcTemplate jdbcTemplate;
@@ -1481,6 +1502,16 @@ public class ReservationDaoTestImpl implements ReservationDaoTest {
 			while (resultSet.next()) {
 				totalCount = resultSet.getInt(1);
 			}
+			
+			try {
+				JsonArray otaserverresponse = getOnlineTAServerResponse();
+				int servercount = otaserverresponse.size();
+				jsonCardArray.addAll(otaserverresponse);
+				totalCount = totalCount + servercount;
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
 			jsonFullContent.addProperty("total", totalCount);
 			jsonFullContent.add("card", jsonCardArray);
 		} catch (Exception e) {
@@ -1493,6 +1524,7 @@ public class ReservationDaoTestImpl implements ReservationDaoTest {
 			dbConnection.releaseResource(statement);
 			dbConnection.releaseResource(resultSet);
 		}
+		
 		return jsonFullContent;
 	}
 
@@ -3025,5 +3057,104 @@ public class ReservationDaoTestImpl implements ReservationDaoTest {
 
 	}
 
+	
+	@Override
+	public JsonArray getOnlineTAServerResponse() throws Exception { 
+		
+		HotelInfo hotel = new HotelInfo();
+		JsonArray jsonCardArray = new JsonArray();
+		String password = "d44f6590f2c3@9148790807c57666de-bb8c-11ea-a";
+		String name = "D662348234";
+		String xmldata = "<?xml version=\"1.0\" standalone=\"yes\"?><request><auth>"+password+"</auth><oprn>gethotelinfo</oprn></request>";
+		String url = "https://live.ipms247.com/index.php/page/service.pos2pms";
+		
+		try {
+		JSONObject jobj = onlineTravelAgentServiceImpl.getUrlContents(url, xmldata);
+		String response = jobj.toString();
+		if(response.contains("success")) {
+			JSONObject jobjresponse = (JSONObject) jobj.get("response");
+			hotel.setHotelname(jobjresponse.get("hotelname").toString());
+			hotel.setAuthkey(password);
+			hotel.setHotelcode(jobjresponse.get("hotelcode").toString());
+			hotel.setUsername(name);
+		}else {
+			JSONObject jobjresponse = (JSONObject) jobj.get("response");
+	    	String errormsg = jobjresponse.get("msg").toString();
+			System.out.println("==>"+errormsg);
+		}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		OTAReservationDTO reservationdto = otareservationserviceImpl.getRetrieveAll(hotel) ;
+		List<OTAReservation> reservation = reservationdto.getOtareservation();
+		Map<Integer, List<OTABookingTrans>> bookigTransMap = reservationdto.getOtabookingtrans().parallelStream().
+				collect(Collectors.groupingBy(pl -> pl.getReservationid()));
+		
+		try {
+			
+		for(OTAReservation  rese : reservation) {
+		if(bookigTransMap.containsKey(rese.getUniquereservationid())){
+			List<OTABookingTrans> bookingtransList = bookigTransMap.get(rese.getUniquereservationid());
+			String status= "";
+			int canconfirm = 0,cancancel = 0,candeposit = 0 ,cancheckin = 0 ,canedit = 0 ,cannoshow = 0,resvstatus = 0, night = 1;
+			Long daysBetween = 0L ;
+			
+			for(OTABookingTrans bookingtrans : bookingtransList) {
+				JsonObject resvRow = new JsonObject();
+				resvRow.addProperty("resvNo", bookingtrans.getReservationid());
+				if(bookingtrans.getIsconfirmed().equals("1")) {
+					status = "CONFIRMED"; canconfirm = 0; cancancel = 1; candeposit = 1;  cancheckin = 0;  canedit = 1; cannoshow = 0;
+					if(bookingtrans.getStatus().equals("Cancel")) { resvstatus = 2;  } 
+					else { resvstatus = 1; }
+				}else {
+					status = "UNCONFIRMED"; canconfirm = 0; cancancel = 0; candeposit = 0; cancheckin = 0; canedit = 0; cannoshow = 0;
+					resvstatus = 0;
+				}
+		
+					DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd MM yyyy");
+					String start = bookingtrans.getStart();
+					String end = bookingtrans.getEnd();
+					String[] arrstart = start.split("-");
+					String[] arrend = end.split("-");
+					String inputString1 = arrstart[2] + " " + arrstart[1] + " " + arrstart[0];
+					String inputString2 = arrend[2] + " " + arrend[1] + " " + arrend[0];
+
+					try { 
+					    LocalDate date1 = LocalDate.parse(inputString1, dtf);
+					    LocalDate date2 = LocalDate.parse(inputString2, dtf);
+					    night = Period.between(date1, date2).getDays();
+					} catch (Exception e) {
+					    e.printStackTrace();
+					}
+			
+				resvRow.addProperty("resvStatus", resvstatus);
+				resvRow.addProperty("resvStatusXlt", status);
+				resvRow.addProperty("corporateName","");
+				resvRow.addProperty("resvDate", bookingtrans.getCreatedatetime());
+				resvRow.addProperty("reservedBy",bookingtrans.getFirstname() + bookingtrans.getLastname());
+				resvRow.addProperty("canConfirm", canconfirm);
+				resvRow.addProperty("canCancel", cancancel);
+				resvRow.addProperty("canDeposit", candeposit);
+				resvRow.addProperty("canCheckin", cancheckin);
+				resvRow.addProperty("canEdit", canedit);
+				resvRow.addProperty("canNoshow", cannoshow);
+				resvRow.addProperty("folioBalance", bookingtrans.getTotalamountaftertax());
+				resvRow.addProperty("arrivalDate", bookingtrans.getStart() +" "+ bookingtrans.getArrivaltime());
+				resvRow.addProperty("numRooms", 1);
+				resvRow.addProperty("numNights", night);
+				resvRow.addProperty("resvFor", rese.getBookedby());
+				resvRow.addProperty("stayedDays", 0);
+				resvRow.addProperty("arrivalTime", bookingtrans.getArrivaltime());
+				resvRow.addProperty("departTime", bookingtrans.getDeparturetime());
+				jsonCardArray.add(resvRow);
+				}
+		    }
+		}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		 
+		return jsonCardArray;
+	}
 
 }

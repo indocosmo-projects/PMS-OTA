@@ -100,13 +100,14 @@ public class OTAReservationServiceImpl implements OTAReservationServiceInterface
 		String url = "https://live.ipms247.com/pmsinterface/pms_connectivity.php";
 		
 		JsonObject jsonobject = onlineTravelAgentServiceImpl.Post_JSON(url, json);
-		
+		System.out.println("jsonobject==>"+jsonobject);
 		resrvationList = new ArrayList<OTAReservation>();
 		bookingtransList = new ArrayList<OTABookingTrans>();
 		rentalinfoList = new ArrayList<OTARentalInfo>();
 		taxdetailList = new ArrayList<OTATaxDeatil>();
 		cancelreservationlist = new ArrayList<OTACancelReservation>();
 		
+		try {
 		JsonObject jobj = jsonobject.get("Reservations").getAsJsonObject();
 		JsonArray jarr = jobj.get("Reservation").getAsJsonArray();
 		
@@ -197,7 +198,18 @@ public class OTAReservationServiceImpl implements OTAReservationServiceInterface
 			e.printStackTrace();
 		}
 		
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		OTAReservationDTO ota = new OTAReservationDTO();
+		
+		OTAReservation otares = new OTAReservation(820,"ICS");
+		OTAReservation otares1 = new OTAReservation(821,"ICS");
+     	OTABookingTrans otabook = new OTABookingTrans(820,"12-12-2023","New","1","2023-11-20","2023-11-26","11:00:00","12:00:00","1100.00","Mr. Laxmi ","Prasad");
+     	OTABookingTrans otabook1 = new OTABookingTrans(821,"21-12-2023","New","1","2023-11-30","2023-12-26","11:00:00","12:00:00","1100.00","Mr. Mithun B ","Palat");
+     	bookingtransList.add(otabook); bookingtransList.add(otabook1);
+    	resrvationList.add(otares); resrvationList.add(otares1);
+     	
 		ota.setOtabookingtrans(bookingtransList);
 		ota.setOtacancelreservation(cancelreservationlist);
 		ota.setOtarentalinfo(rentalinfoList);
@@ -348,11 +360,6 @@ public class OTAReservationServiceImpl implements OTAReservationServiceInterface
 			e.printStackTrace();
 		}
 		
-		resrvationList.removeAll(resrvationListDB);
-		bookingtransList.removeAll(bookingtransListDB);
-		cancelreservationlist.removeAll(cancelreservationlistDB);
-		rentalinfoList.removeAll(rentalinfoListDB);
-		taxdetailList.removeAll(taxdetailListDB);
 		
 		OTAReservationDTO ota = new OTAReservationDTO();
 		ota.setOtabookingtrans(bookingtransList);

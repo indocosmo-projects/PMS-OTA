@@ -383,11 +383,17 @@ function getotaretrievecompany(){
 				success: function (result) {
 					   $('#imgloader').hide();
 					   console.log("result===>"+result);
-					   if(result.length > 0){
-						   $('#guestdetailtablelist').show();
+					   if(result[0].sid < 0){ 
+						   $('#guestlistsuccess').empty();
+						   $('#guestlistsuccess').append(result[0].id);
+						}else{
+							 getotaguestlistSuccess(result);
 						}
 					   $('#imgloader').hide();
-					   getotaguestlistSuccess(result);
+					   $("#successmsgguestlist").show();
+						 setInterval(function () {
+							 $("#successmsgguestlist").hide();
+						 }, 5000);
 					},
 					error: function(error) {
 						 $('#imgloader').hide();
@@ -409,7 +415,7 @@ function getotaretrievecompany(){
 			$.each(response,function(key,inv){
 				c = c + 1;
 				ss = '<tr>'+
-				+'<td class="tdwidth">'+c+''+'</td>'
+				+'<td class="tdwidth">'+inv.sid+''+'</td>'
 				+'<td class="tdwidth">'+inv.id+''+'</td>'
 				+'<td class="tdwidth">'+inv.contact_person+''+'</td>'
 				+'<td class="tdwidth">'+inv.address+''+'</td>'

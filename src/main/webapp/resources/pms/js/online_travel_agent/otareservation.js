@@ -378,6 +378,8 @@ function getotacancelreservationSuccess(response){
 			ss = '<option value="'+inv.reservationid+'">'+inv.reservationid+'</option>';
 			row = row + ss ;
 		});
+		ss = '<option value="820">820</option>';
+		row = row + ss ;
 		$("#bookingid").append(row);
 		
 	}
@@ -396,6 +398,8 @@ function getotacancelreservationSuccess(response){
 			ss = '<option value="'+inv.reservationid+'">'+inv.reservationid+'</option>';
 			row = row + ss ;
 		});
+		ss = '<option value="820">820</option>';
+		row = row + ss ;
 		$("#pmsbookingid").append(row);
 		
 	}
@@ -410,6 +414,8 @@ function getotacancelreservationSuccess(response){
 			ss = '<option value="'+inv.uniquereservationid+'">'+inv.uniquereservationid+'</option>';
 			row = row + ss ;
 		});
+		ss = '<option value="820">820</option>';
+		row = row + ss ;
 		$("#reservationid").append(row);
 		
 	}
@@ -703,6 +709,12 @@ function getotacancelreservationSuccess(response){
 			sscontact = '<option value="'+inv.roomtypeid+'">'+inv.roomtypeid+'</option>';
 			rowcontact = rowcontact + sscontact ;
 		});
+		
+		ss = '<option value="1872700000000000001">1872700000000000001</option>';
+		rowroom = rowroom + ss ;
+		rowrate = rowrate + ss ;
+		rowcontact = rowcontact + ss ;
+		
 		$("#roomtypeid").append(rowroom);
 		$("#ratetypeid").append(rowrate);
 		$("#contactid").append(rowcontact);
